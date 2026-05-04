@@ -1,17 +1,29 @@
-import './App.css'
-import Navbar from './components/Navbar.jsx'
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './pages/Navbar';
+import Footer from './pages/Footer';
+import Home from './pages/Home';
+import Conference from './pages/Conference';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Dashboard from './pages/Dashboard';
+import './App.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <div className="p-8 text-center">
-        <h1 className="text-2xl font-bold text-gray-800">Welcome to UPZY PencilBitz</h1>
-        <p className="text-gray-600">If you can see this, the app is rendering!</p>
+    <Router>
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/conference" element={<Conference />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+        <Footer />
       </div>
-    </div>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
