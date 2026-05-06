@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Search, ChevronDown, Menu as MenuIcon, X, Globe, BookOpen, Layers, Star, Zap, 
+  Search, ChevronDown, Menu as MenuIcon, X, Globe, Award, BookOpen, Layers, Star, Zap, 
   Cpu, Code, BarChart, Heart, Palette, Microscope, Database, ShieldCheck, Briefcase
 } from 'lucide-react';
 import logo from '../assets/upzy-logo.png';
@@ -13,12 +13,6 @@ export default function Navbar() {
   const [isConferenceOpen, setIsConferenceOpen] = useState(false);
   const [isWorkshopOpen, setIsWorkshopOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
-
-  // Mobile Accordion States
-  const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
-  const [isMobileWorkshopsOpen, setIsMobileWorkshopsOpen] = useState(false);
-  const [isMobileConferenceOpen, setIsMobileConferenceOpen] = useState(false);
-
   const location = useLocation();
 
   const navLinks = [
@@ -63,7 +57,7 @@ export default function Navbar() {
 
   const workshopData = {
     national: [
-      { month: 'April', workshops: ['20-Apr-2026 | Data Science for Beginners', 'Python Programming Essentials', 'Web Development'] },
+      { month: 'April', workshops: ['20 -Apr-2026 | Data Science for Beginners', 'Python Programming Essentials', 'Web Development'] },
       { month: 'May', workshops: ['Machine Learning Fundamentals', 'Full Stack Web Development'] },
     ],
     international: [
@@ -98,7 +92,7 @@ export default function Navbar() {
             <span className="text-[#FF7A00]">📅</span>
             <span>Upcoming Event: 10 - 12 Sep 2025</span>
           </span>
-          <Link to="/Conference" className="bg-[#FF7A00] px-4 py-0.5 rounded-full font-bold text-[10px] text-[#0B0B0F] hover:bg-[#FFA500] transition-all">
+          <Link to="/conference" className="bg-[#FF7A00] px-4 py-0.5 rounded-full font-bold text-[10px] text-[#0B0B0F] hover:bg-[#FFA500] transition-all">
             Learn More
           </Link>
         </div>
@@ -119,7 +113,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-8 text-sm font-bold text-gray-400">
-  {navLinks.map((link) => (
+            {navLinks.map((link) => (
               <div key={link.name} className="relative">
                 {link.name === 'Categories' ? (
                   <div 
@@ -263,10 +257,10 @@ export default function Navbar() {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
-                          className="absolute -left-[500px] mt-2 w-[800px] h-[400px] bg-[#16181D] border border-white/10 rounded-[2.5rem] shadow-2xl p-5 z-[200] grid grid-cols-2 gap-7"
+                          className="absolute -left-[500px] mt-2 w-[800px] h-[400px] bg-[#16181D] border border-white/10 rounded-[2.5rem] shadow-2xl p-10 z-[200] grid grid-cols-2 gap-12"
                         >
                           <div className="space-y-6">
-                            <div className="flex items-center gap-4 pb-3 border-b border-white/5">
+                            <div className="flex items-center gap-4 pb-5 border-b border-white/5">
                               <div className="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-500"><Star size={24} /></div>
                               <div>
                                 <h4 className="text-white text-xl font-black tracking-tight">National Conference</h4>
@@ -276,7 +270,7 @@ export default function Navbar() {
                             <div className="grid grid-cols-1 gap-8">
                               {conferenceData.national.map((item, idx) => (
                                 <div key={idx} className="group/month">
-                                  <h5 className="text-purple-500 text-[11px] font-black mb-2 px-3 py-1 bg-purple-500/5 rounded-lg inline-block uppercase tracking-wider">{item.month}</h5>
+                                  <h5 className="text-purple-500 text-[11px] font-black mb-4 px-3 py-1 bg-purple-500/5 rounded-lg inline-block uppercase tracking-wider">{item.month}</h5>
                                   <ul className="space-y-3">
                                     {item.conferences.map((conf, confIdx) => (
                                       <li key={confIdx}><Link to="#" className="text-gray-400 hover:text-white text-sm font-medium flex items-center gap-3 transition-all hover:translate-x-1">{conf}</Link></li>
@@ -287,7 +281,7 @@ export default function Navbar() {
                             </div>
                           </div>
                           <div className="space-y-6">
-                            <div className="flex items-center gap-4 pb-2 border-b border-white/5">
+                            <div className="flex items-center gap-4 pb-5 border-b border-white/5">
                               <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500"><Globe size={24} /></div>
                               <div>
                                 <h4 className="text-white text-xl font-black tracking-tight">International Conference</h4>
@@ -297,7 +291,7 @@ export default function Navbar() {
                             <div className="grid grid-cols-1 gap-8">
                               {conferenceData.international.map((item, idx) => (
                                 <div key={idx} className="group/month">
-                                  <h5 className="text-emerald-500 text-[11px] font-black mb-2 px-3 py-1 bg-emerald-500/5 rounded-lg inline-block uppercase tracking-wider">{item.month}</h5>
+                                  <h5 className="text-emerald-500 text-[11px] font-black mb-4 px-3 py-1 bg-emerald-500/5 rounded-lg inline-block uppercase tracking-wider">{item.month}</h5>
                                   <ul className="space-y-3">
                                     {item.conferences.map((conf, confIdx) => (
                                       <li key={confIdx}><Link to="#" className="text-gray-400 hover:text-white text-sm font-medium flex items-center gap-3 transition-all hover:translate-x-1">{conf}</Link></li>
@@ -307,9 +301,9 @@ export default function Navbar() {
                               ))}
                             </div>
                           </div>
-                          <div className="col-span-2 pt-2 border-t border-white/5 flex items-center justify-between">
+                          <div className="col-span-2 mt-2 pt-6 border-t border-white/5 flex items-center justify-between">
                             <p className="text-xs text-gray-500 font-medium">Publish your research papers in internationally recognized journals.</p>
-                            <Link to="/Conference" className="bg-[#FF7A00] text-[#0B0B0F] px-5 py-2 rounded-xl text-xs font-black flex items-center gap-2 hover:scale-105 transition-transform">Explore All Conferences <MenuIcon size={14} /></Link>
+                            <a href="Conference.jsx" className="bg-[#FF7A00] text-[#0B0B0F] px-5 py-2 rounded-xl text-xs font-black flex items-center gap-2 hover:scale-105 transition-transform">Explore All Conferences <MenuIcon size={14} /></a>
                           </div>
                         </motion.div>
                       )}
@@ -353,144 +347,20 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden mt-4 pt-4 border-t border-white/5 space-y-2 overflow-y-auto max-h-[70vh]"
+              className="lg:hidden mt-4 pt-4 border-t border-white/5 space-y-2 overflow-hidden"
             >
               {navLinks.map((link) => (
                 <div key={link.name}>
-                  {link.name === 'Categories' ? (
+                  {link.name === 'Workshops' || link.name === 'Conference' || link.name === 'Categories' ? (
                     <div className="py-2 px-4 rounded-xl text-gray-400 font-bold">
-                      <button 
-                        onClick={() => setIsMobileCategoriesOpen(!isMobileCategoriesOpen)} 
-                        className="flex items-center justify-between w-full text-left"
-                      >
+                      <div className="flex items-center justify-between mb-2">
                         <span>{link.name}</span>
-                        <ChevronDown size={14} className={`transition-transform duration-300 ${isMobileCategoriesOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      <AnimatePresence>
-                        {isMobileCategoriesOpen && (
-                          <motion.div 
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="pl-4 space-y-4 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden"
-                          >
-                            {categoryData.map((cat, idx) => (
-                              <div key={idx} className="space-y-2">
-                                <h5 className="text-white font-bold uppercase">{cat.title}</h5>
-                                <ul className="pl-2 space-y-1">
-                                  {cat.items.map((item, itemIdx) => (
-                                    <li key={itemIdx}>
-                                      <Link to="#" className="block py-1 hover:text-white">{item}</Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ) : link.name === 'Workshops' ? (
-                    <div className="py-2 px-4 rounded-xl text-gray-400 font-bold">
-                      <button 
-                        onClick={() => setIsMobileWorkshopsOpen(!isMobileWorkshopsOpen)} 
-                        className="flex items-center justify-between w-full text-left"
-                      >
-                        <span>{link.name}</span>
-                        <ChevronDown size={14} className={`transition-transform duration-300 ${isMobileWorkshopsOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      <AnimatePresence>
-                        {isMobileWorkshopsOpen && (
-                          <motion.div 
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="pl-4 space-y-4 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden"
-                          >
-                            <div>
-                              <h5 className="text-[#FF7A00] uppercase mb-1">National</h5>
-                              <ul className="pl-2 space-y-2 text-[10px]">
-                                {workshopData.national.map((item, idx) => (
-                                  <li key={idx}>
-                                    <span className="text-[#FF7A00] font-bold block mb-1">{item.month}</span>
-                                    <ul className="pl-2 space-y-1">
-                                      {item.workshops.map((ws, wsIdx) => (
-                                        <li key={wsIdx}><Link to="#" className="block hover:text-white">{ws}</Link></li>
-                                      ))}
-                                    </ul>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <h5 className="text-blue-500 uppercase mb-1">International</h5>
-                              <ul className="pl-2 space-y-2 text-[10px]">
-                                {workshopData.international.map((item, idx) => (
-                                  <li key={idx}>
-                                    <span className="text-blue-500 font-bold block mb-1">{item.month}</span>
-                                    <ul className="pl-2 space-y-1">
-                                      {item.workshops.map((ws, wsIdx) => (
-                                        <li key={wsIdx}><Link to="#" className="block hover:text-white">{ws}</Link></li>
-                                      ))}
-                                    </ul>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ) : link.name === 'Conference' ? (
-                    <div className="py-2 px-4 rounded-xl text-gray-400 font-bold">
-                      <button 
-                        onClick={() => setIsMobileConferenceOpen(!isMobileConferenceOpen)} 
-                        className="flex items-center justify-evenly w-full text-left"
-                      >
-                        <span>{link.name}</span>
-                        <ChevronDown size={14} className={`transition-transform duration-300 ${isMobileConferenceOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      <AnimatePresence>
-                        {isMobileConferenceOpen && (
-                          <motion.div 
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="pl-3 space-y-4 border-l border-white/10 mt-2 font-medium text-xs text-gray-400 overflow-hidden"
-                          >
-                            <div>
-                              <h5 className="text-purple-500 uppercase mb-1">National</h5>
-                              <ul className="pl-2 space-y-2 text-[10px]">
-                                {conferenceData.national.map((item, idx) => (
-                                  <li key={idx}>
-                                    <span className="text-purple-500 font-bold block mb-1">{item.month}</span>
-                                    <ul className="pl-2 space-y-1">
-                                      {item.conferences.map((conf, confIdx) => (
-                                        <li key={confIdx}><Link to="#" className="block hover:text-white">{conf}</Link></li>
-                                      ))}
-                                    </ul>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <h5 className="text-emerald-500 uppercase mb-1">International</h5>
-                              <ul className="pl-2 space-y-2 text-[10px]">
-                                {conferenceData.international.map((item, idx) => (
-                                  <li key={idx}>
-                                    <span className="text-emerald-500 font-bold block mb-1">{item.month}</span>
-                                    <ul className="pl-2 space-y-1">
-                                      {item.conferences.map((conf, confIdx) => (
-                                        <li key={confIdx}><Link to="#" className="block hover:text-white">{conf}</Link></li>
-                                      ))}
-                                    </ul>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                        <ChevronDown size={14} />
+                      </div>
+                      <div className="pl-4 space-y-2 border-l border-white/10 mt-2 font-medium text-sm">
+                         <Link to="/Conference"> Conference</Link>
+                         <Link to="#" className="block">Option 2</Link>
+                      </div>
                     </div>
                   ) : (
                     <Link 
@@ -503,7 +373,7 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              <div className="pt-4 flex flex-col gap-3 px-4">
+              <div className="pt-4 flex flex-col gap-3">
                 <Link to="/dashboard" className="w-full py-4 text-center text-gray-400 font-bold hover:text-white transition-all">Log In</Link>
                 <button className="w-full py-4 bg-[#FF7A00] text-[#0B0B0F] font-black rounded-2xl shadow-lg shadow-[#FF7A00]/10">Sign Up</button>
               </div>
