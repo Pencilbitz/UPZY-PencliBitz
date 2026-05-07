@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import logo from "../assets/upzy-logo.png";
 import aboutImg from "../assets/About.jpeg";
-import ctaBooks from "../assets/cta-books.jpeg";
+import books from "../assets/newsletter-books.png";
 import Conference from "./Conference";
 
 import {
@@ -390,17 +390,23 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative bg-[#16181D] border border-[#FF7A00]/30 rounded-[3rem] p-10 md:p-16 overflow-hidden text-center md:text-left"
+          className="relative bg-[#16181D] border border-[#FF7A00]/30 rounded-[3rem] p-5 md:p-10 overflow-hidden text-center md:text-left"
         >
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF7A00]/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF7A00]/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
             <div className="flex flex-col md:flex-row items-center gap-8 flex-1">
               <div className="w-24 h-24 bg-[#FF7A00]/10 rounded-[2rem] flex items-center justify-center shrink-0">
-                <img src={ctaBooks} alt="Books" className="w-16 h-16 object-contain animate-float" />
-              </div>
+ {/* Image */}
+        <img
+          src={books}
+          alt="Books"
+          className="w-full h-full rounded-2xl object-cover hidden md:block"
+        />
+
+        {/* Text */}              </div>
               <div>
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-3">Start Your Learning Journey Today!</h3>
-                <p className="text-gray-400 font-medium">Join thousands of learners and unlock your true potential with PencilBitz.</p>
+                <p className="text-gray-400 font-medium">Join thousands of learners and unlock your true potential with UPZY PencilBitz.</p>
               </div>
             </div>
             <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4">

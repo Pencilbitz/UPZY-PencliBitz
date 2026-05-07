@@ -298,8 +298,8 @@ const Conference = () => {
                 </div>
 
             </div>
-        </section>        </div>
+        </section>
+    </div>
     );
 };
-
 export default Conference;
