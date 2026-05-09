@@ -4,7 +4,7 @@ import { WorkshopProvider } from './context/WorkshopContext';
 import Navbar from './pages/Navbar';
 import Footer from './pages/Footer';
 import Home from './pages/Home';
-import Conference from './pages/Conference';
+import InternationalConference from './pages/InternationalConference';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Dashboard from './pages/Dashboard';
@@ -12,6 +12,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import AdminPanel from './pages/AdminPanel';
 import Workshops from './pages/Workshops';
+import NationalConference from './pages/NationalConference';
+import WhatsAppButton from './pages/WhatsAppButton';
 import './App.css';
 
 // Protected Route Component
@@ -31,13 +33,15 @@ function AppContent() {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-[#0B0B0F] flex flex-col">
       <Navbar />
       <div className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/conference" element={<Conference />} />
+          <Route path="/international-conference" element={<InternationalConference />} />
+          <Route path="/conference" element={<InternationalConference />} />
+          <Route path="/national-conference" element={<NationalConference />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/workshops" element={<Workshops />} />
@@ -48,6 +52,7 @@ function AppContent() {
         </Routes>
       </div>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

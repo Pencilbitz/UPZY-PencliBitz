@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import logo from "../assets/upzy-logo.png";
 import aboutImg from "../assets/About.jpeg";
 import books from "../assets/newsletter-books.png";
-import Conference from "./Conference";
+import InternationalConference from "./InternationalConference";
 
 import {
   BookOpen,

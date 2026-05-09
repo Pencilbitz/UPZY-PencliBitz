@@ -57,8 +57,8 @@ const Footer = () => {
                         <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-xs">Conference</h4>
                         <ul className="space-y-4">
                             {[
-                                { name: 'National Conference', path: '#' },
-                                { name: 'International Conference', path: '/conference' },
+                                { name: 'National Conference', path: '/national-conference' },
+                                { name: 'International Conference', path: '/international-conference' },
                                 { name: 'Call for Papers', path: '#' },
                                 { name: 'Previous Events', path: '#' },
                                 { name: 'Guidelines', path: '#' }

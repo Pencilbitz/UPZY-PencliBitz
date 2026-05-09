@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 import logo from '../assets/upzy-logo.png';
 import { Link, useLocation } from 'react-router-dom';
-import Conference from './Conference';
+// Removed unused import
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ export default function Navbar() {
     { name: 'About Us', path: '/about' },
     { name: 'Categories', path: '#' },
     { name: 'Workshops', path: '#' },
-    { name: 'Conference', path: '/Conference' },
+    { name: 'Conference', path: '/international-conference' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -142,10 +142,10 @@ export default function Navbar() {
                           exit={{ opacity: 0, y: 10 }}
                           className="absolute left-1/2 -translate-x-1/2 mt-2 w-52 bg-[#16181D] border border-white/10 rounded-2xl shadow-2xl p-2 z-[200] flex flex-col gap-1"
                         >
-                          <Link to="#" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
+                          <Link to="/national-conference" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
                             <Star size={14} /> National
                           </Link>
-                          <Link to="/Conference" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
+                          <Link to="/international-conference" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
                             <Globe size={14} /> International
                           </Link>
                         </motion.div>
@@ -257,8 +257,8 @@ export default function Navbar() {
                             exit={{ opacity: 0, height: 0 }}
                             className="pl-4 space-y-2 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden flex flex-col gap-1"
                           >
-                            <Link to="#" className="block py-1 hover:text-purple-500">National</Link>
-                            <Link to="/Conference" className="block py-1 hover:text-emerald-500">International</Link>
+                            <Link to="/national-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-purple-500">National</Link>
+                            <Link to="/international-conference" className="block py-1 hover:text-emerald-500">International</Link>
                           </motion.div>
                         )}
                       </AnimatePresence>
