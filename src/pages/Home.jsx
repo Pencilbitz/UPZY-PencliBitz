@@ -40,7 +40,7 @@ const features = [
 const categories = [
   { icon: Code2, name: "Development", count: "120+ Courses" },
   { icon: BarChart3, name: "Data Science", count: "90+ Courses" },
-  { icon: Briefcase, name: "Business", count: "80+ Courses" },
+  { icon: Briefcase, name: "Business Analyst", count: "80+ Courses" },
   { icon: Megaphone, name: "Marketing", count: "60+ Courses" },
   { icon: Pencil, name: "Design", count: "70+ Courses" },
   { icon: Bot, name: "AI & ML", count: "70+ Courses" },
@@ -98,8 +98,9 @@ const courses = [
     rating: "4.8",
     reviews: "2.3K",
     duration: "12 Weeks",
-    price: "₹6,999",
-    original: "₹12,999",
+    price: "₹2,999",
+    original: "₹6,999",
+    url: "/Workshop/Full Stack Web Development"
   },
   {
     img: datasci,
@@ -108,8 +109,8 @@ const courses = [
     rating: "4.7",
     reviews: "1.8K",
     duration: "10 Weeks",
-    price: "₹5,999",
-    original: "₹11,999",
+    price: "₹1,999",
+    original: "₹5,999",
   },
   {
     img: marketing,
@@ -118,8 +119,8 @@ const courses = [
     rating: "4.6",
     reviews: "1.5K",
     duration: "8 Weeks",
-    price: "₹4,999",
-    original: "₹9,999",
+    price: "₹1,999",
+    original: "₹4,999",
   },
   {
     img: ai,
@@ -128,8 +129,8 @@ const courses = [
     rating: "4.9",
     reviews: "2.1K",
     duration: "10 Weeks",
-    price: "₹7,999",
-    original: "₹14,999",
+    price: "₹3,999",
+    original: "₹7,999",
   },
 ];
 
@@ -154,7 +155,7 @@ const steps = [
 const Home = () => {
   return (
 
-    <div className="min-h-screen bg-[#111111] text-white font-sans selection:bg-[#FF7A00]/20 selection:text-[#FF7A00]">
+    <div className="min-h-screen bg-[#111111] text-white font-sans selection:bg-[#FF7A00]/20 selection:text-[#FF7A00] mt-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#111111]">
 
@@ -335,12 +336,6 @@ const Home = () => {
             </h2>
           </div>
 
-          <a
-            href="#"
-            className="text-[#FF7A00] text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all"
-          >
-            View All Courses <ArrowRight className="w-4 h-4" />
-          </a>
         </div>
 
         {/* Courses Grid */}

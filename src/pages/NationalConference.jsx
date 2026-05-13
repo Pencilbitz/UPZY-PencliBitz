@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
     Calendar, MapPin, Users, Award, Play, ChevronRight,
@@ -38,7 +39,8 @@ const NationalConference = () => {
             date: "15 - 16 Jun 2025",
             location: "Bangalore, India",
             tags: ["Artificial Intelligence", "Machine Learning"],
-            image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+            url: "/NationalDetails",
         },
         {
             title: "National Conference on Sustainable Engineering & Technology",
@@ -205,9 +207,9 @@ const NationalConference = () => {
                                             {conf.location}
                                         </div>
                                     </div>
-                                    <button className="w-full md:w-auto px-8 py-3.5 bg-[#FF7A00] text-[#0B0B0F] font-black rounded-xl hover:bg-[#FFA500] transition-all flex items-center justify-center gap-2 text-sm shadow-lg shadow-[#FF7A00]/10">
+                                    <Link to={conf.url} className="w-full md:w-auto px-8 py-3.5 bg-[#FF7A00] text-[#0B0B0F] font-black rounded-xl hover:bg-[#FFA500] transition-all flex items-center justify-center gap-2 text-sm shadow-lg shadow-[#FF7A00]/10">
                                         View Details <ArrowRight size={18} />
-                                    </button>
+                                    </Link>
                                 </div>
                             </motion.div>
                         ))}

@@ -1,209 +1,221 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Lock, User, Eye, EyeOff, ArrowRight, AlertCircle, CheckCircle2 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import React, { useState } from "react";
 import logo from '../assets/upzy-logo.png';
-
-const SignUp = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    const { register } = useAuth();
-    const navigate = useNavigate();
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
-        setSuccess('');
-
-        if (formData.password !== formData.confirmPassword) {
-            setError('Passwords do not match');
-            return;
-        }
-
-        if (formData.password.length < 6) {
-            setError('Password must be at least 6 characters');
-            return;
-        }
-
-        setIsLoading(true);
-
-        try {
-            const result = await register(formData.name, formData.email, formData.password);
-            if (result.success) {
-                setSuccess('Account created successfully! Redirecting to login...');
-                setTimeout(() => {
-                    navigate('/login');
-                }, 2000);
-            } else {
-                setError(result.error);
-            }
-        } catch (err) {
-            setError('Registration failed. Please try again.');
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    return (
-        <div className="min-h-full  bg-[#060606] text-white flex flex-col font-sans selection:bg-[#FF7A00]/30 selection:text-[#FF7A00]">
-            <div className="relative w-full flex justify-between items-center">
-                <div className="absolute bottom-5 right-0 mt-15 mr-10 w-20 h-20 bg-[#FF7A00]/10 rounded-full blur-sm" />
-                <div className="ml-6 mt-6">
-                <Link to="/login" className="text-gray-400 hover:text-white transition-colors text-sm font-bold flex items-center gap-2 group">
-                    <ArrowRight size={16} className="rotate-180 group-hover:-translate-x-1 transition-transform" /> Back to Home
-                </Link>
-                </div>
-            </div>
-            <main className="flex-1 w-full flex items-center justify-center p-4">
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="w-full max-w-[480px] bg-[#0B0B0F] rounded-[2.5rem] p-10 border border-white/5 relative overflow-hidden shadow-2xl"
-                >
-                    {/* Background Glow */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#FF7A00]/5 rounded-full blur-[100px] -z-10" />
-
-                    {/* 3D Clipboard Decoration */}
-                    <div className="absolute top-8 right-8 w-24 h-24 opacity-80 pointer-events-none z-10">
-                        <img src="https://www.canburymedicalcentre.nhs.uk/api/imagehandler/?filepath=%2fmedia%2f3dfmplvw%2fcanbury_icon_register.png" alt="signup" className="w-full h-full object-contain filter drop-shadow-2xl" />
-                    </div>
-
-                    <h2 className="text-3xl font-black mb-2">Create Your Account</h2>
-                    <p className="text-gray-500 text-sm mb-10 font-medium">Join UPZY PencilBitz and start learning</p>
-
-                    <AnimatePresence mode="wait">
-                        {error && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-400 text-sm font-bold"
-                            >
-                                <AlertCircle size={18} className="shrink-0" />
-                                {error}
-                            </motion.div>
-                        )}
-                        {success && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-2xl flex items-center gap-3 text-green-400 text-sm font-bold"
-                            >
-                                <CheckCircle2 size={18} className="shrink-0" />
-                                {success}
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <InputField 
-                            label="Full Name" 
-                            icon={<User size={20} />} 
-                            placeholder="Enter your full name" 
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            required
-                        />
-                        <InputField 
-                            label="Email Address" 
-                            icon={<Mail size={20} />} 
-                            placeholder="Enter your email" 
-                            type="email" 
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            required
-                        />
-                        <InputField 
-                            label="Password" 
-                            icon={<Lock size={20} />} 
-                            placeholder="Create a password" 
-                            type="password" 
-                            value={formData.password}
-                            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                            required
-                        />
-                        <InputField 
-                            label="Confirm Password" 
-                            icon={<Lock size={20} />} 
-                            placeholder="Confirm your password" 
-                            type="password" 
-                            value={formData.confirmPassword}
-                            onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                            required
-                        />
-
-                        <label className="flex items-start gap-3 cursor-pointer group mt-6">
-                            <div className="relative w-5 h-5 shrink-0 mt-0.5">
-                                <input type="checkbox" required className="peer absolute inset-0 opacity-0 cursor-pointer z-10" />
-                                <div className="w-5 h-5 rounded-md border-2 border-white/10 bg-[#111115] peer-checked:bg-[#FF7A00] peer-checked:border-[#FF7A00] transition-all" />
-                                <svg className="absolute inset-0 w-5 h-5 text-white pointer-events-none scale-0 peer-checked:scale-100 transition-transform p-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                </svg>
-                            </div>
-                            <span className="text-xs text-gray-500 leading-relaxed font-medium">
-                                I agree to the <span className="text-[#FF7A00] font-bold hover:underline">Terms & Conditions</span> and <span className="text-[#FF7A00] font-bold hover:underline">Privacy Policy</span>
-                            </span>
-                        </label>
-
-                        <button 
-                            type="submit"
-                            disabled={isLoading}
-                            className="w-full bg-gradient-to-r from-[#FF7A00] to-[#FF5500] text-white font-black py-4 rounded-xl shadow-xl shadow-[#FF7A00]/20 flex items-center justify-center gap-2 group mt-2 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            {isLoading ? (
-                                <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            ) : (
-                                <>
-                                    Sign Up <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                                </>
-                            )}
-                        </button>
-                    </form>
+import { Link } from 'react-router-dom';
 
 
-                    <p className="text-center mt-8 text-sm text-gray-500 font-medium">
-                        Already have an account? <Link to="/login" className="text-[#FF7A00] font-black hover:text-orange-400 transition-colors">Login</Link>
-                    </p>
-                </motion.div>
-            </main>
-        </div>
-    );
-};
+import {
+  User,
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  ArrowRight,
+  ArrowLeft,
+} from "lucide-react";
 
-const InputField = ({ label, icon, placeholder, type = "text", value, onChange, required }) => (
-    <div>
-        <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-widest">{label}</label>
-        <div className="relative group">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#FF7A00] transition-colors">
-                {icon}
-            </div>
-            <input 
-                type={type} 
-                value={value}
-                onChange={onChange}
-                required={required}
-                placeholder={placeholder}
-                className="w-full bg-[#111115] border border-white/5 rounded-xl py-3.5 pl-12 pr-4 focus:border-[#FF7A00]/50 outline-none transition-all text-sm placeholder:text-gray-700 font-medium text-white"
-            />
-        </div>
+function Field({
+  label,
+  icon: Icon,
+  type = "text",
+  placeholder,
+  toggleable,
+}) {
+  const [show, setShow] = useState(false);
+
+  const inputType = toggleable
+    ? show
+      ? "text"
+      : "password"
+    : type;
+
+  return (
+    <div className="space-y-1.5 ">
+      <label className="text-sm font-medium text-gray-200">
+        {label}
+      </label>
+
+      <div className="relative group">
+        <Icon className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-orange-400" />
+
+        <input
+          type={inputType}
+          placeholder={placeholder}
+          className="w-full rounded-xl border border-gray-700 bg-gray-900/60 py-3 pl-10 pr-10 text-sm text-white placeholder:text-gray-400 outline-none transition-all focus:border-orange-400 focus:ring-2 focus:ring-orange-400/30"
+        />
+
+        {toggleable && (
+          <button
+            type="button"
+            onClick={() => setShow(!show)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-orange-400"
+          >
+            {show ? (
+              <EyeOff className="h-4 w-4" />
+            ) : (
+              <Eye className="h-4 w-4" />
+            )}
+          </button>
+        )}
+      </div>
     </div>
-);
+  );
+}
 
-const SocialBtn = ({ icon, label }) => (
-    <button className="flex flex-col items-center justify-center gap-2 py-4 bg-[#111115] border border-white/5 rounded-2xl hover:bg-white/5 hover:border-white/10 transition-all group">
-        <img src={icon} alt={label} className="w-5 h-5 group-hover:scale-110 transition-transform" />
-        <span className="text-[10px] font-black text-gray-500 group-hover:text-gray-300 uppercase tracking-widest">{label}</span>
-    </button>
-);
+export default function SignupForm() {
+  return (
+    <div className="my-20 min-h-screen bg-gradient-to-br from-black via-gray-950 to-gray-900 flex items-center justify-center p-6">
+      <div className="w-full max-w-xl rounded-3xl border border-gray-800 bg-white/5 backdrop-blur-lg p-8 sm:p-10 shadow-2xl">
+        
+        {/* Header */}
+        <div className="mb-6  flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="flex h-9 w-9 items-center justify-center  text-xs font-bold text-orange-400">
+             <img className="w-full h-full object-contain" src={logo} alt="logo" />
+            </div>
 
-export default SignUp;
+            <span className="rounded-md bg-orange-500 px-2 py-0.5 text-sm font-extrabold tracking-wider text-white">
+              UPZY
+            </span>
+
+            <span className="text-sm font-semibold text-white">
+              PencilBitz
+            </span>
+          </div>
+
+          <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-orange-400 hover:text-orange-300 transition">
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Back to Home
+          </Link>
+        </div>
+
+        {/* Title */}
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          Create Your Account
+        </h1>
+
+        <p className="mt-2 text-sm text-gray-400">
+          Join UPZY PencilBitz and start your learning journey today.
+        </p>
+
+        {/* Form */}
+        <form
+          className="mt-7 space-y-4"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <Field
+            label="Full Name"
+            icon={User}
+            placeholder="Enter your full name"
+          />
+
+          <Field
+            label="Email Address"
+            icon={Mail}
+            type="email"
+            placeholder="Enter your email"
+          />
+
+          <Field
+            label="Password"
+            icon={Lock}
+            placeholder="Create a password"
+            toggleable
+          />
+
+          <Field
+            label="Confirm Password"
+            icon={Lock}
+            placeholder="Confirm your password"
+            toggleable
+          />
+
+          {/* Checkbox */}
+          <label className="flex cursor-pointer items-start gap-2.5 pt-1 text-sm text-gray-400">
+            <input
+              type="checkbox"
+              className="mt-0.5 h-4 w-4 accent-orange-500"
+            />
+
+            <span>
+              I agree to the{" "}
+              <a href="#" className="text-orange-400 hover:underline">
+                Terms & Conditions
+              </a>{" "}
+              and{" "}
+              <a href="#" className="text-orange-400 hover:underline">
+                Privacy Policy
+              </a>
+            </span>
+          </label>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="group flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 py-3.5 text-sm font-bold tracking-wide text-white transition-all hover:-translate-y-0.5 hover:bg-orange-400 shadow-lg shadow-orange-500/30"
+          >
+            Sign Up
+
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </button>
+
+          {/* Divider */}
+          <div className="relative my-2 flex items-center">
+            <div className="h-px flex-1 bg-gray-700" />
+
+            <span className="px-3 text-xs text-gray-500">
+              or sign up with
+            </span>
+
+            <div className="h-px flex-1 bg-gray-700" />
+          </div>
+
+          {/* Login */}
+          <p className="pt-2 text-center text-sm text-gray-400">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="font-semibold text-orange-400 hover:underline"
+            >
+              Login
+            </Link>
+          </p>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function GoogleIcon() {
+  return (
+    <svg className="h-4 w-4" viewBox="0 0 24 24">
+      <path
+        fill="#EA4335"
+        d="M12 10.2v3.9h5.5c-.2 1.4-1.6 4.1-5.5 4.1-3.3 0-6-2.7-6-6.1s2.7-6.1 6-6.1c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.9 3.5 14.7 2.5 12 2.5 6.8 2.5 2.5 6.8 2.5 12s4.3 9.5 9.5 9.5c5.5 0 9.1-3.9 9.1-9.3 0-.6-.1-1.1-.2-1.6H12z"
+      />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg
+      className="h-4 w-4"
+      viewBox="0 0 24 24"
+      fill="#0A66C2"
+    >
+      <path d="M19 3A2 2 0 0121 5v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14M8.34 18v-7.45H5.67V18h2.67M7 9.43a1.55 1.55 0 100-3.1 1.55 1.55 0 000 3.1M18.34 18v-4.08c0-2.45-1.31-3.59-3.06-3.59a2.64 2.64 0 00-2.4 1.32V10.55h-2.66V18h2.66v-4.13c0-1.09.21-2.14 1.55-2.14s1.34 1.24 1.34 2.21V18h2.57z" />
+    </svg>
+  );
+}
+
+function GitHubIcon() {
+  return (
+    <svg
+      className="h-4 w-4"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z" />
+    </svg>
+  );
+}

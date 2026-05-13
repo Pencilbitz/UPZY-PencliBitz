@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Calendar, MapPin, Users, Award, Play, ChevronRight,
@@ -24,7 +25,8 @@ const InternationalConference = () => {
             date: "10 - 12 Sep 2025",
             location: "Singapore",
             tags: ["AI", "Data Science", "Deep Learning"],
-            image: "https://as1.ftcdn.net/v2/jpg/08/95/10/54/1000_F_895105488_L9CYy44pCKJP5ufzihWMoOhlihDMfT5O.jpg"
+            image: "https://as1.ftcdn.net/v2/jpg/08/95/10/54/1000_F_895105488_L9CYy44pCKJP5ufzihWMoOhlihDMfT5O.jpg",
+            url: "/InternationalDetails",
         },
         {
             title: "International Conference on Sustainable Development Goals",
@@ -85,11 +87,11 @@ const InternationalConference = () => {
     ];
 
     const timeline = [
-        { phase: "Abstract Submission", date: "15 May - 15 June 2025", icon: FileText },
-        { phase: "Notification of Acceptance", date: "30 June 2025", icon: Shield },
-        { phase: "Early Bird Registration", date: "01 July - 31 July 2025", icon: Award },
-        { phase: "Final Registration", date: "01 Aug - 31 Aug 2025", icon: FileText },
-        { phase: "Conference Dates", date: "10 - 12 Sep 2025", icon: Calendar }
+        { phase: "Abstract Submission", date: "15 May - 15 June 2026", icon: FileText },
+        { phase: "Notification of Acceptance", date: "30 June 2026", icon: Shield },
+        { phase: "Early Bird Registration", date: "01 July - 31 July 2026", icon: Award },
+        { phase: "Final Registration", date: "01 Aug - 31 Aug 2026", icon: FileText },
+        { phase: "Conference Dates", date: "10 - 12 Sep 2026", icon: Calendar }
     ];
 
     const testimonials = [
@@ -120,7 +122,7 @@ const InternationalConference = () => {
         <div className="min-h-screen bg-[#0B0B0F] text-white font-sans selection:bg-[#FF7A00]/20 selection:text-[#FF7A00]">
             
             {/* Header Hero Section */}
-            <div className="bg-[url('https://t4.ftcdn.net/jpg/08/45/01/87/360_F_845018709_n8XtZYzGo9Oac9jbV8PIvoJUL9ARoY3u.jpg')] bg-cover bg-center bg-no-repeat relative overflow-hidden pt-32 ">
+            <div className="bg-[url('https://img.sanishtech.com/u/8103b51d863388ddcc986d39b7f745b8.png')] bg-cover bg-center bg-no-repeat relative overflow-hidden pt-32 ">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#FF7A00]/10 rounded-full blur-[160px] -z-10 translate-x-1/4 -translate-y-1/4"></div>
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[120px] -z-10 -translate-x-1/4 translate-y-1/4"></div>
 
@@ -161,8 +163,8 @@ const InternationalConference = () => {
                     <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
                         {features.map((feat, idx) => (
                             <div key={idx} className="flex items-center gap-4 group">
-                                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-[#FF7A00] group-hover:border-[#FF7A00]/30 transition-all">
-                                    <feat.icon size={20} />
+                                <div className="w-20 h-20  flex items-center justify-center text-[#FF7A00] group-hover:border-[#FF7A00]/30 transition-all">
+                                    <feat.icon size={45} />
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-sm text-white">{feat.title}</h3>
@@ -209,9 +211,9 @@ const InternationalConference = () => {
                                     </div>
                                 </div>
                                 <div className="p-6 pt-0 border-t border-white/5 mt-4">
-                                    <button className="w-full py-3 bg-white/5 hover:bg-[#FF7A00] hover:text-[#0B0B0F] font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2">
+                                    <Link to={conf.url} className="w-full py-3 bg-white/5 hover:bg-[#FF7A00] hover:text-[#0B0B0F] font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2">
                                         View Details <ChevronRight size={16} />
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -248,11 +250,11 @@ const InternationalConference = () => {
                                             className="text-center group/speaker"
                                         >
                                             <div className="relative mb-4 inline-block">
-                                                <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-xl opacity-0 group-hover/speaker:opacity-100 transition-opacity"></div>
+                                                <div className="absolute inset-0 bg-[#FF7A00]/10 rounded-full blur-xl opacity-0 group-hover/speaker:opacity-100 transition-opacity"></div>
                                                 <img 
                                                     src={speaker.image} 
                                                     alt={speaker.name} 
-                                                    className="w-24 h-24 rounded-full object-cover border-4 border-white/5 group-hover/speaker:border-purple-500/50 transition-all relative z-10"
+                                                    className="w-24 h-24 rounded-full object-cover border-4 border-white/5 group-hover/speaker:border-[#FF7A00]/50 transition-all relative z-10"
                                                 />
                                             </div>
                                             <h3 className="text-xs font-bold mb-1 truncate">{speaker.name}</h3>
@@ -276,8 +278,8 @@ const InternationalConference = () => {
                             {timeline.map((item, idx) => (
                                 <div key={idx} className="flex gap-4 group">
                                     <div className="flex flex-col items-center">
-                                        <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#FF7A00] group-hover:border-[#FF7A00]/50 transition-all">
-                                            <item.icon size={18} />
+                                        <div className="flex items-center justify-center text-[#FF7A00] group-hover:border-[#FF7A00]/50 transition-all">
+                                            <item.icon size={25} />
                                         </div>
                                         {idx !== timeline.length - 1 && <div className="w-px h-full bg-white/5 my-2"></div>}
                                     </div>
@@ -313,7 +315,7 @@ const InternationalConference = () => {
                                 <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest block mb-3">Submission Deadline</span>
                                 <div className="p-4 bg-white/5 border border-white/10 rounded-2xl flex items-center gap-3">
                                     <Calendar size={16} className="text-[#FF7A00]" />
-                                    <span className="text-xs font-bold">15 August 2025</span>
+                                    <span className="text-xs font-bold">15 May 2026</span>
                                 </div>
                             </div>
                             

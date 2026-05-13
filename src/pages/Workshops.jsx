@@ -1,292 +1,506 @@
-import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Calendar, MapPin, ExternalLink, ArrowRight, Sparkles, Users, Star, 
-  MessageSquare, Building2, Eye, Award, CheckCircle 
-} from 'lucide-react';
-import { useWorkshops } from '../context/WorkshopContext';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Workshops = () => {
-  const { getPublished } = useWorkshops();
-  const published = getPublished();
 
-  // Mocking additional data for visual enhancement
-  const recentComments = [
-    {
-      id: 1,
-      name: "Dr. Rohit Sharma",
-      role: "Professor, IIT Delhi",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100",
-      comment: "The hands-on session on Machine Learning was fantastic. Students were highly engaged and gained practical insights.",
-      rating: 5,
-      college: "IIT Delhi"
-    },
-    {
-      id: 2,
-      name: "Priya Varma",
-      role: "Tech Lead, EduTech",
-      avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=100",
-      comment: "Incredible exposure to global AI trends. The Q&A session with industry experts was an eye-opener.",
-      rating: 4.8,
-      college: "MIT College"
-    }
-  ];
+import {
+  Wrench,
+  FolderKanban,
+  BadgeCheck,
+  ChevronRight,
+  Calendar,
+  ArrowRight,
+  GraduationCap,
+  Code2,
+  Users,
+  Award,
+  Sparkles,
+  Clock,
+  Star,
+  Quote,
+  Plus,
+  Minus,
+  Mail,
+} from "lucide-react";
 
-  const popularColleges = [
-    { name: "IIT Delhi", visits: "2,500+ Visits", rating: 4.9, logo: "🏛️" },
-    { name: "Anna University", visits: "1,800+ Visits", rating: 4.7, logo: "🎓" },
-    { name: "NIT Trichy", visits: "1,400+ Visits", rating: 4.6, logo: "🏫" },
-  ];
+import heroImg from "../assets/ws-hero.png";
+import wsFullstack from "../assets/ws-fullstack.png";
+import wsData from "../assets/ws-data.png";
+import wsUiux from "../assets/ws-uiux.png";
+import wsMl from "../assets/ws-ml.png";
 
-  // Group workshops by this month vs upcoming
-  const { thisMonthWorkshops, upcomingWorkshops } = useMemo(() => {
-    const now = new Date();
-    
-    const thisMonth = published.filter(ws => {
-      const wsDate = new Date(ws.date);
-      return wsDate.getMonth() === now.getMonth() && wsDate.getFullYear() === now.getFullYear();
-    });
+const workshops = [
+  {
+    img: wsFullstack,
+    title: "Full Stack Web Development",
+    desc: "Build modern web applications from scratch.",
+    date: "12 - 14 Jun 2025",
+    duration: "3 Days Workshop",
+    price: "₹6,999",
+    original: "₹9,999",
+    url: "/Full-Stack-Web-Development",
+  },
 
-    const upcoming = published.filter(ws => {
-      const wsDate = new Date(ws.date);
-      return wsDate >= now;
-    });
+  {
+    img: wsData,
+    title: "Data Analysis with Python",
+    desc: "Learn data analysis techniques using Python libraries.",
+    date: "19 - 21 Jun 2025",
+    duration: "3 Days Workshop",
+    price: "₹5,999",
+    original: "₹8,999",
+  },
 
-    return { thisMonthWorkshops: thisMonth, upcomingWorkshops: upcoming };
-  }, [published]);
+  {
+    img: wsUiux,
+    title: "UI/UX Design Essentials",
+    desc: "Design beautiful and user-friendly interfaces.",
+    date: "26 - 28 Jun 2025",
+    duration: "3 Days Workshop",
+    price: "₹4,999",
+    original: "₹7,999",
+  },
 
+  {
+    img: wsMl,
+    title: "Machine Learning with Scikit-learn",
+    desc: "Build and train machine learning models step by step.",
+    date: "03 - 05 Jul 2025",
+    duration: "3 Days Workshop",
+    price: "₹7,999",
+    original: "₹11,999",
+  },
+];
+
+const benefits = [
+  {
+    icon: GraduationCap,
+    title: "Industry Experts",
+    desc: "Learn from seasoned professionals actively working in industry.",
+  },
+
+  {
+    icon: Code2,
+    title: "Real-Time Projects",
+    desc: "Apply skills on real-world projects from day one.",
+  },
+
+  {
+    icon: Users,
+    title: "Interactive Sessions",
+    desc: "Live Q&A, peer review and mentor guidance.",
+  },
+
+  {
+    icon: Award,
+    title: "Career Certification",
+    desc: "Earn a verified certificate to showcase your skills.",
+  },
+];
+
+const stats = [
+  { v: "200+", l: "Workshops", icon: Wrench },
+  { v: "50K+", l: "Participants", icon: Users },
+  { v: "100+", l: "Expert Trainers", icon: GraduationCap },
+  { v: "95%", l: "Satisfaction Rate", icon: Star },
+  { v: "500+", l: "Real Projects", icon: FolderKanban },
+  { v: "24/7", l: "Support", icon: Sparkles },
+];
+
+const testimonials = [
+  {
+    name: "Aarav Mehta",
+    role: "Frontend Developer",
+    text: "The Full Stack workshop was unreal. I built a real project and gained confidence.",
+    rating: 5,
+  },
+
+  {
+    name: "Priya Sharma",
+    role: "Data Analyst",
+    text: "Loved the Python workshop. Mentors were amazing and practical sessions helped a lot.",
+    rating: 5,
+  },
+
+  {
+    name: "Rohan Iyer",
+    role: "Product Designer",
+    text: "UI/UX workshop completely changed how I design interfaces.",
+    rating: 5,
+  },
+];
+
+const faqs = [
+  {
+    q: "Who can join these workshops?",
+    a: "Students, professionals, and beginners can join.",
+  },
+
+  {
+    q: "Will I receive a certificate?",
+    a: "Yes, every participant receives a certificate.",
+  },
+
+  {
+    q: "Are sessions recorded?",
+    a: "Yes, recordings will be available after sessions.",
+  },
+
+  {
+    q: "What are the prerequisites?",
+    a: "Basic computer knowledge is enough for most workshops.",
+  },
+];
+
+function Workshops() {
   return (
-    <div className="min-h-screen bg-[#0B0B0F] pt-40 pb-20">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+    
+
+      <Hero />
+
+      <UpcomingWorkshops />
+
+      <Benefits />
+
+      <Stats />
+
+      <Testimonials />
+
+      <FAQ />
+
+      <Newsletter />
+
       
-      {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-black uppercase tracking-widest rounded-full mb-6">
-            <Sparkles size={12} /> Upcoming Workshops & Events
-          </span>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Learn From <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7A00] to-[#FF5500]">Industry Experts</span>
-          </h1>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto font-medium">
-            Join our hands-on workshops designed to elevate your skills and connect you with global professionals.
-          </p>
-        </motion.div>
-      </div>
-
-      {/* Main Layout Grid: Workshops and Statistics */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-4 gap-12">
-        
-        {/* Left Side Workshop Lists (Span 3 Columns) */}
-        <div className="lg:col-span-3 space-y-20">
-
-          {/* This Month's Workshops */}
-          <div>
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <span className="text-[10px] text-[#FF7A00] font-bold tracking-widest uppercase">This Month's Focus</span>
-                <h2 className="text-2xl font-black text-white">Workshops in May 2026</h2>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-gray-500">
-                <span className="w-2 h-2 rounded-full bg-[#FF7A00] animate-pulse"></span>
-                <span>Active registrations</span>
-              </div>
-            </div>
-
-            {thisMonthWorkshops.length === 0 ? (
-              <div className="p-8 border border-white/5 rounded-[2rem] bg-[#16181D] text-center">
-                <p className="text-sm text-gray-500">No workshops scheduled for this month. Check out the upcoming list below.</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                {thisMonthWorkshops.map((ws, i) => (
-                  <WorkshopCard key={ws.id || i} ws={ws} i={i} />
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* All Upcoming Workshops */}
-          <div>
-            <div className="mb-8">
-              <span className="text-[10px] text-purple-500 font-bold tracking-widest uppercase">Explore All</span>
-              <h2 className="text-2xl font-black text-white">All Scheduled Workshops</h2>
-            </div>
-
-            {upcomingWorkshops.length === 0 ? (
-              <div className="text-center py-24 border border-white/5 rounded-[2rem] bg-[#16181D]">
-                <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users size={40} className="text-gray-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-400 mb-2">No Workshops Available Yet</h3>
-                <p className="text-sm text-gray-600 mb-8">Check back soon for upcoming workshops and events.</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                {upcomingWorkshops.map((ws, i) => (
-                  <WorkshopCard key={ws.id || i} ws={ws} i={i} />
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Recent Comments Section */}
-          <section className="border-t border-white/5 pt-16">
-            <h2 className="text-2xl font-black text-white mb-8 flex items-center gap-3">
-              <MessageSquare className="text-[#FF7A00]" /> Recent Feedback & Comments
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {recentComments.map((rev) => (
-                <div key={rev.id} className="p-6 bg-[#16181D] border border-white/5 rounded-3xl flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 mb-4">
-                      {Array.from({ length: Math.floor(rev.rating) }).map((_, idx) => (
-                        <Star key={idx} size={14} className="fill-[#FF7A00] text-[#FF7A00]" />
-                      ))}
-                      <span className="text-xs text-gray-400 ml-1">({rev.rating}/5)</span>
-                    </div>
-                    <p className="text-sm text-gray-400 leading-relaxed italic mb-6">"{rev.comment}"</p>
-                  </div>
-                  <div className="flex items-center gap-4 border-t border-white/5 pt-4">
-                    <img src={rev.avatar} alt={rev.name} className="w-10 h-10 rounded-2xl object-cover border border-white/10" />
-                    <div>
-                      <h4 className="text-sm font-bold text-white mb-0.5">{rev.name}</h4>
-                      <p className="text-[10px] text-gray-500 font-medium">
-                        {rev.role} • <span className="text-[#FF7A00]">{rev.college}</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-
-        {/* Right Sidebar: Additional Information (1 Column) */}
-        <div className="space-y-8">
-          {/* Most Active Colleges Section */}
-          <div className="p-6 bg-[#16181D] border border-white/5 rounded-[2rem]">
-            <h3 className="text-sm font-black text-white mb-6 flex items-center gap-2">
-              <Building2 size={16} className="text-[#FF7A00]" /> Top Participating Colleges
-            </h3>
-            <div className="space-y-4">
-              {popularColleges.map((col, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded-2xl hover:bg-[#FF7A00]/5 transition-all">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xl">{col.logo}</span>
-                    <div>
-                      <h4 className="text-xs font-bold text-white">{col.name}</h4>
-                      <p className="text-[10px] text-gray-500 flex items-center gap-1">
-                        <Eye size={10} /> {col.visits}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1 text-yellow-400 text-xs font-bold">
-                    <Star size={12} className="fill-yellow-400" /> <span>{col.rating}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Institutional Collaboration */}
-          <div className="p-6 bg-[#16181D] border border-white/5 rounded-[2rem] text-center">
-            <div className="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mx-auto mb-5">
-              <Award size={24} />
-            </div>
-            <h3 className="text-sm font-black text-white mb-2">Collaborate With UpzyPencilBitz</h3>
-            <p className="text-xs text-gray-500 leading-relaxed mb-6">
-              Empower your students by hosting or co-hosting specialized global tech and engineering workshops.
-            </p>
-            <Link to="/contact" className="w-full py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-black rounded-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 shadow-xl">
-              Collaborate <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
-
-      </div>
     </div>
   );
-};
-
-/* Mini Component for Workshop Cards with Link to Detail Page */
-const WorkshopCard = ({ ws, i }) => {
-  return (
-    <motion.div 
-      initial={{ opacity: 0, y: 30 }} 
-      animate={{ opacity: 1, y: 0 }} 
-      transition={{ delay: i * 0.1 }}
-      className="bg-[#16181D] border border-white/5 rounded-[2rem] overflow-hidden group hover:border-[#FF7A00]/20 transition-all hover:-translate-y-1 duration-300 flex flex-col justify-between"
-    >
-      {/* Card Header Image */}
-      <div className="h-48 bg-[#0B0B0F] relative overflow-hidden">
-        {ws.image ? (
-          <img src={ws.image} alt={ws.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#FF7A00]/10 to-purple-500/10 flex items-center justify-center">
-            <Sparkles size={40} className="text-[#FF7A00]/30" />
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#16181D] via-transparent to-transparent"></div>
-        <div className="absolute bottom-4 left-4">
-          <span className="px-3 py-1 bg-[#FF7A00] text-[#0B0B0F] rounded-full text-[10px] font-black uppercase tracking-wider">
-            Workshop
-          </span>
-        </div>
-      </div>
-      
-      {/* Card Content Section */}
-      <div className="p-6 flex flex-col flex-grow justify-between">
-        <div>
-          <h3 className="text-lg font-black text-white mb-3 group-hover:text-[#FF7A00] transition-colors line-clamp-2">
-            {ws.title}
-          </h3>
-          <div className="space-y-2.5 mb-5">
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 bg-[#FF7A00]/10 rounded-lg flex items-center justify-center">
-                <Calendar size={13} className="text-[#FF7A00]" />
-              </div>
-              <span className="text-xs text-gray-400 font-medium">
-                {new Date(ws.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                <MapPin size={13} className="text-purple-400" />
-              </div>
-              <span className="text-xs text-gray-400 font-medium truncate">{ws.location}</span>
-            </div>
-          </div>
-          {ws.description && (
-            <p className="text-xs text-gray-500 mb-6 line-clamp-2 leading-relaxed">{ws.description}</p>
-          )}
-        </div>
-
-        {/* Action Button */}
-        <div>
-          {ws.googleFormLink ? (
-            <a 
-              href={ws.googleFormLink} 
-              target="_blank" 
-              rel="noreferrer"
-              className="w-full py-3 bg-gradient-to-r from-[#FF7A00] to-[#FF5500] text-white font-black rounded-xl text-xs flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[#FF7A00]/20 transition-all group/btn mb-3"
-            >
-              Register Now <ExternalLink size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-            </a>
-          ) : (
-            <div className="w-full py-3 bg-white/5 text-gray-500 font-bold rounded-xl text-xs text-center mb-3">
-              Registration Coming Soon
-            </div>
-          )}
-          
-          {/* Click to Brief Detail Page Link */}
-          <Link to={`/workshops/${ws.id || 'detail'}`} className="w-full py-2.5 border border-white/5 text-gray-400 hover:text-white rounded-xl text-[11px] font-bold text-center block transition-all hover:bg-white/5">
-            Brief Explain & Contacts <ArrowRight size={12} className="inline ml-1" />
-          </Link>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+}
 
 export default Workshops;
+
+function Hero() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-14 mt-16">
+    
+
+      <div className="grid lg:grid-cols-2 gap-14 items-center">
+        {/* LEFT */}
+        <div>
+          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-2 rounded-full text-orange-500 text-sm font-medium">
+            <Sparkles size={14} />
+            Hands-on Learning
+          </div>
+
+          <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-tight">
+            Workshops
+          </h1>
+
+          <p className="mt-6 text-2xl font-semibold leading-relaxed">
+            Build skills. Solve problems.
+            <br />
+            Create impact.
+          </p>
+
+          <p className="mt-5 text-gray-400 max-w-md leading-relaxed">
+            Join our practical workshops and gain hands-on experience with
+            real-world projects and industry-level guidance.
+          </p>
+
+          <div className="mt-10 flex flex-wrap gap-8">
+            {[
+              {
+                icon: Wrench,
+                label: "Hands-on Experience",
+              },
+
+              {
+                icon: FolderKanban,
+                label: "Project Based Learning",
+              },
+
+              {
+                icon: BadgeCheck,
+                label: "Certificate",
+              },
+            ].map((item, index) => (
+              <div key={index}>
+                <div className="w-14 h-14 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
+                  <item.icon className="text-orange-500" />
+                </div>
+
+                <p className="mt-3 text-sm text-gray-400 max-w-[100px]">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT */}
+        <div className="relative">
+          <div className="absolute inset-0 bg-orange-500/20 blur-3xl rounded-full"></div>
+
+          <div className="relative border-2 border-orange-500 rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(255,115,0,0.4)]">
+            <img
+              src={heroImg}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function UpcomingWorkshops() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <div className="flex justify-between items-center mb-10">
+        <h2 className="text-4xl font-bold">Upcoming Workshops</h2>
+
+        <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
+          View All Workshops
+          <ArrowRight size={18} />
+        </button>
+      </div>
+
+      <div className="space-y-6">
+        {workshops.map((item, index) => (
+          <div
+            key={index}
+            className="bg-[#111] border border-orange-500/20 rounded-2xl p-5 grid md:grid-cols-[220px_1fr_auto] gap-6 hover:border-orange-500/50 transition hover:shadow-[0_0_30px_rgba(255,115,0,0.2)]"
+          >
+            <img
+              src={item.img}
+              alt=""
+              className="w-full h-40 md:h-32 object-cover rounded-xl"
+            />
+
+            <div>
+              <h3 className="text-2xl font-semibold">{item.title}</h3>
+
+              <p className="text-gray-400 mt-2">{item.desc}</p>
+
+              <div className="flex flex-wrap items-center gap-3 mt-5 text-sm">
+                <span className="flex items-center gap-2 bg-orange-500/10 text-orange-500 px-3 py-1 rounded-md">
+                  <Calendar size={16} />
+                  {item.date}
+                </span>
+
+                <span className="text-gray-500">|</span>
+
+                <span className="flex items-center gap-2 text-gray-400">
+                  <Clock size={16} />
+                  {item.duration}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center items-start md:items-end gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-3xl font-bold">{item.price}</span>
+
+                <span className="line-through text-gray-500">
+                  {item.original}
+                </span>
+              </div>
+
+              {item.url ? (
+                <Link
+                  to={item.url}
+                  className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-md font-semibold text-center text-white"
+                >
+                  Enroll Now
+                </Link>
+              ) : (
+                <span className="bg-gray-700 px-6 py-3 rounded-md font-semibold text-center text-gray-400 cursor-not-allowed">
+                  Coming Soon
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Benefits() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <div className="text-center">
+        <h2 className="text-4xl font-bold">Why Join Our Workshops?</h2>
+
+        <p className="text-gray-400 mt-3">
+          Practical learning experiences designed for career growth.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        {benefits.map((item, index) => (
+          <div
+            key={index}
+            className="bg-[#111] border border-orange-500/20 rounded-2xl p-6 hover:border-orange-500/50 transition hover:shadow-[0_0_25px_rgba(255,115,0,0.2)]"
+          >
+            <div className="w-14 h-14 rounded-xl bg-orange-500 flex items-center justify-center">
+              <item.icon className="text-white" />
+            </div>
+
+            <h3 className="mt-5 text-xl font-semibold">{item.title}</h3>
+
+            <p className="mt-3 text-gray-400">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Stats() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <div className="bg-[#111] border border-orange-500/20 rounded-3xl p-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        {stats.map((item, index) => (
+          <div key={index} className="text-center">
+            <item.icon className="mx-auto text-orange-500 mb-4" />
+
+            <h3 className="text-3xl font-bold">{item.v}</h3>
+
+            <p className="text-gray-400 text-sm mt-2">{item.l}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <h2 className="text-4xl font-bold text-center">
+        What Participants Say
+      </h2>
+
+      <div className="grid md:grid-cols-3 gap-6 mt-12">
+        {testimonials.map((item, index) => (
+          <div
+            key={index}
+            className="bg-[#111] border border-orange-500/20 rounded-2xl p-6 relative"
+          >
+            <Quote className="absolute top-5 right-5 text-orange-500/30" />
+
+            <div className="flex gap-1">
+              {Array.from({ length: item.rating }).map((_, i) => (
+                <Star
+                  key={i}
+                  className="fill-orange-500 text-orange-500"
+                  size={16}
+                />
+              ))}
+            </div>
+
+            <p className="mt-5 text-gray-400 leading-relaxed">
+              "{item.text}"
+            </p>
+
+            <div className="flex items-center gap-3 mt-6">
+              <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center font-bold">
+                {item.name[0]}
+              </div>
+
+              <div>
+                <h4 className="font-semibold">{item.name}</h4>
+
+                <p className="text-sm text-gray-400">{item.role}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const [open, setOpen] = useState(0);
+
+  return (
+    <section className="max-w-4xl mx-auto px-6 py-16">
+      <h2 className="text-4xl font-bold text-center">
+        Frequently Asked Questions
+      </h2>
+
+      <div className="space-y-4 mt-12">
+        {faqs.map((item, index) => {
+          const isOpen = open === index;
+
+          return (
+            <div
+              key={index}
+              className={`bg-[#111] border rounded-xl overflow-hidden transition ${
+                isOpen
+                  ? "border-orange-500 shadow-[0_0_25px_rgba(255,115,0,0.2)]"
+                  : "border-orange-500/20"
+              }`}
+            >
+              <button
+                onClick={() => setOpen(isOpen ? -1 : index)}
+                className="w-full flex justify-between items-center px-6 py-5 text-left"
+              >
+                <span className="font-medium">{item.q}</span>
+
+                <div className="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
+                  {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                </div>
+              </button>
+
+              {isOpen && (
+                <p className="px-6 pb-6 text-gray-400">
+                  {item.a}
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Newsletter() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <div className="bg-[#111] border border-orange-500/20 rounded-3xl p-8 md:p-12">
+        <div className="grid md:grid-cols-[auto_1fr] gap-8 items-center">
+          <div className="w-20 h-20 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
+            <Mail className="text-orange-500" size={36} />
+          </div>
+
+          <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center">
+            <div>
+              <h3 className="text-3xl font-bold">
+                Stay Updated with Upcoming Workshops
+              </h3>
+
+              <p className="text-gray-400 mt-3">
+                Subscribe to get notified about our latest workshops.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="h-12 bg-black border border-gray-700 rounded-md px-4 outline-none focus:border-orange-500"
+              />
+
+              <button className="h-12 px-6 rounded-md bg-orange-500 hover:bg-orange-600 transition font-semibold">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

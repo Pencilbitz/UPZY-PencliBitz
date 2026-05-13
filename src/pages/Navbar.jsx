@@ -3,15 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, ChevronDown, Menu as MenuIcon, X, Globe, Star, Zap, Cpu, Briefcase, Microscope, Palette, Layers 
 } from 'lucide-react';
+import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react';
 import logo from '../assets/upzy-logo.png';
 import { Link, useLocation } from 'react-router-dom';
-// Removed unused import
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isConferenceOpen, setIsConferenceOpen] = useState(false);
   const [isWorkshopOpen, setIsWorkshopOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Mobile Accordion States
   const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
@@ -23,9 +25,9 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
-    { name: 'Categories', path: '#' },
-    { name: 'Workshops', path: '#' },
-    { name: 'Conference', path: '/international-conference' },
+    { name: 'Webinars', path: '/webinars' },
+    { name: 'Workshops', path: '/workshops' },
+    { name: 'Conference', path: '/national-conference' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -73,9 +75,9 @@ export default function Navbar() {
                     onMouseEnter={() => setIsCategoriesOpen(true)}
                     onMouseLeave={() => setIsCategoriesOpen(false)}
                   >
-                    <button className={`flex items-center gap-1 transition-colors py-2 ${isCategoriesOpen ? 'text-[#FF7A00]' : 'hover:text-white'}`}>
+                    <Link to="/categories" className={`flex items-center gap-1 transition-colors py-2 ${isCategoriesOpen ? 'text-[#FF7A00]' : 'hover:text-white'}`}>
                       {link.name} <ChevronDown size={14} className={`transition-transform duration-300 ${isCategoriesOpen ? 'rotate-180' : ''}`} />
-                    </button>
+                    </Link>
                     
                     {/* Normal 2-item Dropdown */}
                     <AnimatePresence>
@@ -86,53 +88,27 @@ export default function Navbar() {
                           exit={{ opacity: 0, y: 10 }}
                           className="absolute left-1/2 -translate-x-1/2 mt-2 w-52 bg-[#16181D] border border-white/10 rounded-2xl shadow-2xl p-2 z-[200] flex flex-col gap-1"
                         >
-                          <Link to="#" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
-                            <Cpu size={14} /> Technology & Business
+                          <Link to="/workshops" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
+                            <Cpu size={14} /> Workshops
                           </Link>
-                          <Link to="#" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
-                            <Palette size={14} /> Science & Design
-                          </Link>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : link.name === 'Workshops' ? (
-                  <div 
-                    className="relative"
-                    onMouseEnter={() => setIsWorkshopOpen(true)}
-                    onMouseLeave={() => setIsWorkshopOpen(false)}
-                  >
-                    <button className={`flex items-center gap-1 transition-colors py-2 ${isWorkshopOpen ? 'text-[#FF7A00]' : 'hover:text-white'}`}>
-                      {link.name} <ChevronDown size={14} className={`transition-transform duration-300 ${isWorkshopOpen ? 'rotate-180' : ''}`} />
-                    </button>
-
-                    <AnimatePresence>
-                      {isWorkshopOpen && (
-                        <motion.div 
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          className="absolute left-1/2 -translate-x-1/2 mt-2 w-52 bg-[#16181D] border border-white/10 rounded-2xl shadow-2xl p-2 z-[200] flex flex-col gap-1"
-                        >
-                          <Link to="#" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
-                            <Layers size={14} /> National
-                          </Link>
-                          <Link to="/Workshops" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
-                            <Globe size={14} /> International
+                          <Link to="/webinars" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
+                            <Palette size={14} /> Webinars
                           </Link>
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
+                
+               
                 ) : link.name === 'Conference' ? (
                   <div 
                     className="relative"
                     onMouseEnter={() => setIsConferenceOpen(true)}
                     onMouseLeave={() => setIsConferenceOpen(false)}
                   >
-                    <button className={`flex items-center gap-1 transition-colors py-2 ${isConferenceOpen ? 'text-[#FF7A00]' : 'hover:text-white'}`}>
+                      <Link to="/conference" className={`flex items-center gap-1 transition-colors py-2 ${isConferenceOpen ? 'text-[#FF7A00]' : 'hover:text-white'}`}>
                       {link.name} <ChevronDown size={14} className={`transition-transform duration-300 ${isConferenceOpen ? 'rotate-180' : ''}`} />
-                    </button>
+                    </Link>
 
                     <AnimatePresence>
                       {isConferenceOpen && (
@@ -142,9 +118,9 @@ export default function Navbar() {
                           exit={{ opacity: 0, y: 10 }}
                           className="absolute left-1/2 -translate-x-1/2 mt-2 w-52 bg-[#16181D] border border-white/10 rounded-2xl shadow-2xl p-2 z-[200] flex flex-col gap-1"
                         >
-                          <Link to="/national-conference" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
+                          {/* <Link to="/national-conference" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
                             <Star size={14} /> National
-                          </Link>
+                          </Link> */}
                           <Link to="/international-conference" className="text-gray-400 hover:text-white text-xs px-4 py-2 hover:bg-white/5 rounded-xl transition-all flex items-center gap-2">
                             <Globe size={14} /> International
                           </Link>
@@ -166,10 +142,83 @@ export default function Navbar() {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-5">
-            <button className="text-gray-400 hover:text-white transition-colors"><Search size={20} /></button>
+            <div className="relative flex items-center">
+              <AnimatePresence>
+                {isSearchOpen && (
+                  <motion.div
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: 240, opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    className="relative overflow-visible"
+                  >
+                    <input 
+                      type="text" 
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search Categories & Webinars..."
+                      className="bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#FF7A00]/50 w-full"
+                      autoFocus
+                    />
+                    
+                    {/* Search Suggestions */}
+                    <AnimatePresence>
+                      {searchQuery.length > 0 && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute top-full left-0 right-0 mt-2 bg-[#16181D] border border-white/10 rounded-2xl shadow-2xl p-2 z-[300] flex flex-col gap-1 overflow-hidden"
+                        >
+                          <div className="px-3 py-1.5 text-[10px] uppercase tracking-wider text-gray-500 font-bold">Suggestions</div>
+                          {[
+                            { name: 'AI Webinars', path: '/webinars', category: 'Webinar' },
+                            { name: 'Data Science', path: '/categories', category: 'Category' },
+                            { name: 'Web Development', path: '/workshops', category: 'Workshop' },
+                          ].filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase())).map((item, idx) => (
+                            <Link 
+                              key={idx}
+                              to={item.path}
+                              onClick={() => {
+                                setSearchQuery('');
+                                setIsSearchOpen(false);
+                              }}
+                              className="flex items-center justify-between px-3 py-2 hover:bg-white/5 rounded-xl transition-all group"
+                            >
+                              <span className="text-xs text-gray-300 group-hover:text-white">{item.name}</span>
+                              <span className="text-[10px] text-[#FF7A00] bg-[#FF7A00]/10 px-2 py-0.5 rounded-full">{item.category}</span>
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              <button 
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                className={`ml-2 text-gray-400 hover:text-white transition-all duration-300 ${isSearchOpen ? 'text-[#FF7A00] rotate-90' : ''}`}
+              >
+                {isSearchOpen ? <X size={20} /> : <Search size={20} />}
+              </button>
+            </div>
             <div className="h-4 w-px bg-white/10 mx-1"></div>
-            <Link to="/login" className="text-sm font-bold text-gray-400 hover:text-white transition-colors">Log In</Link>
-            <Link to="/signup" className="px-6 py-2.5 bg-[#FF7A00] hover:bg-[#FFA500] text-[#0B0B0F] rounded-xl font-black text-sm shadow-lg shadow-[#FF7A00]/10 transition-all transform hover:scale-105 active:scale-95">Sign Up</Link>
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <button className="text-sm font-bold text-gray-400 hover:text-white transition-colors">Log In</button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="px-6 py-2.5 bg-[#FF7A00] hover:bg-[#FFA500] text-[#0B0B0F] rounded-xl font-black text-sm shadow-lg shadow-[#FF7A00]/10 transition-all transform hover:scale-105 active:scale-95">Sign Up</button>
+              </SignUpButton>
+            </Show>
+            <Show when="signed-in">
+              <UserButton 
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "w-10 h-10 border-2 border-[#FF7A00]/50"
+                  }
+                }}
+              />
+            </Show>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -211,8 +260,8 @@ export default function Navbar() {
                             exit={{ opacity: 0, height: 0 }}
                             className="pl-4 space-y-2 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden flex flex-col gap-1"
                           >
-                            <Link to="#" className="block py-1 hover:text-white">Technology & Business</Link>
-                            <Link to="#" className="block py-1 hover:text-white">Science & Design</Link>
+                            <Link to="/workshops" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">Workshops</Link>
+                            <Link to="/webinars" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">Webinars</Link>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -234,8 +283,8 @@ export default function Navbar() {
                             exit={{ opacity: 0, height: 0 }}
                             className="pl-4 space-y-2 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden flex flex-col gap-1"
                           >
-                            <Link to="#" className="block py-1 hover:text-[#FF7A00]">National</Link>
-                            <Link to="#" className="block py-1 hover:text-blue-500">International</Link>
+                            <Link to="/national-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-[#FF7A00]">National</Link>
+                            <Link to="/international-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-blue-500">International</Link>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -258,7 +307,7 @@ export default function Navbar() {
                             className="pl-4 space-y-2 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden flex flex-col gap-1"
                           >
                             <Link to="/national-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-purple-500">National</Link>
-                            <Link to="/international-conference" className="block py-1 hover:text-emerald-500">International</Link>
+                            <Link to="/international-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-emerald-500">International</Link>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -275,8 +324,25 @@ export default function Navbar() {
                 </div>
               ))}
               <div className="pt-4 flex flex-col gap-3 px-4">
-                <Link to="/login" className="w-full py-4 text-center text-gray-400 font-bold hover:text-white transition-all">Log In</Link>
-                <Link to="/signup" className="w-full py-4 bg-[#FF7A00] text-[#0B0B0F] font-black rounded-2xl shadow-lg shadow-[#FF7A00]/10 text-center">Sign Up</Link>
+                <Show when="signed-out">
+                  <SignInButton mode="modal">
+                    <button className="w-full py-4 text-center text-gray-400 font-bold hover:text-white transition-all">Log In</button>
+                  </SignInButton>
+                  <SignUpButton mode="modal">
+                    <button className="w-full py-4 bg-[#FF7A00] text-[#0B0B0F] font-black rounded-2xl shadow-lg shadow-[#FF7A00]/10 text-center">Sign Up</button>
+                  </SignUpButton>
+                </Show>
+                <Show when="signed-in">
+                  <div className="flex justify-center py-4">
+                    <UserButton 
+                      appearance={{
+                        elements: {
+                          userButtonAvatarBox: "w-12 h-12 border-2 border-[#FF7A00]/50"
+                        }
+                      }}
+                    />
+                  </div>
+                </Show>
               </div>
             </motion.div>
           )}

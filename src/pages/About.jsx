@@ -93,7 +93,7 @@ const About = () => {
 
   const stats = [
     { icon: GraduationCap, value: "150+", label: "Courses" },
-    { icon: Users2, value: "10K+", label: "Learners" },
+    { icon: Users2, value: "2K+", label: "Learners" },
     { icon: Smile, value: "50+", label: "Experts" },
     { icon: PlayCircle, value: "1M+", label: "Hours" },
     { icon: Award, value: "95%", label: "Success" },

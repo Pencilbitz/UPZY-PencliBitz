@@ -1,61 +1,59 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const WorkshopContext = createContext(null);
+const WorkshopContext = createContext();
 
-export function WorkshopProvider({ children }) {
-  const [workshops, setWorkshops] = useState([]);
+export const WorkshopProvider = ({ children }) => {
+  const [workshops, setWorkshops] = useState(() => {
+    try {
+      const saved = localStorage.getItem('workshops');
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.error("Error parsing workshops from localStorage:", error);
+      return [];
+    }
+  });
 
   useEffect(() => {
-    const saved = localStorage.getItem('upzy_workshops');
-    if (saved) {
-      setWorkshops(JSON.parse(saved));
-    }
-  }, []);
-
-  const saveToStorage = (data) => {
-    localStorage.setItem('upzy_workshops', JSON.stringify(data));
-  };
+    localStorage.setItem('workshops', JSON.stringify(workshops));
+  }, [workshops]);
 
   const addWorkshop = (workshop) => {
     const newWorkshop = {
       ...workshop,
-      id: 'ws_' + Date.now(),
-      status: 'pending', // pending → qc_review → approved → published | rejected
+      id: Date.now(),
+      status: 'pending',
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      qcNotes: '',
-      approvalNotes: '',
-      submittedBy: workshop.submittedBy || 'Admin'
     };
-    const updated = [...workshops, newWorkshop];
-    setWorkshops(updated);
-    saveToStorage(updated);
-    return newWorkshop;
+    setWorkshops([...workshops, newWorkshop]);
   };
 
-  const updateWorkshop = (id, updates) => {
-    const updated = workshops.map(ws =>
-      ws.id === id ? { ...ws, ...updates, updatedAt: new Date().toISOString() } : ws
-    );
-    setWorkshops(updated);
-    saveToStorage(updated);
+  const updateWorkshop = (id, updatedData) => {
+    setWorkshops(workshops.map(w => w.id === id ? { ...w, ...updatedData } : w));
   };
 
   const deleteWorkshop = (id) => {
-    const updated = workshops.filter(ws => ws.id !== id);
-    setWorkshops(updated);
-    saveToStorage(updated);
+    setWorkshops(workshops.filter(w => w.id !== id));
   };
 
-  // Status transitions
-  const submitForQC = (id) => updateWorkshop(id, { status: 'qc_review' });
-  const approveQC = (id, notes) => updateWorkshop(id, { status: 'approved', qcNotes: notes });
-  const rejectQC = (id, notes) => updateWorkshop(id, { status: 'rejected', qcNotes: notes });
-  const publishWorkshop = (id, notes) => updateWorkshop(id, { status: 'published', approvalNotes: notes });
-  const rejectByAdmin = (id, notes) => updateWorkshop(id, { status: 'rejected', approvalNotes: notes });
+  const submitForQC = (id) => {
+    updateWorkshop(id, { status: 'qc_review' });
+  };
 
-  const getByStatus = (status) => workshops.filter(ws => ws.status === status);
-  const getPublished = () => workshops.filter(ws => ws.status === 'published');
+  const approveQC = (id) => {
+    updateWorkshop(id, { status: 'approved' });
+  };
+
+  const rejectQC = (id) => {
+    updateWorkshop(id, { status: 'rejected' });
+  };
+
+  const publishWorkshop = (id) => {
+    updateWorkshop(id, { status: 'published' });
+  };
+
+  const rejectByAdmin = (id) => {
+    updateWorkshop(id, { status: 'rejected' });
+  };
 
   return (
     <WorkshopContext.Provider value={{
@@ -67,14 +65,17 @@ export function WorkshopProvider({ children }) {
       approveQC,
       rejectQC,
       publishWorkshop,
-      rejectByAdmin,
-      getByStatus,
-      getPublished
+      rejectByAdmin
     }}>
       {children}
     </WorkshopContext.Provider>
   );
-}
+};
 
-export const useWorkshops = () => useContext(WorkshopContext);
-export default WorkshopContext;
+export const useWorkshops = () => {
+  const context = useContext(WorkshopContext);
+  if (!context) {
+    throw new Error('useWorkshops must be used within a WorkshopProvider');
+  }
+  return context;
+};

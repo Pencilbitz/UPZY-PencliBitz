@@ -5,7 +5,7 @@ import {
   CheckCircle, XCircle, Clock, Eye, Send, LogOut, Shield, ChevronRight,
   FileCheck, AlertTriangle, Sparkles, Edit3, X
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useUser, useClerk } from '@clerk/react';
 import { useWorkshops } from '../context/WorkshopContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,8 +18,17 @@ const STATUS_CONFIG = {
 };
 
 const AdminPanel = () => {
-  const { user, logout, isSuperAdmin } = useAuth();
+  const { user } = useUser();
+  const { signOut } = useClerk();
   const { workshops, addWorkshop, deleteWorkshop, submitForQC, approveQC, rejectQC, publishWorkshop, rejectByAdmin, updateWorkshop } = useWorkshops();
+  
+  // Helper for admin role (you can customize this based on Clerk metadata)
+  const isSuperAdmin = () => user?.publicMetadata?.role === 'admin' || user?.primaryEmailAddress?.emailAddress?.includes('admin');
+  
+  const userData = {
+    name: user?.fullName || user?.username || 'Admin',
+    role: user?.publicMetadata?.role || 'Staff'
+  };
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState('workshops');
@@ -49,7 +58,7 @@ const AdminPanel = () => {
       updateWorkshop(editingId, { ...form });
       setEditingId(null);
     } else {
-      addWorkshop({ ...form, submittedBy: user.name });
+      addWorkshop({ ...form, submittedBy: userData.name });
     }
     setForm({ title: '', date: '', location: '', googleFormLink: '', description: '', image: '' });
     setShowAddForm(false);
@@ -61,7 +70,7 @@ const AdminPanel = () => {
     setShowAddForm(true);
   };
 
-  const handleLogout = () => { logout(); navigate('/admin/login'); };
+  const handleLogout = () => { signOut(); navigate('/admin/login'); };
 
   const tabs = [
     { id: 'workshops', label: 'All Workshops', icon: Layout },
@@ -95,7 +104,7 @@ const AdminPanel = () => {
               </div>
               Admin Panel
             </h1>
-            <p className="text-gray-500 text-sm font-medium mt-1">Welcome back, <span className="text-[#FF7A00]">{user?.name}</span> · <span className="text-gray-600">{user?.role}</span></p>
+            <p className="text-gray-500 text-sm font-medium mt-1">Welcome back, <span className="text-[#FF7A00]">{userData.name}</span> · <span className="text-gray-600">{userData.role}</span></p>
           </div>
           <button onClick={handleLogout} className="flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 text-gray-400 rounded-xl text-sm font-bold hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/20 transition-all">
             <LogOut size={16} /> Sign Out

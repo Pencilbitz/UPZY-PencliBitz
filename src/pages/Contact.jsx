@@ -1,270 +1,334 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  MessageSquare, 
-  Clock, 
-  ChevronRight,
-  Globe,
-  CheckCircle2
+import React, { useState } from "react";
+import {
+  Headphones,
+  Users,
+  ShieldCheck,
+  User,
+  Mail,
+  Tag,
+  Phone,
+  Pencil,
+  Send,
+  Lock,
+  MessageCircle,
+  MapPin,
+  ChevronDown,
+  ArrowRight,
+  Mailbox,
 } from "lucide-react";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const features = [
+  {
+    icon: Headphones,
+    title: "Quick Support",
+    desc: "We reply within 24 hours",
+  },
+  {
+    icon: Users,
+    title: "Expert Guidance",
+    desc: "Get help from our learning experts",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Reliable & Trusted",
+    desc: "Your satisfaction is our priority",
+  },
+];
+
+const channels = [
+  {
+    icon: MessageCircle,
+    title: "Live Chat",
+    desc: "Chat with our support team",
+    info: "Mon - Sat | 9AM - 7PM",
+    cta: "Start Chat",
+  },
+  {
+    icon: Mail,
+    title: "Email Us",
+    desc: "Drop us an email anytime",
+    info: "support@upzypencilbitz.com",
+  },
+  {
+    icon: Phone,
+    title: "Call Us",
+    desc: "Speak with our experts",
+    info: "+91 12345 67890",
+  },
+  {
+    icon: MapPin,
+    title: "Visit Us",
+    desc: "Our registered office",
+    info: "Coimbatore, Tamil Nadu, India",
+  },
+];
+
+const faqs = [
+  {
+    q: "How can I enroll in a course?",
+    a: "Browse our catalog, pick a course, and click Enroll. You'll get instant access after checkout.",
+  },
+  {
+    q: "How do I access my purchased course?",
+    a: "Sign in to your account and head to My Courses.",
+  },
+  {
+    q: "What payment methods do you accept?",
+    a: "Cards, UPI, net banking, and major wallets.",
+  },
+  {
+    q: "Do you provide certificates?",
+    a: "Yes — every completed course includes a certificate.",
+  },
+  {
+    q: "Can I get a refund if I'm not satisfied?",
+    a: "We offer a 7-day refund policy.",
+  },
+  {
+    q: "I'm facing an issue. How can you help?",
+    a: "Reach out via live chat or email.",
+  },
+];
+
+export default function ContactPage() {
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <Hero />
+      <Channels />
+      <FAQ />
+      <Newsletter />
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-20 my-10">
+      <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span className="inline-block px-4 py-1 rounded-full bg-orange-500/20 text-orange-400 text-sm font-semibold">
+            Get In Touch
+          </span>
+
+          <h1 className="mt-6 text-5xl md:text-6xl font-bold leading-tight">
+            We're Here to <br />
+            <span className="text-orange-500">Help You Succeed!</span>
+          </h1>
+
+          <p className="mt-6 text-gray-400 max-w-md">
+            Have questions or need assistance? Our team is ready to support you.
+          </p>
+
+          <div className="mt-10 space-y-5">
+            {features.map(({ icon: Icon, title, desc }) => (
+              <div
+                key={title}
+                className="flex items-start gap-4 bg-zinc-900 p-4 rounded-2xl border border-zinc-800"
+              >
+                <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
+                  <Icon className="w-5 h-5" />
+                </div>
+
+                <div>
+                  <h3 className="font-semibold">{title}</h3>
+                  <p className="text-sm text-gray-400">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <ContactForm />
+      </div>
+    </section>
+  );
+}
+
+function ContactForm() {
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate API call
+
+    setSent(true);
+
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1500);
+      setSent(false);
+    }, 2500);
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email Us",
-      value: "support@pencilbitz.com",
-      desc: "Our support team usually responds within 24 hours.",
-      color: "bg-blue-500/10 text-blue-500"
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      value: "+91 12345 67890",
-      desc: "Available Mon-Fri, 9:00 AM to 6:00 PM IST.",
-      color: "bg-green-500/10 text-green-500"
-    },
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      value: "Bangalore, India",
-      desc: "Tech Hub, 4th Block, Koramangala.",
-      color: "bg-orange-500/10 text-orange-500"
-    }
-  ];
-
-  const faqs = [
-    {
-      question: "How can I register for a conference?",
-      answer: "You can register by navigating to the Conference page, selecting your preferred event, and clicking the 'Register Now' button."
-    },
-    {
-      question: "What payment methods do you accept?",
-      answer: "We accept all major credit/debit cards, Net Banking, and UPI for Indian participants."
-    },
-    {
-      question: "Can I get a refund if I can't attend?",
-      answer: "Refunds are available up to 15 days before the event. Please check our Refund Policy for details."
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-[#0B0B0F] pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="px-4 py-1.5 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold uppercase tracking-wider mb-4 inline-block border border-[#FF7A00]/20">
-              Get In Touch
-            </span>
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter">
-              Let's Start a <span className="text-[#FF7A00]">Conversation</span>
-            </h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto font-medium">
-              Have questions about our conferences or courses? Our team is here to help you navigate your journey with PencilBitz.
-            </p>
-          </motion.div>
-        </div>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-2xl"
+    >
+      <h2 className="text-3xl font-bold text-orange-500 mb-6">
+        Send Us a Message
+      </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          {/* Contact Cards */}
-          <div className="lg:col-span-1 space-y-6">
-            {contactInfo.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#16181D] border border-white/5 p-6 rounded-3xl group hover:border-[#FF7A00]/30 transition-all cursor-default"
-              >
-                <div className="flex items-start gap-4">
-                  <div className={`p-3 rounded-2xl ${item.color}`}>
-                    <item.icon size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-bold mb-1">{item.title}</h3>
-                    <p className="text-[#FF7A00] font-bold text-sm mb-1">{item.value}</p>
-                    <p className="text-gray-500 text-xs font-medium">{item.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-
-            {/* Support Box */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-gradient-to-br from-[#FF7A00] to-[#FF9500] p-8 rounded-3xl text-[#0B0B0F] relative overflow-hidden group"
-            >
-              <div className="relative z-10">
-                <MessageSquare className="mb-4 opacity-80" size={32} />
-                <h3 className="text-2xl font-black mb-2">Live Support</h3>
-                <p className="font-bold mb-6 text-[#0B0B0F]/80">
-                  Chat with our experts for immediate assistance.
-                </p>
-                <button className="bg-[#0B0B0F] text-white px-6 py-3 rounded-2xl font-bold text-sm hover:scale-105 transition-transform">
-                  Start Chatting
-                </button>
-              </div>
-              <div className="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
-                <Globe size={150} />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-[#16181D] border border-white/5 p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden"
-            >
-              {isSubmitted ? (
-                <div className="text-center py-20">
-                  <div className="w-20 h-20 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 size={40} />
-                  </div>
-                  <h2 className="text-3xl font-black text-white mb-4">Message Sent!</h2>
-                  <p className="text-gray-400 font-medium mb-8">
-                    Thank you for reaching out. Our team will get back to you shortly.
-                  </p>
-                  <button 
-                    onClick={() => setIsSubmitted(false)}
-                    className="text-[#FF7A00] font-bold flex items-center gap-2 mx-auto hover:underline"
-                  >
-                    Send another message <ChevronRight size={16} />
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <div className="mb-10">
-                    <h2 className="text-3xl font-black text-white mb-2">Send a Message</h2>
-                    <p className="text-gray-500 font-medium text-sm">Fields marked with * are required.</p>
-                  </div>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Full Name *</label>
-                        <input 
-                          required
-                          type="text" 
-                          placeholder="John Doe"
-                          className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF7A00]/50 transition-all font-medium"
-                          value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Email Address *</label>
-                        <input 
-                          required
-                          type="email" 
-                          placeholder="john@example.com"
-                          className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF7A00]/50 transition-all font-medium"
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Subject</label>
-                      <input 
-                        type="text" 
-                        placeholder="Registration Inquiry"
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF7A00]/50 transition-all font-medium"
-                        value={formData.subject}
-                        onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Message *</label>
-                      <textarea 
-                        required
-                        rows="5"
-                        placeholder="How can we help you?"
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF7A00]/50 transition-all font-medium resize-none"
-                        value={formData.message}
-                        onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      ></textarea>
-                    </div>
-                    <button 
-                      disabled={isSubmitting}
-                      className="w-full bg-[#FF7A00] hover:bg-[#FFA500] text-[#0B0B0F] py-4 rounded-2xl font-black text-sm shadow-lg shadow-[#FF7A00]/20 transition-all flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                      {!isSubmitting && <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
-                    </button>
-                  </form>
-                </>
-              )}
-            </motion.div>
-          </div>
-        </div>
-
-        {/* FAQ Section */}
-        <div className="mt-32">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-black text-white mb-4 tracking-tight">Frequently Asked Questions</h2>
-            <div className="w-20 h-1 bg-[#FF7A00] mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#16181D]/50 border border-white/5 p-8 rounded-3xl"
-              >
-                <div className="flex gap-4 mb-4">
-                  <div className="w-8 h-8 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] flex items-center justify-center font-black text-xs shrink-0">
-                    Q
-                  </div>
-                  <h3 className="text-white font-bold text-sm leading-tight">{faq.question}</h3>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-8 h-8 shrink-0"></div>
-                  <p className="text-gray-500 text-sm font-medium leading-relaxed">{faq.answer}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      <div className="grid sm:grid-cols-2 gap-4">
+        <Field icon={User} placeholder="Your Name" />
+        <Field icon={Mail} type="email" placeholder="Your Email" />
+        <Field icon={Tag} placeholder="Subject" />
+        <Field icon={Phone} placeholder="Phone Number" />
       </div>
+
+      <div className="mt-4 relative">
+        <Pencil className="absolute left-4 top-4 w-4 h-4 text-gray-400" />
+
+        <textarea
+          rows={5}
+          placeholder="Your Message"
+          className="w-full bg-black border border-zinc-700 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-orange-500"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="mt-6 w-full h-12 rounded-xl bg-orange-500 hover:bg-orange-600 transition font-semibold flex items-center justify-center gap-2"
+      >
+        {sent ? "Message Sent!" : "Send Message"}
+        <Send className="w-4 h-4" />
+      </button>
+
+      <p className="mt-4 text-xs text-gray-400 flex items-center justify-center gap-2">
+        <Lock className="w-3 h-3" />
+        We respect your privacy.
+      </p>
+    </form>
+  );
+}
+
+function Field({ icon: Icon, ...props }) {
+  return (
+    <div className="relative">
+      <Icon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+      <input
+        {...props}
+        className="w-full h-12 bg-black border border-zinc-700 rounded-xl pl-11 pr-4 text-sm focus:outline-none focus:border-orange-500"
+      />
     </div>
   );
-};
+}
 
-export default Contact;
+function Channels() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-20">
+      <h2 className="text-4xl font-bold text-center mb-12">
+        Get in Touch
+      </h2>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {channels.map(({ icon: Icon, title, desc, info, cta }) => (
+          <div
+            key={title}
+            className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 text-center hover:-translate-y-2 transition"
+          >
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
+              <Icon className="w-6 h-6" />
+            </div>
+
+            <h3 className="text-xl font-semibold">{title}</h3>
+
+            <p className="text-gray-400 text-sm mt-2">{desc}</p>
+
+            <p className="text-orange-500 text-sm mt-3">{info}</p>
+
+            {cta && (
+              <button className="mt-4 inline-flex items-center gap-2 text-orange-500 font-semibold">
+                {cta}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const [open, setOpen] = useState(0);
+
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-20">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
+        <h2 className="text-4xl font-bold">
+          Frequently Asked Questions
+        </h2>
+
+        <button className="text-orange-500 font-semibold flex items-center gap-2">
+          View All FAQs
+          <ArrowRight className="w-4 h-4" />
+        </button>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-4">
+        {faqs.map((faq, index) => {
+          const isOpen = open === index;
+
+          return (
+            <div
+              key={faq.q}
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden"
+            >
+              <button
+                onClick={() => setOpen(isOpen ? null : index)}
+                className="w-full px-5 py-4 flex items-center justify-between text-left"
+              >
+                <span>{faq.q}</span>
+
+                <ChevronDown
+                  className={`w-5 h-5 transition ${
+                    isOpen ? "rotate-180 text-orange-500" : ""
+                  }`}
+                />
+              </button>
+
+              {isOpen && (
+                <div className="px-5 pb-5 text-sm text-gray-400">
+                  {faq.a}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Newsletter() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 pb-20">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 flex flex-col md:flex-row items-center gap-8">
+        <div className="w-24 h-24 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500">
+          <Mailbox className="w-10 h-10" />
+        </div>
+
+        <div className="flex-1 text-center md:text-left">
+          <h3 className="text-3xl font-bold">
+            Stay Updated with New Courses & Offers
+          </h3>
+
+          <p className="text-gray-400 mt-2">
+            Subscribe to our newsletter and never miss an update.
+          </p>
+        </div>
+
+        <form className="flex w-full md:w-auto gap-3">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="flex-1 md:w-72 h-12 px-4 rounded-xl bg-zinc-800 border border-zinc-700 focus:outline-none focus:border-orange-500"
+          />
+
+          <button className="h-12 px-6 rounded-xl bg-orange-500 hover:bg-orange-600 transition font-semibold">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
