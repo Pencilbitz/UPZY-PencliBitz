@@ -62,12 +62,12 @@ const workshops = [
 
   {
     img: wsMl,
-    title: "Machine Learning with Scikit-learn",
-    desc: "Build and train machine learning models step by step.",
-    date: "03 - 05 Jul 2025",
-    duration: "3 Days Workshop",
-    price: "₹7,999",
-    original: "₹11,999",
+    title: "Gen-AI & Assurence",
+    desc: "Build and train AI agents and assurence in projects.",
+    date: "27 - 28 Dec 2025",
+    duration: "2 Days Workshop",
+    price: "₹2,999",
+    original: "₹4,999",
     url: "/upzypencilbitz-Dec-27",
   },
 ];

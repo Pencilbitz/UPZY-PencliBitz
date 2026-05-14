@@ -16,8 +16,6 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Mobile Accordion States
-  const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
-  const [isMobileWorkshopsOpen, setIsMobileWorkshopsOpen] = useState(false);
   const [isMobileConferenceOpen, setIsMobileConferenceOpen] = useState(false);
 
   const location = useLocation();
@@ -243,53 +241,7 @@ export default function Navbar() {
             >
               {navLinks.map((link) => (
                 <div key={link.name}>
-                  {link.name === 'Categories' ? (
-                    <div className="py-2 px-4 rounded-xl text-gray-400 font-bold">
-                      <button 
-                        onClick={() => setIsMobileCategoriesOpen(!isMobileCategoriesOpen)} 
-                        className="flex items-center justify-between w-full text-left"
-                      >
-                        <span>{link.name}</span>
-                        <ChevronDown size={14} className={`transition-transform duration-300 ${isMobileCategoriesOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      <AnimatePresence>
-                        {isMobileCategoriesOpen && (
-                          <motion.div 
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="pl-4 space-y-2 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden flex flex-col gap-1"
-                          >
-                            <Link to="/workshops" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">Workshops</Link>
-                            <Link to="/webinars" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">Webinars</Link>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ) : link.name === 'Workshops' ? (
-                    <div className="py-2 px-4 rounded-xl text-gray-400 font-bold">
-                      <button 
-                        onClick={() => setIsMobileWorkshopsOpen(!isMobileWorkshopsOpen)} 
-                        className="flex items-center justify-between w-full text-left"
-                      >
-                        <span>{link.name}</span>
-                        <ChevronDown size={14} className={`transition-transform duration-300 ${isMobileWorkshopsOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      <AnimatePresence>
-                        {isMobileWorkshopsOpen && (
-                          <motion.div 
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="pl-4 space-y-2 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden flex flex-col gap-1"
-                          >
-                            <Link to="/national-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-[#FF7A00]">National</Link>
-                            <Link to="/international-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-blue-500">International</Link>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ) : link.name === 'Conference' ? (
+                  {link.name === 'Conference' ? (
                     <div className="py-2 px-4 rounded-xl text-gray-400 font-bold">
                       <button 
                         onClick={() => setIsMobileConferenceOpen(!isMobileConferenceOpen)} 
@@ -306,8 +258,7 @@ export default function Navbar() {
                             exit={{ opacity: 0, height: 0 }}
                             className="pl-4 space-y-2 border-l border-white/10 mt-3 font-medium text-xs text-gray-400 overflow-hidden flex flex-col gap-1"
                           >
-                            <Link to="/national-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-purple-500">National</Link>
-                            <Link to="/international-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-emerald-500">International</Link>
+                            <Link to="/international-conference" onClick={() => setIsOpen(false)} className="block py-1 hover:text-[#FF7A00]">International</Link>
                           </motion.div>
                         )}
                       </AnimatePresence>

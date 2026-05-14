@@ -327,11 +327,11 @@ export default function WorkshopPage() {
 
             <div className="flex items-baseline gap-2">
               <span className="text-4xl font-bold">
-                ₹6,999
+                ₹1,999
               </span>
 
               <span className="text-zinc-500 line-through">
-                ₹9,999
+                ₹3,999
               </span>
             </div>
 

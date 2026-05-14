@@ -84,7 +84,7 @@ export default function WebinarPage() {
                 <span>Webinars</span>
                 <ChevronRight className="w-4 h-4" />
                 <span className="text-white">
-                  The Future of AI in Everyday Life
+                  The Future of AI
                 </span>
               </div>
 

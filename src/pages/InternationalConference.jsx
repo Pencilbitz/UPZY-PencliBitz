@@ -8,6 +8,13 @@ import {
     Shield, Sparkles, Trophy, BookOpen, Mail, FileText, Lightbulb,
     Building, ChevronLeft, Star
 } from 'lucide-react';
+// Speakers Images
+import speaker1 from '../assets/Conference/speakars/1.jpg';
+import speaker2 from '../assets/Conference/speakars/2.jpg';
+import speaker3 from '../assets/Conference/speakars/3.jpg';
+import speaker4 from '../assets/Conference/speakars/4.jpg';
+import speaker5 from '../assets/Conference/speakars/5.jpeg';
+import speaker6 from '../assets/Conference/speakars/6.jpeg';
 
 const InternationalConference = () => {
     const [currentSpeaker, setCurrentSpeaker] = useState(0);
@@ -22,19 +29,19 @@ const InternationalConference = () => {
 
     const conferences = [
         {
-            title: "International Conference on Artificial Intelligence & Data Science",
-            date: "10 - 12 Sep 2025",
-            location: "Singapore",
-            tags: ["AI", "Data Science", "Deep Learning"],
-            image: "https://as1.ftcdn.net/v2/jpg/08/95/10/54/1000_F_895105488_L9CYy44pCKJP5ufzihWMoOhlihDMfT5O.jpg",
+            title: "Interdisciplinary Research and Global Innovation",
+            date: "28 - 30 May 2026",
+            location: "Chennai, Tamil Nadu, India",
+            tags: ["Robotics", "Automation", "AI", "Machine Learning"],
+            image: "https://img.magnific.com/premium-photo/globe-communication-information-sharing-satellites-internet-things-technologies-generative-ai_1423-7573.jpg",
             url: "/ICIRGI-30-May-2026",
         },
         {
-            title: "International Conference on Sustainable Development Goals",
-            date: "22 - 24 Oct 2025",
-            location: "Amsterdam, Netherlands",
+            title: "Global Advances in Science, Engineering, Technology & Management",
+            date: "16 - 18 May 2026",
+            location: "Coimbatore, Tamil Nadu, India",
             tags: ["Sustainability", "Environment", "SDGs"],
-            image: "https://media.istockphoto.com/id/1362339939/photo/deep-red-orange-sunset-behind-wind-turbines.jpg?s=170667a&w=0&k=20&c=2lSd-19OX8RXl-qb4JhqbFDsMkBAnUCNi6eyM8rfmv4="
+            image: "https://etedge-insights.com/wp-content/uploads/2024/11/shutterstock_2477364131.jpg"
         },
         {
             title: "International Conference on Biomedical Engineering",
@@ -62,29 +69,42 @@ const InternationalConference = () => {
 
     const speakers = [
         {
-            name: "Dr. Sarah Johnson",
-            role: "AI Researcher",
-            org: "Stanford University",
-            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200"
+            name: "Dr Jiwak Raj Bajracharya",
+            role: "Academic Dean and Principal Global",
+            org: "Academy of Tourism Bagmati Nepal",
+            image: speaker1,
         },
         {
-            name: "Prof. Michael Chen",
-            role: "Data Scientist",
-            org: "MIT, USA",
-            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200&h=200"
+
+            name: "Dr Anupama Chowdhury",
+            role: "Assistant Professor",
+            org: "Dhaka, Bangladesh",
+            image: speaker2,
         },
         {
-            name: "Dr. Aisha Khan",
-            role: "Biotechnology Expert",
-            org: "University of Oxford",
-            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200"
+            name: "Dr.S.Dhanabal",
+            role: "Professor",
+            org: "Kongunadu College of Engineering and Technology",
+            image: speaker3,
         },
         {
-            name: "Prof. David Lee",
-            role: "Sustainability Leader",
-            org: "Harvard University",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200"
-        }
+            name: "Dr.N.Saranya",
+            role: "Professor",
+            org: "KPR Institute of Engineering and Technology",
+            image: speaker4,
+        },
+        {
+            name: "Dr. Sailesh S. Iyer",
+            role: "Professor and I/c Principal",
+            org: "NSIT-IFSCS Ahmedabad",
+            image: speaker5,
+        },
+        {
+            name: "Prin. Dr. Sawant Jeetendra",
+            role: "Principal and Administrator",
+            org: "SRSD COLLEGE OF Maharashtra",
+            image: speaker6,
+        },
     ];
 
     const timeline = [
@@ -121,9 +141,9 @@ const InternationalConference = () => {
 
     return (
         <div className="min-h-screen bg-[#0B0B0F] text-white font-sans selection:bg-[#FF7A00]/20 selection:text-[#FF7A00]">
-            
+
             {/* Header Hero Section */}
-            <div style={{backgroundImage: `url(${conferencehero})`}} className={`bg-conferencehero bg-cover bg-center bg-no-repeat relative overflow-hidden pt-32 `}>
+            <div style={{ backgroundImage: `url(${conferencehero})` }} className={`bg-conferencehero bg-cover bg-center bg-no-repeat relative overflow-hidden pt-32 `}>
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#FF7A00]/10 rounded-full blur-[160px] -z-10 translate-x-1/4 -translate-y-1/4"></div>
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[120px] -z-10 -translate-x-1/4 translate-y-1/4"></div>
 
@@ -149,10 +169,10 @@ const InternationalConference = () => {
                             </p>
 
                             <div className="flex flex-wrap gap-4">
-                                <button className="px-7 py-4 bg-[#FF7A00] text-[#0B0B0F] font-black rounded-2xl hover:bg-[#FFA500] transition-all transform hover:scale-105 flex items-center gap-3 shadow-lg shadow-[#FF7A00]/10 text-sm">
+                                <button onClick={() => document.getElementById('conference').scrollIntoView({ behavior: 'smooth' })} className="px-7 py-4 bg-[#FF7A00] text-[#0B0B0F] font-black rounded-2xl hover:bg-[#FFA500] transition-all transform hover:scale-105 flex items-center gap-3 shadow-lg shadow-[#FF7A00]/10 text-sm">
                                     Explore Conferences <ArrowRight size={18} />
                                 </button>
-                                <button onClick={() => document.getElementById('call').scrollIntoView({behavior:'smooth'})} className="px-7 py-4 bg-[#16181D] border border-white/10 text-white font-bold rounded-2xl hover:bg-white/5 transition-all flex items-center gap-3 text-sm">
+                                <button onClick={() => document.getElementById('call').scrollIntoView({ behavior: 'smooth' })} className="px-7 py-4 bg-[#16181D] border border-white/10 text-white font-bold rounded-2xl hover:bg-white/5 transition-all flex items-center gap-3 text-sm">
                                     Submit Your Paper <FileText size={16} />
                                 </button>
                             </div>
@@ -177,8 +197,8 @@ const InternationalConference = () => {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 py-20 space-y-32">
-                
+            <div id='conference' className="max-w-7xl mx-auto px-6 py-20 space-y-32">
+
                 {/* Upcoming Conferences Section */}
                 <section>
                     <div className="text-center mb-16">
@@ -211,7 +231,7 @@ const InternationalConference = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="p-6 pt-0 border-t border-white/5 mt-4">
+                                <div className="p-6 pt-2 border-t border-white/5 mt-4">
                                     <Link to={conf.url} className="w-full py-3 bg-white/5 hover:bg-[#FF7A00] hover:text-[#0B0B0F] font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2">
                                         View Details <ChevronRight size={16} />
                                     </Link>
@@ -223,7 +243,7 @@ const InternationalConference = () => {
 
                 {/* Main Content Grid (Stats, Speakers, Timeline, Papers) */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    
+
                     {/* Featured Speakers Section */}
                     <div className="lg:col-span-6 bg-[#0D0D14] border border-white/5 rounded-[40px] p-8 relative overflow-hidden">
                         <div className="flex items-center justify-between mb-10">
@@ -241,10 +261,10 @@ const InternationalConference = () => {
                                 <button onClick={prevSpeaker} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
                                     <ChevronLeft size={20} />
                                 </button>
-                                
+
                                 <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-4">
                                     {speakers.map((speaker, idx) => (
-                                        <motion.div 
+                                        <motion.div
                                             key={idx}
                                             initial={{ opacity: 0, scale: 0.9 }}
                                             animate={{ opacity: 1, scale: 1 }}
@@ -252,9 +272,9 @@ const InternationalConference = () => {
                                         >
                                             <div className="relative mb-4 inline-block">
                                                 <div className="absolute inset-0 bg-[#FF7A00]/10 rounded-full blur-xl opacity-0 group-hover/speaker:opacity-100 transition-opacity"></div>
-                                                <img 
-                                                    src={speaker.image} 
-                                                    alt={speaker.name} 
+                                                <img
+                                                    src={speaker.image}
+                                                    alt={speaker.name}
                                                     className="w-24 h-24 rounded-full object-cover border-4 border-white/5 group-hover/speaker:border-[#FF7A00]/50 transition-all relative z-10"
                                                 />
                                             </div>
@@ -298,7 +318,7 @@ const InternationalConference = () => {
                         <div className="absolute top-0 right-0 p-8 text-[#FF7A00] opacity-20 group-hover/call:rotate-12 transition-transform">
                             <FileText size={80} />
                         </div>
-                        
+
                         <div>
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="w-12 h-12 rounded-2xl bg-[#FF7A00]/10 flex items-center justify-center text-[#FF7A00]">
@@ -319,7 +339,7 @@ const InternationalConference = () => {
                                     <span className="text-xs font-bold">15 May 2026</span>
                                 </div>
                             </div>
-                            
+
                             <button className="w-full py-4 bg-gradient-to-r from-[#FF7A00] to-[#FF7A00] hover:from-[#FF7A00] hover:to-[#FF7A00] text-white font-bold rounded-2xl flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] shadow-lg shadow-[#FF7A00]/20 text-sm">
                                 Submit Your Paper <ArrowRight size={16} />
                             </button>
@@ -333,7 +353,7 @@ const InternationalConference = () => {
                         <h2 className="text-2xl font-black mb-2">What People Say</h2>
                         <div className="w-12 h-1 bg-[#FF7A00] mx-auto rounded-full"></div>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {testimonials.map((test, idx) => (
                             <div key={idx} className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/[0.07] transition-all group">
