@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import conferencehero from '../assets/Conference-hero.png';
 import {
     Calendar, MapPin, Users, Award, Play, ChevronRight,
     CheckCircle2, ArrowRight, Search, Globe, Share2,
@@ -122,7 +123,7 @@ const InternationalConference = () => {
         <div className="min-h-screen bg-[#0B0B0F] text-white font-sans selection:bg-[#FF7A00]/20 selection:text-[#FF7A00]">
             
             {/* Header Hero Section */}
-            <div className="bg-[url('https://img.sanishtech.com/u/8103b51d863388ddcc986d39b7f745b8.png')] bg-cover bg-center bg-no-repeat relative overflow-hidden pt-32 ">
+            <div style={{backgroundImage: `url(${conferencehero})`}} className={`bg-conferencehero bg-cover bg-center bg-no-repeat relative overflow-hidden pt-32 `}>
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#FF7A00]/10 rounded-full blur-[160px] -z-10 translate-x-1/4 -translate-y-1/4"></div>
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[120px] -z-10 -translate-x-1/4 translate-y-1/4"></div>
 
