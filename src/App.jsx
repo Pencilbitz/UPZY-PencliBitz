@@ -15,10 +15,10 @@ import Categories from './pages/Categories';
 import Webinars from './pages/Webinars';
 import FullStackWebDevelopment from './pages/Workshop/Full-Stack-Web-Development';
 import FutureofAI from './pages/Webinars/FutureofAI';
-import InternationalDetails from './pages/Conference/InternationalDetails';
-import NatinalDetails from './pages/Conference/NatinalDetails';
+import ICIRGI30May2026 from './pages/Conference/ICIRGI-30-May-2026';
 import WhatsAppButton from './pages/WhatsAppButton';
 import ScrollToTop from './pages/ScrollToTop';
+import Dec27Workshop from './pages/Workshop/Upzypencilbitz-Dec-27'
 import './App.css';
 
 // Protected Route Component
@@ -53,8 +53,8 @@ function AppContent() {
           <Route path="/workshops" element={<Workshops />} />
           <Route path="/Full-Stack-Web-Development" element={<FullStackWebDevelopment />} />
           <Route path="/FutureofAI" element={<FutureofAI />} />
-          <Route path="/InternationalDetails" element={<InternationalDetails />} />
-          <Route path="/NationalDetails" element={<NatinalDetails />} />
+          <Route path="/ICIRGI-30-May-2026" element={<ICIRGI30May2026 />} />
+          <Route path="/upzypencilbitz-Dec-27" element={<Dec27Workshop />} />
           <Route 
             path="/login/*" 
             element={

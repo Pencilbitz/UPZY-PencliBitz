@@ -26,7 +26,7 @@ const InternationalConference = () => {
             location: "Singapore",
             tags: ["AI", "Data Science", "Deep Learning"],
             image: "https://as1.ftcdn.net/v2/jpg/08/95/10/54/1000_F_895105488_L9CYy44pCKJP5ufzihWMoOhlihDMfT5O.jpg",
-            url: "/InternationalDetails",
+            url: "/ICIRGI-30-May-2026",
         },
         {
             title: "International Conference on Sustainable Development Goals",

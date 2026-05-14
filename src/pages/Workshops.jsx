@@ -37,7 +37,7 @@ const workshops = [
     duration: "3 Days Workshop",
     price: "₹6,999",
     original: "₹9,999",
-    url: "/Full-Stack-Web-Development",
+    url: "",
   },
 
   {
@@ -68,6 +68,7 @@ const workshops = [
     duration: "3 Days Workshop",
     price: "₹7,999",
     original: "₹11,999",
+    url: "/upzypencilbitz-Dec-27",
   },
 ];
 
