@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import {
-  Search,
-  ChevronDown,
   Calendar,
   Clock,
   Radio,
@@ -19,17 +17,13 @@ import {
   Video,
   Lock,
   Star,
-  ChevronLeft,
-  ChevronRight,
-  
-  ArrowRight,
+  ChevronDown,
   Plus,
   Minus,
   Users,
 } from "lucide-react";
 
 import Dec27Brochure from "../../assets/Workshop/upzypencilbitz-Dec-27.jpeg"
-import mentorImg from "../../assets/speaker-4.png";
 import s1 from "../../assets/speaker-1.png";
 import s2 from "../../assets/speaker-2.png";
 import s3 from "../../assets/speaker-3.png";
@@ -126,24 +120,6 @@ const curriculum = [
 ];
 
 const testimonials = [
-  {
-    img: s1,
-    name: "Rohit Verma",
-    role: "Software Engineer",
-    text: "Amazing workshop! The mentor explains every concept with real-world examples.",
-  },
-  {
-    img: s2,
-    name: "Neha Singh",
-    role: "Web Developer",
-    text: "The best part was the live coding sessions and doubt clearing.",
-  },
-  {
-    img: s3,
-    name: "Aman Patel",
-    role: "Student",
-    text: "Well structured curriculum and great support throughout the workshop.",
-  },
 ];
 
 const faqs = [
