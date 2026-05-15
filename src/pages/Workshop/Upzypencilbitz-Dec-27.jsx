@@ -24,9 +24,7 @@ import {
 } from "lucide-react";
 
 import Dec27Brochure from "../../assets/Workshop/upzypencilbitz-Dec-27.jpeg"
-import s1 from "../../assets/speaker-1.png";
-import s2 from "../../assets/speaker-2.png";
-import s3 from "../../assets/speaker-3.png";
+import speaker from "../../assets/Workshop/Prashanth.png"
 
 const navItems = [
   "Home",
@@ -364,7 +362,7 @@ export default function WorkshopPage() {
         <section className="grid gap-6 lg:grid-cols-12">
           <GlowCard className="flex flex-col items-center gap-6 p-8 sm:flex-row lg:col-span-7">
             <img
-              src="https://img.sanishtech.com/u/7c5b1563138060c617afb44bdd402209.png"
+              src={speaker}
               alt="Mentor"
               className="h-40 w-40 rounded-full object-cover ring-4 ring-orange-500"
             />
