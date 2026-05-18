@@ -21,14 +21,16 @@ import {
   Plus,
   Minus,
   Users,
-  Bot,
-  BrainCircuit,
-  Search,
-  Network
+  Lightbulb,
+  Shield,
+  FileText,
+  Scale,
+  Briefcase,
+  Award
 } from "lucide-react";
 
-import Dec27Brochure from "../../assets/Workshop/upzypencilbitz-Dec-27.jpeg"
-import speaker from "../../assets/Workshop/Prashanth.png"
+import ThePowerOfInnovationAndIPR from "../../assets/Workshop/The Power Of Innovation And IPR 28 Apr 2026.jpeg"
+import speaker from "../../assets/Workshop/Sudha.jpeg"
 
 const navItems = [
   "Home",
@@ -40,37 +42,37 @@ const navItems = [
 
 const learn = [
   {
-    icon: Bot,
-    title: "Generative AI Fundamentals",
-    desc: "Understand LLMs, Prompts, and AI Models",
+    icon: Lightbulb,
+    title: "Innovation Fundamentals",
+    desc: "Understanding the ideation and innovation process",
   },
   {
-    icon: ShieldCheck,
-    title: "AI Assurance & Testing",
-    desc: "Ensuring AI reliability, security & ethics",
+    icon: Shield,
+    title: "Types of IPR",
+    desc: "Patents, Trademarks, Copyrights, and Trade Secrets",
   },
   {
-    icon: Network,
-    title: "Real-world Applications",
-    desc: "Use cases in Software Testing and Automation",
+    icon: FileText,
+    title: "Patent Filing Process",
+    desc: "Step-by-step guide to protecting your inventions",
   },
   {
-    icon: Search,
-    title: "Validation Strategies",
-    desc: "Bias detection, hallucinations, and safety",
+    icon: Scale,
+    title: "IP Strategy & Ethics",
+    desc: "Leveraging IPR for business growth and compliance",
   },
 ];
 
 const highlights = [
   {
-    icon: ShieldCheck,
-    title: "Practical Implementations",
-    desc: "Hands-on with GenAI tools",
+    icon: Briefcase,
+    title: "Real-world Case Studies",
+    desc: "Learn from successful patent cases and IP strategies",
   },
   {
-    icon: BrainCircuit,
-    title: "Live Demonstrations",
-    desc: "Real-time AI Assurance workflows",
+    icon: Award,
+    title: "Commercialization",
+    desc: "How to monetize your Intellectual Property",
   },
   {
     icon: FileBadge,
@@ -80,43 +82,36 @@ const highlights = [
   {
     icon: UserCog,
     title: "Expert Guidance",
-    desc: "Learn from AI industry professionals",
+    desc: "Insights from experienced IP professionals",
   },
   {
     icon: MessagesSquare,
     title: "Interactive Q&A",
-    desc: "Get your doubts resolved instantly",
+    desc: "Get your IP-related queries answered",
   },
   {
     icon: Video,
     title: "Recording Access",
-    desc: "Watch sessions anytime",
+    desc: "Watch session recordings anytime",
   },
 ];
 
 const curriculum = [
   {
-    day: "Day 1",
+    day: "Session 1",
     items: [
-      "Introduction to Generative AI",
-      "LLMs & Prompt Engineering",
-      "AI in Software Development",
+      "Introduction to Innovation & Ideation",
+      "Overview of Intellectual Property Rights",
+      "Understanding Patents and Trademarks",
     ],
   },
   {
-    day: "Day 2",
+    day: "Session 2",
     items: [
-      "Fundamentals of AI Assurance",
-      "Testing AI Models & Systems",
-      "Detecting Hallucinations & Bias",
-    ],
-  },
-  {
-    day: "Day 3",
-    items: [
-      "Security & Ethical AI",
-      "Governance in GenAI",
-      "Future Trends & Career Paths",
+      "The Patent Filing Process",
+      "Copyrights & Trade Secrets",
+      "IP Commercialization & Strategy",
+      "Q&A Session",
     ],
   },
 ];
@@ -126,8 +121,12 @@ const testimonials = [
 
 const faqs = [
   {
-    q: "Who should attend this GenAI workshop?",
-    a: "Professionals, testers, and developers interested in AI reliability, testing, and generative models.",
+    q: "Who should attend this workshop?",
+    a: "Inventors, researchers, students, and entrepreneurs looking to protect their ideas.",
+  },
+  {
+    q: "Do I need a background in law?",
+    a: "No, this workshop is designed to be accessible to innovators from all backgrounds.",
   },
   {
     q: "Will I get recordings?",
@@ -259,7 +258,7 @@ export default function WorkshopPage() {
         <section className="grid gap-6 lg:grid-cols-12">
           <GlowCard className="overflow-hidden p-3 lg:col-span-4">
             <img
-              src={Dec27Brochure}
+              src={ThePowerOfInnovationAndIPR}
               alt="Workshop"
               className="h-full w-full rounded-xl object-cover"
             />
@@ -272,26 +271,26 @@ export default function WorkshopPage() {
             </span>
 
             <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
-              GEN-AI & 
+              The Power Of Innovation
               <br />
               <span className="text-orange-500">
-                Assurance
+                IPR
               </span>
             </h1>
 
             <p className="text-zinc-400">
-              Master Generative AI principles, AI Assurance, testing strategies, and ethical AI implementation from scratch.
+              Unlock the secrets to protecting your ideas and inventions. This 1-day masterclass covers everything from the fundamentals of innovation to the strategic use of Intellectual Property Rights (IPR).
             </p>
 
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-3">
                 <Calendar className="h-4 w-4 text-orange-500" />
-                27-30 December 2025
+                28 April 2026
               </li>
 
               <li className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-orange-500" />
-                3 Days Workshop
+                1 Day Workshop
               </li>
 
               <li className="flex items-center gap-3">
@@ -375,15 +374,15 @@ export default function WorkshopPage() {
               </p>
 
               <h2 className="text-3xl font-bold">
-                N Prashanth
+                Sudha
               </h2>
 
               <p className="font-medium text-orange-500">
-                Programmer Analyst Technology COE
+                Innovation Strategist
               </p>
 
               <p className="text-sm text-zinc-400">
-                8+ years experience in AI & Development
+                Expert in IPR & Innovation Strategies
               </p>
 
               <div className="flex gap-3 pt-2">
@@ -451,7 +450,7 @@ export default function WorkshopPage() {
           <div className="text-center">
             <h2 className="text-3xl font-bold">Course Curriculum</h2>
           </div>
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {curriculum.map((day, i) => (
               <GlowCard key={i} className="p-6">
                 <h3 className="text-orange-500 font-bold mb-4">{day.day}</h3>

@@ -28,3 +28,30 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #FF7A00;
 }
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes floatLeftRight {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+}
+
+@keyframes floatDiagonal {
+  0%, 100% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(10px, -10px);
+  }
+}

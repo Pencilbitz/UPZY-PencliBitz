@@ -13,12 +13,15 @@ import Workshops from './pages/Workshops';
 import NationalConference from './pages/NationalConference';
 import Categories from './pages/Categories';
 import Webinars from './pages/Webinars';
-import FullStackWebDevelopment from './pages/Workshop/Full-Stack-Web-Development';
+import PythonBasedGeneticOptimization16to17Apr from './pages/Workshop/Python-Based-Genetic-Optimization-16to17-Apr';
 import FutureofAI from './pages/Webinars/FutureofAI';
 import ICIRGI30May2026 from './pages/Conference/ICIRGI-30-May-2026';
 import WhatsAppButton from './pages/WhatsAppButton';
+import ThePowerOfInnovationAndIPR28Apr2026 from './pages/Workshop/The-Power-Of-Innovation-And-IPR-28-Apr-2026';
 import ScrollToTop from './pages/ScrollToTop';
 import Dec27Workshop from './pages/Workshop/Upzypencilbitz-Dec-27'
+import AIDrivenDecisions from './pages/Workshop/AI-Driven-Decisions-18-Apr-2026'
+import DataAnalyticsInAI from './pages/Workshop/Data Analytics In AI-4-May-2026'
 import './App.css';
 
 // Protected Route Component
@@ -51,8 +54,11 @@ function AppContent() {
           <Route path="/webinars" element={<Webinars />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/workshops" element={<Workshops />} />
-          <Route path="/Full-Stack-Web-Development" element={<FullStackWebDevelopment />} />
+          <Route path="/Python-Based-Genetic-Optimization-16to17-Apr" element={<PythonBasedGeneticOptimization16to17Apr />} />
+          <Route path="/AI-Driven-Decisions-18-Apr-2026" element={<AIDrivenDecisions />} />
+          <Route path="/The-Power-Of-Innovation-And-IPR-28-Apr-2026" element={<ThePowerOfInnovationAndIPR28Apr2026 />} />
           <Route path="/FutureofAI" element={<FutureofAI />} />
+          <Route path="/Data-Analytics-In-AI-4-May-2026" element={<DataAnalyticsInAI />} />
           <Route path="/ICIRGI-30-May-2026" element={<ICIRGI30May2026 />} />
           <Route path="/upzypencilbitz-Dec-27" element={<Dec27Workshop />} />
           <Route 

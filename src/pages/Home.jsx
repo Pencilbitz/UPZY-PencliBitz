@@ -244,31 +244,31 @@ const Home = () => {
             </div>
 
             {/* Floating Cards */}
-            <div className="absolute -top-4 left-6 bg-white rounded-xl px-4 py-2 shadow">
+          <div className="absolute -top-4 left-6 bg-white rounded-xl px-4 py-2 shadow animate-[floatUpDown_4s_ease-in-out_infinite]">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-[#FF7A00]" />
+                <BookOpen className="w-5 h-5 text-orange-600" />
                 <div>
-                  <div className="font-bold text-sm">150+</div>
+                  <div className="font-bold text-sm text-gray-800">150+</div>
                   <div className="text-xs text-gray-500">Courses</div>
                 </div>
               </div>
             </div>
 
-            <div className="absolute top-16 -right-2 bg-white rounded-xl px-4 py-2 shadow">
+            <div className="absolute top-16 -right-2 bg-white rounded-xl px-4 py-2 shadow animate-[floatLeftRight_5s_ease-in-out_infinite]">
               <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-[#FF7A00]" />
+                <Users className="w-5 h-5 text-orange-600" />
                 <div>
-                  <div className="font-bold text-sm">10K+</div>
+                  <div className="font-bold text-sm text-gray-800">10K+</div>
                   <div className="text-xs text-gray-500">Learners</div>
                 </div>
               </div>
             </div>
 
-            <div className="absolute -bottom-4 right-6 bg-white rounded-xl px-4 py-2 shadow">
+            <div className="absolute -bottom-4 right-6 bg-white rounded-xl px-4 py-2 shadow animate-[floatDiagonal_3s_ease-in-out_infinite]">
               <div className="flex items-center gap-2">
-                <Star className="w-5 h-5 text-[#FF7A00]" />
+                <Star className="w-5 h-5 text-yellow-500" />
                 <div>
-                  <div className="font-bold text-sm">4.8</div>
+                  <div className="font-bold text-sm text-gray-800">4.8</div>
                   <div className="text-xs text-gray-500">Rating</div>
                 </div>
               </div>

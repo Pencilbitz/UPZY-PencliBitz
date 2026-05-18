@@ -21,14 +21,16 @@ import {
   Plus,
   Minus,
   Users,
-  Bot,
-  BrainCircuit,
-  Search,
+  Activity,
+  Cpu,
+  TrendingUp,
+  Target,
+  Zap,
   Network
 } from "lucide-react";
 
-import Dec27Brochure from "../../assets/Workshop/upzypencilbitz-Dec-27.jpeg"
-import speaker from "../../assets/Workshop/Prashanth.png"
+import PythonBasedGeneticOptimization from "../../assets/Workshop/Python-Based-Genetic-Optimization-16-to-17-Apr-26.jpeg"
+import speaker from "../../assets/Workshop/Divya.jpeg"
 
 const navItems = [
   "Home",
@@ -40,37 +42,37 @@ const navItems = [
 
 const learn = [
   {
-    icon: Bot,
-    title: "Generative AI Fundamentals",
-    desc: "Understand LLMs, Prompts, and AI Models",
-  },
-  {
-    icon: ShieldCheck,
-    title: "AI Assurance & Testing",
-    desc: "Ensuring AI reliability, security & ethics",
+    icon: Code2,
+    title: "Python for Optimization",
+    desc: "Core Python skills for building algorithms",
   },
   {
     icon: Network,
-    title: "Real-world Applications",
-    desc: "Use cases in Software Testing and Automation",
+    title: "Genetic Algorithms (GAs)",
+    desc: "Selection, Crossover, and Mutation",
   },
   {
-    icon: Search,
-    title: "Validation Strategies",
-    desc: "Bias detection, hallucinations, and safety",
+    icon: Target,
+    title: "Fitness Functions",
+    desc: "Designing objectives to evaluate solutions",
+  },
+  {
+    icon: TrendingUp,
+    title: "Solving Complex Problems",
+    desc: "Applying GAs to real-world scenarios",
   },
 ];
 
 const highlights = [
   {
-    icon: ShieldCheck,
-    title: "Practical Implementations",
-    desc: "Hands-on with GenAI tools",
+    icon: Activity,
+    title: "Hands-on Implementation",
+    desc: "Code GAs from scratch in Python",
   },
   {
-    icon: BrainCircuit,
-    title: "Live Demonstrations",
-    desc: "Real-time AI Assurance workflows",
+    icon: Zap,
+    title: "Performance Tuning",
+    desc: "Optimize GA parameters for better results",
   },
   {
     icon: FileBadge,
@@ -79,18 +81,18 @@ const highlights = [
   },
   {
     icon: UserCog,
-    title: "Expert Guidance",
-    desc: "Learn from AI industry professionals",
+    title: "Expert Mentorship",
+    desc: "Guidance from experienced Data Analysts",
   },
   {
     icon: MessagesSquare,
     title: "Interactive Q&A",
-    desc: "Get your doubts resolved instantly",
+    desc: "Clear your doubts in real-time",
   },
   {
     icon: Video,
     title: "Recording Access",
-    desc: "Watch sessions anytime",
+    desc: "Watch session recordings anytime",
   },
 ];
 
@@ -98,25 +100,19 @@ const curriculum = [
   {
     day: "Day 1",
     items: [
-      "Introduction to Generative AI",
-      "LLMs & Prompt Engineering",
-      "AI in Software Development",
+      "Introduction to Evolutionary Computation",
+      "Basics of Genetic Algorithms",
+      "Setting up Python for GAs",
+      "Encoding and Initial Population",
     ],
   },
   {
     day: "Day 2",
     items: [
-      "Fundamentals of AI Assurance",
-      "Testing AI Models & Systems",
-      "Detecting Hallucinations & Bias",
-    ],
-  },
-  {
-    day: "Day 3",
-    items: [
-      "Security & Ethical AI",
-      "Governance in GenAI",
-      "Future Trends & Career Paths",
+      "Designing Fitness Functions",
+      "Selection, Crossover & Mutation",
+      "Implementing a complete GA in Python",
+      "Real-world Case Studies & Q&A",
     ],
   },
 ];
@@ -126,8 +122,12 @@ const testimonials = [
 
 const faqs = [
   {
-    q: "Who should attend this GenAI workshop?",
-    a: "Professionals, testers, and developers interested in AI reliability, testing, and generative models.",
+    q: "Who can attend this workshop?",
+    a: "Anyone with basic programming knowledge who wants to learn about optimization algorithms.",
+  },
+  {
+    q: "Do I need prior experience with Genetic Algorithms?",
+    a: "No, this workshop starts from the basics and progresses to advanced implementations.",
   },
   {
     q: "Will I get recordings?",
@@ -259,7 +259,7 @@ export default function WorkshopPage() {
         <section className="grid gap-6 lg:grid-cols-12">
           <GlowCard className="overflow-hidden p-3 lg:col-span-4">
             <img
-              src={Dec27Brochure}
+              src={PythonBasedGeneticOptimization}
               alt="Workshop"
               className="h-full w-full rounded-xl object-cover"
             />
@@ -272,26 +272,26 @@ export default function WorkshopPage() {
             </span>
 
             <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
-              GEN-AI & 
+              Python Based Genetic
               <br />
               <span className="text-orange-500">
-                Assurance
+                Optimization
               </span>
             </h1>
 
             <p className="text-zinc-400">
-              Master Generative AI principles, AI Assurance, testing strategies, and ethical AI implementation from scratch.
+              In this intensive 2-day workshop, you’ll dive deep into the world of Genetic Algorithms, mastering how to use Python to design, implement, and tune GA-based optimization solutions for complex problems.
             </p>
 
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-3">
                 <Calendar className="h-4 w-4 text-orange-500" />
-                27-30 December 2025
+                16-17 April 2026
               </li>
 
               <li className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-orange-500" />
-                3 Days Workshop
+                2 Days Workshop
               </li>
 
               <li className="flex items-center gap-3">
@@ -327,11 +327,11 @@ export default function WorkshopPage() {
 
             <div className="flex items-baseline gap-2">
               <span className="text-4xl font-bold">
-                ₹99
+                ₹149
               </span>
 
               <span className="text-zinc-500 line-through">
-                ₹149
+                ₹199
               </span>
             </div>
 
@@ -375,15 +375,15 @@ export default function WorkshopPage() {
               </p>
 
               <h2 className="text-3xl font-bold">
-                N Prashanth
+                Divya Thiksha R
               </h2>
 
               <p className="font-medium text-orange-500">
-                Programmer Analyst Technology COE
+                Data Analyst
               </p>
 
               <p className="text-sm text-zinc-400">
-                8+ years experience in AI & Development
+                1+ years experience in Data Analyst & AI
               </p>
 
               <div className="flex gap-3 pt-2">
@@ -451,7 +451,7 @@ export default function WorkshopPage() {
           <div className="text-center">
             <h2 className="text-3xl font-bold">Course Curriculum</h2>
           </div>
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {curriculum.map((day, i) => (
               <GlowCard key={i} className="p-6">
                 <h3 className="text-orange-500 font-bold mb-4">{day.day}</h3>

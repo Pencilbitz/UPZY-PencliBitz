@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -23,51 +23,99 @@ import {
 } from "lucide-react";
 
 import heroImg from "../assets/ws-hero.png";
-import wsFullstack from "../assets/ws-fullstack.png";
-import wsData from "../assets/ws-data.png";
-import wsUiux from "../assets/ws-uiux.png";
-import wsMl from "../assets/ws-ml.png";
 
-const workshops = [
+
+
+const Upcomingworkshops = [
+   
+
+
   {
-    img: wsFullstack,
-    title: "Full Stack Web Development",
-    desc: "Build modern web applications from scratch.",
-    date: "12 - 14 Jun 2025",
-    duration: "3 Days Workshop",
-    price: "₹6,999",
-    original: "₹9,999",
+    img: "",
+    title: "AI Driven Decisions",
+    desc: "AI Driven Decisions with Real Data",
+    date: "18 Apr 2026",
+    duration: "1 Day Workshop",
+    price: "₹0",
+    original: "",
+    url: ""
+  },
+
+  {
+    img: "",
+    title: "Python Based Genetic Optimization",
+    desc: "Genetic Algorithms for Optimization Problems",
+    date: "16-17 Apr 2026",
+    duration: "2 Days Workshop",
+    price: "₹0",
+    original: "",
     url: "",
   },
 
   {
-    img: wsData,
-    title: "Data Analysis with Python",
-    desc: "Learn data analysis techniques using Python libraries.",
-    date: "19 - 21 Jun 2025",
-    duration: "3 Days Workshop",
-    price: "₹5,999",
-    original: "₹8,999",
-  },
-
-  {
-    img: wsUiux,
-    title: "UI/UX Design Essentials",
-    desc: "Design beautiful and user-friendly interfaces.",
-    date: "26 - 28 Jun 2025",
-    duration: "3 Days Workshop",
-    price: "₹4,999",
-    original: "₹7,999",
-  },
-
-  {
-    img: wsMl,
+    img: "",
     title: "Gen-AI & Assurence",
     desc: "Build and train AI agents and assurence in projects.",
     date: "27 - 28 Dec 2025",
     duration: "2 Days Workshop",
-    price: "₹2,999",
-    original: "₹4,999",
+    price: "₹0",
+    original: "",
+    url: "",
+  },
+];
+
+const Completedworkshops = [
+   {
+    img: "https://www.informatec.com/sites/default/files/inline-images/AI-drives-business-intelligence-900px_0.jpg",
+    title: "Data Analytics in AI & Businss Decision Making",
+    desc: "Data Analytics in AI & Business Decision Making",
+    date: "4 May 2026",
+    duration: "1 Day Workshop",
+    price: "₹99",
+    original: "₹149",
+    url: "/Data-Analytics-In-AI-4-May-2026",
+  },
+  {
+    img: "https://media.licdn.com/dms/image/v2/D4E12AQG9T-qCRzKQfQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1706248184338?e=1780531200&v=beta&t=njRPTa-DvIddtfTj1bgHJnL5GP70hBB8xieVZ2y8hmo",
+    title: "The Power Of Innovation & IPR",
+    desc: "The Power Of Innovation & IPR With IP Masterclass",
+    date: "28 Apr 2026",
+    duration: "1 Day Workshop",
+    price: "₹99",
+    original: "₹149",
+    url: "/The-Power-Of-Innovation-And-IPR-28-Apr-2026",
+  },
+
+  {
+    img: "https://media.licdn.com/dms/image/v2/D4E12AQHBDM1ROA1MSA/article-cover_image-shrink_720_1280/B4EZW_RmMrHgAI-/0/1742670818513?e=2147483647&v=beta&t=88jw6PJuyWrOT1I9RX-fWbelCk30c4keUFegkRo9DTM",
+    title: "AI Driven Decisions",
+    desc: "AI Driven Decisions with Real Data",
+    date: "18 Apr 2026",
+    duration: "1 Day Workshop",
+    price: "₹99",
+    original: "₹149",
+    url: "/AI-Driven-Decisions-18-Apr-2026"
+  },
+
+  {
+    img: "https://miro.medium.com/1*EkqeUEbVTvDRmSsfV_THGw.png",
+    title: "Python Based Genetic Optimization",
+    desc: "Genetic Algorithms for Optimization Problems",
+    date: "16-17 Apr 2026",
+    duration: "2 Days Workshop",
+    price: "₹149",
+    original: "₹199",
+    url: "/Python-Based-Genetic-Optimization-16to17-Apr",
+  },
+
+  {
+    img: "https://www.responsible.ai/wp-content/uploads/2025/01/Depositphotos_625177406_S.jpg",
+    title: "Gen-AI & Assurence",
+    desc: "Build and train AI agents and assurence in projects.",
+    date: "27 - 28 Dec 2025",
+    duration: "2 Days Workshop",
+    price: "₹99",
+    original: "₹149",
     url: "/upzypencilbitz-Dec-27",
   },
 ];
@@ -156,10 +204,13 @@ function Workshops() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
     
-
       <Hero />
 
+      
+
       <UpcomingWorkshops />
+
+      <CompletedWorkshops />
 
       <Benefits />
 
@@ -266,7 +317,105 @@ function UpcomingWorkshops() {
       </div>
 
       <div className="space-y-6">
-        {workshops.map((item, index) => (
+        {Upcomingworkshops.map((item, index) => (
+          <div
+            key={index}
+            className="bg-[#111] border border-orange-500/20 rounded-2xl p-5 grid md:grid-cols-[220px_1fr_auto] gap-6 hover:border-orange-500/50 transition hover:shadow-[0_0_30px_rgba(255,115,0,0.2)]"
+          >
+            {item.img ? (
+              <img
+                src={item.img}
+                alt=""
+                className="w-full h-40 md:h-32 object-cover rounded-xl"
+              />
+            ) : (
+              <div className="w-full h-40 md:h-32 rounded-xl bg-zinc-800 relative overflow-hidden flex items-center justify-center">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: "linear-gradient(90deg, transparent 0%, rgba(255,115,0,0.08) 50%, transparent 100%)",
+                    animation: "shimmer 2s infinite",
+                  }}
+                />
+                <div className="flex flex-col items-center gap-2 text-zinc-500 z-10">
+                  <Sparkles size={24} className="text-orange-500/40 animate-pulse" />
+                  <span className="text-xs font-medium tracking-wide">COMING SOON</span>
+                </div>
+              </div>
+            )}
+
+            <div>
+              <h3 className="text-2xl font-semibold ">{item.title}</h3>
+
+              <p className="text-gray-400 mt-2">{item.desc}</p>
+
+              <div className="flex flex-wrap items-center gap-3 mt-5 text-sm">
+                <span className="flex items-center gap-2 bg-orange-500/10 text-orange-500 px-3 py-1 rounded-md">
+                  <Calendar size={16} />
+                  {item.date}
+                </span>
+
+                <span className="text-gray-500">|</span>
+
+                <span className="flex items-center gap-2 text-gray-400">
+                  <Clock size={16} />
+                  {item.duration}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center items-start md:items-end gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-3xl font-bold">{item.price}</span>
+
+                <span className="line-through text-gray-500">
+                  {item.original}
+                </span>
+              </div>
+
+              {item.url ? (
+                <Link
+                  to={item.url}
+                  className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-md font-semibold text-center text-white"
+                >
+                  View Details
+                </Link>
+              ) : (
+                <span className="bg-gray-700 px-6 py-3 rounded-md font-semibold text-center text-gray-400 cursor-not-allowed">
+                  Coming Soon
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Shimmer keyframe animation */}
+      <style>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+
+function CompletedWorkshops() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <div className="flex justify-between items-center mb-10">
+        <h2 className="text-4xl font-bold">Completed Workshops</h2>
+
+        <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
+          View All Workshops
+          <ArrowRight size={18} />
+        </button>
+      </div>
+
+      <div className="space-y-6">
+        {Completedworkshops.map((item, index) => (
           <div
             key={index}
             className="bg-[#111] border border-orange-500/20 rounded-2xl p-5 grid md:grid-cols-[220px_1fr_auto] gap-6 hover:border-orange-500/50 transition hover:shadow-[0_0_30px_rgba(255,115,0,0.2)]"
@@ -311,7 +460,7 @@ function UpcomingWorkshops() {
                   to={item.url}
                   className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-md font-semibold text-center text-white"
                 >
-                  Enroll Now
+                  View Details
                 </Link>
               ) : (
                 <span className="bg-gray-700 px-6 py-3 rounded-md font-semibold text-center text-gray-400 cursor-not-allowed">

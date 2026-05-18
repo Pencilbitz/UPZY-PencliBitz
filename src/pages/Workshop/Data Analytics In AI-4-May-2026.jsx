@@ -21,14 +21,16 @@ import {
   Plus,
   Minus,
   Users,
-  Bot,
-  BrainCircuit,
-  Search,
-  Network
+  LineChart,
+  PieChart,
+  TrendingUp,
+  Brain,
+  Layers,
+  Search
 } from "lucide-react";
 
-import Dec27Brochure from "../../assets/Workshop/upzypencilbitz-Dec-27.jpeg"
-import speaker from "../../assets/Workshop/Prashanth.png"
+import DataAnalyticsInAI from "../../assets/Workshop/Data Analytics In AI-4-May-2026.jpeg"
+import speaker from "../../assets/Workshop/Divya.jpeg"
 
 const navItems = [
   "Home",
@@ -40,37 +42,37 @@ const navItems = [
 
 const learn = [
   {
-    icon: Bot,
-    title: "Generative AI Fundamentals",
-    desc: "Understand LLMs, Prompts, and AI Models",
+    icon: Database,
+    title: "Data Essentials",
+    desc: "Data collection, cleaning, and preprocessing",
   },
   {
-    icon: ShieldCheck,
-    title: "AI Assurance & Testing",
-    desc: "Ensuring AI reliability, security & ethics",
+    icon: LineChart,
+    title: "Analytics Techniques",
+    desc: "Descriptive, predictive, and prescriptive analytics",
   },
   {
-    icon: Network,
-    title: "Real-world Applications",
-    desc: "Use cases in Software Testing and Automation",
+    icon: Brain,
+    title: "AI Integration",
+    desc: "Using Machine Learning for advanced analytics",
   },
   {
-    icon: Search,
-    title: "Validation Strategies",
-    desc: "Bias detection, hallucinations, and safety",
+    icon: TrendingUp,
+    title: "Business Impact",
+    desc: "Driving strategy and ROI with data insights",
   },
 ];
 
 const highlights = [
   {
-    icon: ShieldCheck,
-    title: "Practical Implementations",
-    desc: "Hands-on with GenAI tools",
+    icon: Search,
+    title: "Real-world Case Studies",
+    desc: "Analyze actual business datasets",
   },
   {
-    icon: BrainCircuit,
-    title: "Live Demonstrations",
-    desc: "Real-time AI Assurance workflows",
+    icon: Layers,
+    title: "Tool Mastery",
+    desc: "Hands-on with Python, Pandas, and AI tools",
   },
   {
     icon: FileBadge,
@@ -79,44 +81,36 @@ const highlights = [
   },
   {
     icon: UserCog,
-    title: "Expert Guidance",
-    desc: "Learn from AI industry professionals",
+    title: "Expert Mentorship",
+    desc: "Guidance from senior Data Scientists",
   },
   {
     icon: MessagesSquare,
     title: "Interactive Q&A",
-    desc: "Get your doubts resolved instantly",
+    desc: "Clear your doubts in real-time",
   },
   {
     icon: Video,
     title: "Recording Access",
-    desc: "Watch sessions anytime",
+    desc: "Watch session recordings anytime",
   },
 ];
 
 const curriculum = [
   {
-    day: "Day 1",
+    day: "Session 1",
     items: [
-      "Introduction to Generative AI",
-      "LLMs & Prompt Engineering",
-      "AI in Software Development",
+      "Introduction to Data Analytics & AI",
+      "Data Preparation and EDA",
+      "Visualization for Decision Making",
     ],
   },
   {
-    day: "Day 2",
+    day: "Session 2",
     items: [
-      "Fundamentals of AI Assurance",
-      "Testing AI Models & Systems",
-      "Detecting Hallucinations & Bias",
-    ],
-  },
-  {
-    day: "Day 3",
-    items: [
-      "Security & Ethical AI",
-      "Governance in GenAI",
-      "Future Trends & Career Paths",
+      "Predictive Modeling Basics",
+      "Translating Data into Business Strategy",
+      "Real-world Case Study & Q&A",
     ],
   },
 ];
@@ -126,8 +120,12 @@ const testimonials = [
 
 const faqs = [
   {
-    q: "Who should attend this GenAI workshop?",
-    a: "Professionals, testers, and developers interested in AI reliability, testing, and generative models.",
+    q: "Who should attend this workshop?",
+    a: "Analysts, managers, and aspiring data professionals looking to leverage AI in analytics.",
+  },
+  {
+    q: "Do I need prior coding experience?",
+    a: "Basic understanding of Python is helpful but not strictly required to grasp the concepts.",
   },
   {
     q: "Will I get recordings?",
@@ -259,7 +257,7 @@ export default function WorkshopPage() {
         <section className="grid gap-6 lg:grid-cols-12">
           <GlowCard className="overflow-hidden p-3 lg:col-span-4">
             <img
-              src={Dec27Brochure}
+              src={DataAnalyticsInAI}
               alt="Workshop"
               className="h-full w-full rounded-xl object-cover"
             />
@@ -272,26 +270,26 @@ export default function WorkshopPage() {
             </span>
 
             <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
-              GEN-AI & 
+              Data Analytics In AI
               <br />
               <span className="text-orange-500">
-                Assurance
+                & Business Decision Making
               </span>
             </h1>
 
             <p className="text-zinc-400">
-              Master Generative AI principles, AI Assurance, testing strategies, and ethical AI implementation from scratch.
+              Master the intersection of Data Analytics and Artificial Intelligence. Learn how to extract actionable insights from complex datasets and drive strategic business decisions in this focused 1-day workshop.
             </p>
 
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-3">
                 <Calendar className="h-4 w-4 text-orange-500" />
-                27-30 December 2025
+                4 May 2026
               </li>
 
               <li className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-orange-500" />
-                3 Days Workshop
+                1 Day Workshop
               </li>
 
               <li className="flex items-center gap-3">
@@ -375,15 +373,15 @@ export default function WorkshopPage() {
               </p>
 
               <h2 className="text-3xl font-bold">
-                N Prashanth
+                Divya Thiksha R
               </h2>
 
               <p className="font-medium text-orange-500">
-                Programmer Analyst Technology COE
+                Data Analyst
               </p>
 
               <p className="text-sm text-zinc-400">
-                8+ years experience in AI & Development
+                1+ years experience in Data Analyst & AI
               </p>
 
               <div className="flex gap-3 pt-2">
@@ -451,7 +449,7 @@ export default function WorkshopPage() {
           <div className="text-center">
             <h2 className="text-3xl font-bold">Course Curriculum</h2>
           </div>
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {curriculum.map((day, i) => (
               <GlowCard key={i} className="p-6">
                 <h3 className="text-orange-500 font-bold mb-4">{day.day}</h3>
