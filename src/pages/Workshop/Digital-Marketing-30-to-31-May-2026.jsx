@@ -53,7 +53,7 @@ const learn = [
   },
   {
     icon: Target,
-    title: "Google Ads & Analytics",
+    title: "Meta Ads & Analytics",
     desc: "Create ad campaigns and track performance metrics",
   },
   {
@@ -168,8 +168,8 @@ function RegisterForm({ compact = false }) {
   return (
     <div id="register">
       <GlowCard className="p-6 lg:p-8">
-      <h3 className="mb-5 text-2xl font-bold">
-        Register for Workshop
+      <h3 className="mb-5 text-2xl font-bold text-center">
+        Register for the Live Online Session
       </h3>
 
       <form
@@ -185,11 +185,7 @@ function RegisterForm({ compact = false }) {
         )}
 
         <label className="flex items-center gap-2 py-1 text-xs text-zinc-400">
-          <input type="checkbox" />
-          I agree to the
-          <span className="text-orange-500">
-            terms and conditions
-          </span>
+        
         </label>
         <a href="https://forms.gle/pCvJEcxnot2zeZnj7" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-orange-500 text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-orange-600">
                   
@@ -227,7 +223,7 @@ export default function WorkshopPage() {
           <div className="space-y-5 lg:col-span-5">
             <span className="inline-flex items-center gap-2 rounded-full border border-orange-500 px-4 py-1 text-xs text-orange-500">
               <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
-              Live Workshop
+              Live Online Session
             </span>
 
             <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
@@ -239,7 +235,7 @@ export default function WorkshopPage() {
             </h1>
 
             <p className="text-zinc-400">
-              In this intensive 2-day workshop, you’ll dive into the world of Digital Marketing, learning how to create powerful marketing strategies, run successful social media and Google ad campaigns, analyze audience behavior, and optimize brand growth through hands-on practical sessions and live projects.
+              In this intensive 2-day Bootcamp, you’ll dive into the world of Digital Marketing, learning how to create powerful marketing strategies, run successful social media and Meta ad campaigns, analyze audience behavior, and optimize brand growth through hands-on practical sessions and live projects.
             </p>
 
             <ul className="space-y-2 text-sm">
@@ -250,12 +246,12 @@ export default function WorkshopPage() {
 
               <li className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-orange-500" />
-                2 Days Workshop
+                2 Days Bootcamp
               </li>
 
               <li className="flex items-center gap-3">
                 <Radio className="h-4 w-4 text-orange-500" />
-                Live Online Workshop
+                Live Online Session
               </li>
 
               <li className="flex items-center gap-3">
@@ -264,59 +260,10 @@ export default function WorkshopPage() {
               </li>
             </ul>
 
-            <div className="flex flex-wrap gap-3 pt-2">
-              <a href="#register">
-                <PrimaryButton>
-                  Enroll Now
-                </PrimaryButton>
-              </a>
-
-              <button className="inline-flex items-center gap-2 rounded-lg border border-orange-500/30 px-6 py-3 font-medium hover:bg-orange-500/10">
-                <Play className="h-4 w-4 text-orange-500" />
-                View Curriculum
-              </button>
-            </div>
+            
           </div>
 
-          <GlowCard className="space-y-4 p-6 lg:col-span-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-orange-500 px-3 py-1 text-xs text-orange-500">
-              <Users className="h-3 w-3" />
-              Limited Seats Available
-            </span>
-
-            <div className="flex items-baseline gap-2">
-              <span className="text-4xl font-bold">
-                Free
-              </span>
-
-              <span className="text-zinc-500 line-through">
-            
-              </span>
-            </div>
-
-            <ul className="space-y-3 text-sm">
-              {[
-                [FileBadge, "Certificate Included"],
-                [GitBranch, "Live Projects"],
-                [UserCog, "Placement Guidance"],
-                [Video, "Recording Access"],
-              ].map(([Icon, text], index) => (
-                <li
-                  key={index}
-                  className="flex items-center gap-3"
-                >
-                  <Icon className="h-4 w-4 text-orange-500" />
-                  {text}
-                </li>
-              ))}
-            </ul>
-
-            <a href="#register">
-              <PrimaryButton className="w-full">
-                Enroll Now
-              </PrimaryButton>
-            </a>
-          </GlowCard>
+          
         </section>
 
         {/* MENTOR */}
@@ -344,6 +291,7 @@ export default function WorkshopPage() {
               <p className="text-sm text-zinc-400">
                 1+ years experience in Data Analyst & AI
               </p>
+              <h3><span className="text-orange-500">Contact : </span>9047116383(Ms.R.Jona)</h3>
 
               <div className="flex gap-3 pt-2">
                 {[GitBranch, UserCog, MessagesSquare].map(

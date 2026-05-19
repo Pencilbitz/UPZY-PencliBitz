@@ -35,7 +35,7 @@ const Upcomingworkshops = [
     title: "Digital Marketing Optimization",
     desc: "Digital Marketing Optimization",
     date: "30-31 May 2026",
-    duration: "2 Day Workshop",
+    duration: "2 Day Bootcamp",
     price: "Free",
     original: "",
     url: "/Digital-Marketing-30-to-31-May-2026"
