@@ -115,6 +115,13 @@ const curriculum = [
       "Live Project Implementation & Q&A",
     ],
   },
+  {
+    day: "Event Coordinator",
+    items: [
+      "Ms.R.Jona",
+      "+91 9047116383",
+    ],
+  }
 ];
 
 const testimonials = [
