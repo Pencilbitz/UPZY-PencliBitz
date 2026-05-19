@@ -191,10 +191,9 @@ function RegisterForm({ compact = false }) {
             terms and conditions
           </span>
         </label>
-        <a href="https://forms.gle/pCvJEcxnot2zeZnj7" target="_blank" rel="noopener noreferrer" className="block w-full">
-          <PrimaryButton className="w-full">
-            Registration
-          </PrimaryButton>
+        <a href="https://forms.gle/pCvJEcxnot2zeZnj7" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-orange-500 text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-orange-600">
+                  
+          Register Now
         </a>
 
         <p className="flex items-center justify-center gap-2 pt-1 text-xs text-zinc-400">
@@ -287,11 +286,11 @@ export default function WorkshopPage() {
 
             <div className="flex items-baseline gap-2">
               <span className="text-4xl font-bold">
-                ₹0
+                Free
               </span>
 
               <span className="text-zinc-500 line-through">
-                ₹0
+            
               </span>
             </div>
 

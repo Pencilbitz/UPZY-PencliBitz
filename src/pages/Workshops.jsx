@@ -31,14 +31,14 @@ const Upcomingworkshops = [
 
 
   {
-    img: "",
+    img: "https://img.freepik.com/premium-photo/person-using-laptop-with-word-digital-marketing-screen_257043-51794.jpg",
     title: "Digital Marketing Optimization",
     desc: "Digital Marketing Optimization",
-    date: "2-3 June 2026",
+    date: "30-31 May 2026",
     duration: "2 Day Workshop",
-    price: "₹0",
+    price: "Free",
     original: "",
-    url: "/Digital-Marketing-2-&-3-June-2026"
+    url: "/Digital-Marketing-30-to-31-May-2026"
   },
 
   {
