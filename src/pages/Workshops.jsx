@@ -32,13 +32,13 @@ const Upcomingworkshops = [
 
   {
     img: "",
-    title: "AI Driven Decisions",
-    desc: "AI Driven Decisions with Real Data",
-    date: "18 Apr 2026",
-    duration: "1 Day Workshop",
+    title: "Digital Marketing Optimization",
+    desc: "Digital Marketing Optimization",
+    date: "2-3 June 2026",
+    duration: "2 Day Workshop",
     price: "₹0",
     original: "",
-    url: ""
+    url: "/Digital-Marketing-2-&-3-June-2026"
   },
 
   {

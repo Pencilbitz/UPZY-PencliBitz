@@ -30,7 +30,7 @@ const InternationalConference = () => {
     const conferences = [
         {
             title: "Interdisciplinary Research and Global Innovation",
-            date: "28 - 30 May 2026",
+            date: "30 May 2026",
             location: "Chennai, Tamil Nadu, India",
             tags: ["Robotics", "Automation", "AI", "Machine Learning"],
             image: "https://img.magnific.com/premium-photo/globe-communication-information-sharing-satellites-internet-things-technologies-generative-ai_1423-7573.jpg",
@@ -38,21 +38,21 @@ const InternationalConference = () => {
         },
         {
             title: "Global Advances in Science, Engineering, Technology & Management",
-            date: "16 - 18 May 2026",
+            date: "16 May 2026",
             location: "Coimbatore, Tamil Nadu, India",
             tags: ["Sustainability", "Environment", "SDGs"],
             image: "https://etedge-insights.com/wp-content/uploads/2024/11/shutterstock_2477364131.jpg"
         },
         {
             title: "International Conference on Biomedical Engineering",
-            date: "18 - 20 Nov 2025",
+            date: "20 Nov 2025",
             location: "Dubai, UAE",
             tags: ["Biomedical", "Healthcare", "Biotechnology"],
             image: "https://png.pngtree.com/thumb_back/fw800/background/20230526/pngtree-dna-strand-model-in-orange-light-against-black-background-image_2638294.jpg"
         },
         {
             title: "International Conference on Business & Management",
-            date: "08 - 10 Dec 2025",
+            date: "10 Dec 2025",
             location: "London, United Kingdom",
             tags: ["Business", "Management", "Leadership"],
             image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
