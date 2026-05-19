@@ -31,6 +31,7 @@ import {
 
 import DigitalMarketing from "../../assets/Workshop/Digital-Marketing-30-to-31-May-2026.jpeg"
 import speaker from "../../assets/Workshop/Gowthami.png"
+import EventPartner from "../../assets/Workshop/Event-Partner.png"
 
 const navItems = [
   "Home",
@@ -116,12 +117,15 @@ const curriculum = [
     ],
   },
   {
-    day: "Event Coordinator",
-    items: [
-      "Ms.R.Jona",
-      "+91 9047116383",
-    ],
+    day:"Industry Technical Partner",
+    image:EventPartner,
+    
+    items:[
+  
+    ]
+    
   }
+ 
 ];
 
 const testimonials = [
@@ -227,17 +231,17 @@ export default function WorkshopPage() {
             />
           </GlowCard>
 
-          <div className="space-y-5 lg:col-span-5">
+          <div className="space-y-5 lg:col-span-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-orange-500 px-4 py-1 text-xs text-orange-500">
               <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
               Live Online Session
             </span>
 
             <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
-              Digital Marketing
+              Digital Marketing With
               <br />
               <span className="text-orange-500">
-                Optimization
+                Hands-on Experience
               </span>
             </h1>
 
@@ -266,7 +270,7 @@ export default function WorkshopPage() {
                 Beginner to Advanced
               </li>
             </ul>
-
+<RegisterForm />
             
           </div>
 
@@ -295,10 +299,8 @@ export default function WorkshopPage() {
                 Sr Digital Marketing Executive
               </p>
 
-              <p className="text-sm text-zinc-400">
-                1+ years experience in Data Analyst & AI
-              </p>
-              <h3><span className="text-orange-500">Contact : </span>9047116383(Ms.R.Jona)</h3>
+              
+              
 
               <div className="flex gap-3 pt-2">
                 {[GitBranch, UserCog, MessagesSquare].map(
@@ -315,10 +317,21 @@ export default function WorkshopPage() {
               </div>
             </div>
           </GlowCard>
+          <GlowCard className="flex flex-col items-center gap-6 p-8 sm:flex-row lg:col-span-4">
+            <div className="space-y-2 px-14">
+              <h2 className="text-xl text-orange-500">
+                Event Coordinator
+              </h2>
+              <h2 className="text-3xl font-bold">
+                Ms.R.Jona
+              </h2>
+              <p className="font-medium text-orange-500">
+                +91 9047116383
+              </p>
+            </div>
+          </GlowCard>
 
-          <div className="lg:col-span-5">
-            <RegisterForm />
-          </div>
+        
         </section>
 
         {/* WHAT YOU WILL LEARN */}
@@ -377,6 +390,9 @@ export default function WorkshopPage() {
                     </li>
                   ))}
                 </ul>
+                {day.image && (
+                  <img src={day.image} alt={day.day} className="w-full h-auto" />
+                )}
               </GlowCard>
             ))}
           </div>

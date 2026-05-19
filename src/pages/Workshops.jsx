@@ -32,12 +32,12 @@ const Upcomingworkshops = [
 
   {
     img: "https://img.freepik.com/premium-photo/person-using-laptop-with-word-digital-marketing-screen_257043-51794.jpg",
-    title: "Digital Marketing Optimization",
-    desc: "Digital Marketing Optimization",
+    title: "Digital Marketing With Hands-On Experience",
+    desc: "Digital Marketing",
     date: "30-31 May 2026",
     duration: "2 Day Bootcamp",
-    price: "Free",
-    original: "",
+    price: "₹99",
+    original: "₹149",
     url: "/Digital-Marketing-30-to-31-May-2026"
   },
 
