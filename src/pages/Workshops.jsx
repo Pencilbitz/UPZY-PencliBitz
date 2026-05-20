@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 
 import {
   Wrench,
   FolderKanban,
   BadgeCheck,
+  ChevronRight,
   Calendar,
   ArrowRight,
   GraduationCap,
@@ -25,7 +27,12 @@ import Naveenkumar from "../assets/Workshop/Testimonials/Naveen-Kumar-PK.jpeg";
 import Mohammad from "../assets/Workshop/Testimonials/Mohammed Abbas.jpeg";
 import Sujatha from "../assets/Workshop/Testimonials/Sujatha-Mohan.jpeg";
 
+
+
 const Upcomingworkshops = [
+   
+
+
   {
     img: "https://img.freepik.com/premium-photo/person-using-laptop-with-word-digital-marketing-screen_257043-51794.jpg",
     title: "Digital Marketing With Hands-On Experience",
@@ -36,6 +43,7 @@ const Upcomingworkshops = [
     original: "₹149",
     url: "/Digital-Marketing-30-to-31-May-2026"
   },
+
   {
     img: "",
     title: "Python Based Genetic Optimization",
@@ -46,6 +54,7 @@ const Upcomingworkshops = [
     original: "",
     url: "",
   },
+
   {
     img: "",
     title: "Gen-AI & Assurence",
@@ -59,7 +68,7 @@ const Upcomingworkshops = [
 ];
 
 const Completedworkshops = [
-  {
+   {
     img: "https://www.informatec.com/sites/default/files/inline-images/AI-drives-business-intelligence-900px_0.jpg",
     title: "Data Analytics in AI & Businss Decision Making",
     desc: "Data Analytics in AI & Business Decision Making",
@@ -79,6 +88,7 @@ const Completedworkshops = [
     original: "₹149",
     url: "/The-Power-Of-Innovation-And-IPR-28-Apr-2026",
   },
+
   {
     img: "https://media.licdn.com/dms/image/v2/D4E12AQHBDM1ROA1MSA/article-cover_image-shrink_720_1280/B4EZW_RmMrHgAI-/0/1742670818513?e=2147483647&v=beta&t=88jw6PJuyWrOT1I9RX-fWbelCk30c4keUFegkRo9DTM",
     title: "AI Driven Decisions",
@@ -89,6 +99,7 @@ const Completedworkshops = [
     original: "₹149",
     url: "/AI-Driven-Decisions-18-Apr-2026"
   },
+
   {
     img: "https://miro.medium.com/1*EkqeUEbVTvDRmSsfV_THGw.png",
     title: "Python Based Genetic Optimization",
@@ -99,6 +110,7 @@ const Completedworkshops = [
     original: "₹199",
     url: "/Python-Based-Genetic-Optimization-16to17-Apr",
   },
+
   {
     img: "https://www.responsible.ai/wp-content/uploads/2025/01/Depositphotos_625177406_S.jpg",
     title: "Gen-AI & Assurence",
@@ -117,16 +129,19 @@ const benefits = [
     title: "Industry Experts",
     desc: "Learn from seasoned professionals actively working in industry.",
   },
+
   {
     icon: Code2,
     title: "Real-Time Projects",
     desc: "Apply skills on real-world projects from day one.",
   },
+
   {
     icon: Users,
     title: "Interactive Sessions",
     desc: "Live Q&A, peer review and mentor guidance.",
   },
+
   {
     icon: Award,
     title: "Career Certification",
@@ -147,30 +162,41 @@ const testimonials = [
   {
     img: Naveenkumar,
     name: "Naveen Kumar PK",
-    role: "Assistant Professor",
-    Department: "Commerce and Management",
+    role: "Assistant Professor ",
+    Department:"Commerce and Management",
     college: "Vijaya Vittala Institute of Management and Science (Bangalore)",
     text: "On behalf of our college, we sincerely thank Pencilbitz for successfully conducting four free Faculty Development Programs (FDPs) this semester. The high-quality content provided valuable knowledge that was greatly appreciated by all participants. We are truly grateful for your continuous cooperation and look forward to your support next semester. In the future, we would be delighted to collaborate on both paid and free FDP initiatives.",
     rating: 5,
   },
+
   {
     img: Mohammad,
     name: "S. Mohammed Abbas",
     role: "Lecturer",
-    Department: "EEE",
+    Department:"EEE",
     college: "Er.Perumal Manimekalai Polytechnic College, (Hosur)",
-    text: "We sincerely express our heartfelt thanks to the entire Pencilbitz Organization Team for providing us this wonderful opportunity to organize and be a part of this Faculty Development Programme. Your continuous support, coordination, and guidance made this session a great success. We truly appreciate your efforts and look forward to more such collaborations in the future. We also thank Dr. K. Saraswathi mam for her Valuable time spent with us.",
+    text: "We sincerely express our heartfelt thanks to the entire Pencilbitz Organization Team for providing us this wonderful opportunity to organize and be a part of this Faculty Development Programme. Your continuous support, coordination, and guidance made this session a great success. We truly appreciate your efforts and look forward to more such collaborations in the future.We also thank to Dr. K. Saraswathi mam for her Valuable time spend to us. Thank you once again!",
     rating: 5,
   },
+
   {
     img: Sujatha,
     name: "Dr.Sujatha Mohan",
     role: "Assistant Professor",
-    Department: "Data Science",
+    Department:"Data Science",
     college: "Sri Bhagawan Mahaveer Jain College (Bangalore)",
-    text: "A special thank you to Revathi madam for her outstanding initiative and leadership. Her dedication ensured this task was executed seamlessly and completed ahead of schedule. We truly appreciate her hard work and commitment to excellence.",
+    text: " A special thank you to Revathi madam for her outstanding initiative and leadership. Her dedication ensured this task was executed seamlessly and completed ahead of schedule. We truly appreciate her hard work and commitment to excellence.",
     rating: 5,
   },
+
+  // {
+  //   name: "Rohan Iyer",
+  //   role: "Product Designer",
+  //   Department:"Design",
+  //   college: "Indian Institute of Technology Bombay",
+  //   text: "UI/UX workshop completely changed how I design interfaces.",
+  //   rating: 5,
+  // },
 ];
 
 const faqs = [
@@ -178,40 +204,59 @@ const faqs = [
     q: "Who can join these workshops?",
     a: "Students, professionals, and beginners can join.",
   },
+
   {
     q: "Will I receive a certificate?",
     a: "Yes, every participant receives a certificate.",
   },
+
   {
     q: "Are sessions recorded?",
     a: "Yes, recordings will be available after sessions.",
   },
+
   {
     q: "What are the prerequisites?",
     a: "Basic computer knowledge is enough for most workshops.",
   },
 ];
 
-export default function Workshops() {
+function Workshops() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
+    
       <Hero />
+
+      
+
       <UpcomingWorkshops />
+
       <CompletedWorkshops />
+
       <Benefits />
+
       <Stats />
+
       <Testimonials />
+
       <FAQ />
+
       <Newsletter />
+
+      
     </div>
   );
 }
 
+export default Workshops;
+
 function Hero() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-14 mt-16">
+    
+
       <div className="grid lg:grid-cols-2 gap-14 items-center">
-        <div>
+       
           <div className="inline-flex items-center gap-2 bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-4 py-2 rounded-full text-[#FF7A00] text-sm font-bold uppercase tracking-wider">
             <Sparkles size={14} />
             Hands-on Learning
@@ -234,24 +279,37 @@ function Hero() {
 
           <div className="mt-10 flex flex-wrap gap-8">
             {[
-              { icon: Wrench, label: "Hands-on Experience" },
-              { icon: FolderKanban, label: "Project Based Learning" },
-              { icon: BadgeCheck, label: "Certificate" },
+              {
+                icon: Wrench,
+                label: "Hands-on Experience",
+              },
+
+              {
+                icon: FolderKanban,
+                label: "Project Based Learning",
+              },
+
+              {
+                icon: BadgeCheck,
+                label: "Certificate",
+              },
             ].map((item, index) => (
               <div key={index}>
                 <div className="w-14 h-14 rounded-xl bg-[#FF7A00]/10 border border-[#FF7A00]/30 flex items-center justify-center">
                   <item.icon className="text-[#FF7A00]" />
                 </div>
+
                 <p className="mt-3 text-sm text-gray-400 max-w-[100px]">
                   {item.label}
                 </p>
               </div>
             ))}
           </div>
-        </div>
 
+        {/* RIGHT */}
         <div className="relative">
           <div className="absolute inset-0 bg-orange-500/20 blur-3xl rounded-full"></div>
+
           <div className="relative border-2 border-orange-500 rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(255,115,0,0.4)]">
             <img
               src={heroImg}
@@ -270,6 +328,7 @@ function UpcomingWorkshops() {
     <section className="max-w-7xl mx-auto px-6 py-16">
       <div className="flex justify-between items-center mb-10">
         <h2 className="text-4xl font-bold">Upcoming Workshops</h2>
+
         <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
           View All Workshops
           <ArrowRight size={18} />
@@ -306,13 +365,17 @@ function UpcomingWorkshops() {
 
             <div>
               <h3 className="text-2xl font-semibold ">{item.title}</h3>
+
               <p className="text-gray-400 mt-2">{item.desc}</p>
+
               <div className="flex flex-wrap items-center gap-3 mt-5 text-sm">
                 <span className="flex items-center gap-2 bg-orange-500/10 text-orange-500 px-3 py-1 rounded-md">
                   <Calendar size={16} />
                   {item.date}
                 </span>
+
                 <span className="text-gray-500">|</span>
+
                 <span className="flex items-center gap-2 text-gray-400">
                   <Clock size={16} />
                   {item.duration}
@@ -323,6 +386,7 @@ function UpcomingWorkshops() {
             <div className="flex flex-col justify-center items-start md:items-end gap-4">
               <div className="flex items-center gap-2">
                 <span className="text-3xl font-bold">{item.price}</span>
+
                 <span className="line-through text-gray-500">
                   {item.original}
                 </span>
@@ -345,6 +409,7 @@ function UpcomingWorkshops() {
         ))}
       </div>
 
+      {/* Shimmer keyframe animation */}
       <style>{`
         @keyframes shimmer {
           0% { transform: translateX(-100%); }
@@ -355,11 +420,13 @@ function UpcomingWorkshops() {
   );
 }
 
+
 function CompletedWorkshops() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
       <div className="flex justify-between items-center mb-10">
         <h2 className="text-4xl font-bold">Completed Workshops</h2>
+
         <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
           View All Workshops
           <ArrowRight size={18} />
@@ -380,13 +447,17 @@ function CompletedWorkshops() {
 
             <div>
               <h3 className="text-2xl font-semibold">{item.title}</h3>
+
               <p className="text-gray-400 mt-2">{item.desc}</p>
+
               <div className="flex flex-wrap items-center gap-3 mt-5 text-sm">
                 <span className="flex items-center gap-2 bg-orange-500/10 text-orange-500 px-3 py-1 rounded-md">
                   <Calendar size={16} />
                   {item.date}
                 </span>
+
                 <span className="text-gray-500">|</span>
+
                 <span className="flex items-center gap-2 text-gray-400">
                   <Clock size={16} />
                   {item.duration}
@@ -397,6 +468,7 @@ function CompletedWorkshops() {
             <div className="flex flex-col justify-center items-start md:items-end gap-4">
               <div className="flex items-center gap-2">
                 <span className="text-3xl font-bold">{item.price}</span>
+
                 <span className="line-through text-gray-500">
                   {item.original}
                 </span>
@@ -427,6 +499,7 @@ function Benefits() {
     <section className="max-w-7xl mx-auto px-6 py-16">
       <div className="text-center">
         <h2 className="text-4xl font-bold">Why Join Our Workshops?</h2>
+
         <p className="text-gray-400 mt-3">
           Practical learning experiences designed for career growth.
         </p>
@@ -441,7 +514,9 @@ function Benefits() {
             <div className="w-14 h-14 rounded-xl bg-orange-500 flex items-center justify-center">
               <item.icon className="text-white" />
             </div>
+
             <h3 className="mt-5 text-xl font-semibold">{item.title}</h3>
+
             <p className="mt-3 text-gray-400">{item.desc}</p>
           </div>
         ))}
@@ -457,7 +532,9 @@ function Stats() {
         {stats.map((item, index) => (
           <div key={index} className="text-center">
             <item.icon className="mx-auto text-orange-500 mb-4" />
+
             <h3 className="text-3xl font-bold">{item.v}</h3>
+
             <p className="text-gray-400 text-sm mt-2">{item.l}</p>
           </div>
         ))}
@@ -467,16 +544,133 @@ function Stats() {
 }
 
 function Testimonials() {
-  // Duplicating the dataset 3 times to guarantee smooth, seamless infinite scrolling loops
-  const scrollingTestimonials = [...testimonials, ...testimonials, ...testimonials];
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <h2 className="text-4xl font-bold text-center">
+        What Participants Say
+      </h2>
+
+      <div className="grid md:grid-cols-3 gap-6 mt-12">
+        {testimonials.map((item, index) => (
+          
+          <div
+          
+            key={index}
+            className="bg-[#111] border text-sm text-justify border-orange-500/20 rounded-2xl p-6 relative"
+          >
+            <Quote className="absolute top-5 right-5 text-orange-500/30" />
+  <div className="flex items-center gap-3 mt-6">
+              <div>
+                <img src={item.img} alt={item.name} className="w-20 h-20 rounded-lg object-cover" />
+                <h4 className="font-semibold">{item.name}</h4>
+
+                <p className="text-sm text-gray-400">{item.role}</p>
+                  <p className="text-sm text-gray-400">{item.Department}</p>
+                <p className="text-sm text-gray-400">{item.college}</p>
+              </div>
+            </div>
+            <div className="flex gap-1">
+              {Array.from({ length: item.rating }).map((_, i) => (
+                <Star
+                  key={i}
+                  className="fill-orange-500 text-orange-500"
+                  size={16}
+                />
+              ))}
+            </div>
+
+            <p className="mt-5 text-gray-400 leading-relaxed">
+              "{item.text}"
+            </p>
+
+          
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const [open, setOpen] = useState(0);
 
   return (
-    <section className="py-16 max-w-7xl mx-auto overflow-hidden">
-      <div className="px-6 mb-12">
-        <h2 className="text-4xl font-bold text-center">
-          What Participants Say
-        </h2>
-      </div>
+    <section className="max-w-4xl mx-auto px-6 py-16">
+      <h2 className="text-4xl font-bold text-center">
+        Frequently Asked Questions
+      </h2>
 
-      {/* Infinite Horizontal Marquee Container */}
-      <div className="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from
+      <div className="space-y-4 mt-12">
+        {faqs.map((item, index) => {
+          const isOpen = open === index;
+
+          return (
+            <div
+              key={index}
+              className={`bg-[#111] border rounded-xl overflow-hidden transition ${
+                isOpen
+                  ? "border-orange-500 shadow-[0_0_25px_rgba(255,115,0,0.2)]"
+                  : "border-orange-500/20"
+              }`}
+            >
+              <button
+                onClick={() => setOpen(isOpen ? -1 : index)}
+                className="w-full flex justify-between items-center px-6 py-5 text-left"
+              >
+                <span className="font-medium">{item.q}</span>
+
+                <div className="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
+                  {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                </div>
+              </button>
+
+              {isOpen && (
+                <p className="px-6 pb-6 text-gray-400">
+                  {item.a}
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Newsletter() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <div className="bg-[#111] border border-orange-500/20 rounded-3xl p-8 md:p-12">
+        <div className="grid md:grid-cols-[auto_1fr] gap-8 items-center">
+          <div className="w-20 h-20 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
+            <Mail className="text-orange-500" size={36} />
+          </div>
+
+          <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center">
+            <div>
+              <h3 className="text-3xl font-bold">
+                Stay Updated with Upcoming Workshops
+              </h3>
+
+              <p className="text-gray-400 mt-3">
+                Subscribe to get notified about our latest workshops.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="h-12 bg-black border border-gray-700 rounded-md px-4 outline-none focus:border-orange-500"
+              />
+
+              <button className="h-12 px-6 rounded-md bg-orange-500 hover:bg-orange-600 transition font-semibold">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
