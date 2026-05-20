@@ -154,7 +154,11 @@ const InternationalConference = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                         >
+<<<<<<< HEAD
                             <span className="px-4 py-1.5 bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold rounded-full border border-[#FF7A00]/20 tracking-widest uppercase mb-6 inline-block">
+=======
+                            <span className="px-4 py-1.5 bg-[#FF7A00]/10 text-[#FF7A00] text-xs rounded-full border border-[#FF7A00]/20  mb-6 inline-block font-bold uppercase tracking-wider">
+>>>>>>> c94fb50 (first commit)
                                 International Conferences
                             </span>
                             <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tight">

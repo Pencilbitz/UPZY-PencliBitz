@@ -237,12 +237,20 @@ function Hero() {
       <div className="grid lg:grid-cols-2 gap-14 items-center">
         {/* LEFT */}
         <div>
+<<<<<<< HEAD
           <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-2 rounded-full text-orange-500 text-sm font-medium">
+=======
+          <div className="inline-flex items-center gap-2 bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-4 py-2 rounded-full text-[#FF7A00] text-sm font-bold uppercase tracking-wider">
+>>>>>>> c94fb50 (first commit)
             <Sparkles size={14} />
             Hands-on Learning
           </div>
 
+<<<<<<< HEAD
           <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-tight">
+=======
+          <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-tight text-[#FF7A00]">
+>>>>>>> c94fb50 (first commit)
             Workshops
           </h1>
 
@@ -275,8 +283,13 @@ function Hero() {
               },
             ].map((item, index) => (
               <div key={index}>
+<<<<<<< HEAD
                 <div className="w-14 h-14 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
                   <item.icon className="text-orange-500" />
+=======
+                <div className="w-14 h-14 rounded-xl bg-[#FF7A00]/10 border border-[#FF7A00]/30 flex items-center justify-center">
+                  <item.icon className="text-[#FF7A00]" />
+>>>>>>> c94fb50 (first commit)
                 </div>
 
                 <p className="mt-3 text-sm text-gray-400 max-w-[100px]">

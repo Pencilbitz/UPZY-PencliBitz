@@ -111,7 +111,11 @@ function Hero() {
 
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <div className="text-left">
+<<<<<<< HEAD
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-black uppercase tracking-[0.2em] mb-8">
+=======
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] border border-orange-500/20  text-xs font-black uppercase tracking-[0.2em] mb-8">
+>>>>>>> c94fb50 (first commit)
             <MessageCircle className="w-3 h-3" /> Get In Touch
           </span>
 

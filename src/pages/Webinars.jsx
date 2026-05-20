@@ -247,12 +247,21 @@ function Webinars() {
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 py-14 grid lg:grid-cols-2 gap-14 items-center">
         <div>
+<<<<<<< HEAD
           <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-2 rounded-full text-orange-500 text-sm">
             <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
             Live Learning Sessions
           </div>
 
           <h1 className="mt-6 text-5xl md:text-7xl font-bold">
+=======
+          <div className="inline-flex items-center gap-2 bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-4 py-2 rounded-full text-[#FF7A00] text-sm font-bold uppercase tracking-wider">
+            <span className="w-2 h-2 bg-[#FF7A00] rounded-full animate-pulse"></span>
+            Live Learning Sessions
+          </div>
+
+          <h1 className="mt-6 text-5xl md:text-7xl font-bold text-[#FF7A00]">
+>>>>>>> c94fb50 (first commit)
             Webinars
           </h1>
 

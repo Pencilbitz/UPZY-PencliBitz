@@ -32,8 +32,13 @@ import {
 import { Link } from 'react-router-dom';
 const features = [
   { icon: Users, title: "Expert Instructors", desc: "Learn from industry professionals" },
+<<<<<<< HEAD
   { icon: InfinityIcon, title: "Lifetime Access", desc: "Learn anytime, anywhere" },
   { icon: Award, title: "Certificate", desc: "Earn certificates on completion" },
+=======
+  { icon: InfinityIcon, title: "Flexible Access", desc: "Access courses during your active subscription period." },
+  { icon: Award, title: "Certificate", desc: "Earn certificates upon completion." },
+>>>>>>> c94fb50 (first commit)
   { icon: Tag, title: "Affordable", desc: "Quality education at best prices" },
 ];
 
@@ -84,8 +89,13 @@ const feature = [
   },
   {
     icon: InfinityIcon,
+<<<<<<< HEAD
     title: "Lifetime Access",
     desc: "Access courses forever",
+=======
+    title: "Flexible Access",
+    desc: "Access courses during your active subscription period.",
+>>>>>>> c94fb50 (first commit)
   },
 ];
 
@@ -164,7 +174,11 @@ const Home = () => {
           {/* LEFT CONTENT */}
           <div className="space-y-7">
 
+<<<<<<< HEAD
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#443322] text-orange-600 text-xs font-semibold">
+=======
+            <span className="px-4 py-1.5 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold uppercase tracking-wider mb-6 inline-block border border-[#FF7A00]/20">
+>>>>>>> c94fb50 (first commit)
               Learn. Upskill. Succeed.
             </span>
 
@@ -174,7 +188,11 @@ const Home = () => {
             </h1>
 
             <p className="text-[#a1a1aa] text-lg max-w-lg">
+<<<<<<< HEAD
               Explore industry-relevant courses designed by experts and learn at your own pace. Start your learning journey today!
+=======
+              Explore expert-designed, industry-relevant courses and learn at your own pace. Start your learning journey today!
+>>>>>>> c94fb50 (first commit)
             </p>
 
             {/* FEATURES */}
