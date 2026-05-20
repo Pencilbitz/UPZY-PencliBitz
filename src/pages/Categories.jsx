@@ -20,11 +20,10 @@ const stats = [
   { icon: Globe, value: "25+", label: "Countries" },
   { icon: ShieldCheck, value: "98%", label: "Satisfaction" },
 ];
+
+const categories = [
+  {
     id: "webinars",
-};
-
-
-function Categories() {
     title: "Expert Webinars",
     desc: "Join live sessions with industry leaders and global experts. Stay ahead of the curve with real-time insights.",
     icon: MonitorPlay,

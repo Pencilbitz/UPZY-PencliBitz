@@ -11,7 +11,7 @@ import Dashboard from './pages/Dashboard';
 import AdminPanel from './pages/AdminPanel';
 import Workshops from './pages/Workshops';
 import NationalConference from './pages/NationalConference';
-import Categories from './pages/Categories';
+// import Categories from './pages/Categories';
 import Webinars from './pages/Webinars';
 import WhatsAppButton from './pages/WhatsAppButton';
 import ScrollToTop from './pages/ScrollToTop';
@@ -58,7 +58,7 @@ function AppContent() {
           <Route path="/conference" element={<InternationalConference />} />
           <Route path="/national-conference" element={<NationalConference />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/categories" element={<Categories />} />
+          {/* <Route path="/categories" element={<Categories />} /> */}
           <Route path="/webinars" element={<Webinars />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/workshops" element={<Workshops />} />
