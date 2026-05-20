@@ -26,44 +26,7 @@ import {
 
 const About = () => {
   const [tIndex, setTIndex] = useState(0);
-
-  const testimonials = [
-    {
-      id: 1,
-      text: "This platform completely transformed how I approach learning. The interactive lessons and real-world projects made everything click. I went from struggling with fundamentals to building production-level applications.",
-      name: "Sarah Anderson",
-      role: "Full Stack Developer",
-      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
-    },
-    {
-      id: 2,
-      text: "The instructors genuinely care about student success. Every question I asked was answered thoughtfully, and the community support is unmatched. I finished the course 2 weeks early because I was so engaged.",
-      name: "Marcus Chen",
-      role: "Junior Designer",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
-    },
-    {
-      id: 3,
-      text: "I was skeptical about online learning, but this exceeded all expectations. The curriculum is current, the projects are challenging but achievable, and I landed my dream job within 3 months of completing the course.",
-      name: "Elena Rodriguez",
-      role: "Product Manager",
-      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
-    },
-    {
-      id: 4,
-      text: "The best investment I've made in my career. Not only did I gain technical skills, but I also learned how to think like a problem-solver. The mentorship component was invaluable.",
-      name: "James Wilson",
-      role: "Data Scientist",
-      img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
-    },
-  ];
-
-  const t = testimonials[tIndex];
-
-  const goToPrevious = () => {
-    setTIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
-  };
-
+ 
   const goToNext = () => {
     setTIndex((i) => (i + 1) % testimonials.length);
   };
@@ -81,8 +44,8 @@ const About = () => {
     },
     {
       icon: Users,
-      title: "Learn Anywhere",
-      description: "Study at your own pace, anytime, anywhere with lifetime access to content.",
+      title: "Industry Technical Partner",
+      description: "Study at your own pace, anytime, anywhere with access to content during your subscription period.",
     },
     {
       icon: Award,
@@ -296,95 +259,7 @@ const About = () => {
             ))}
           </div>
         </div>
-
-        {/* Testimonials */}
-        <section className="mb-32 relative">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-4">What Our Learners Say</h2>
-            <div className="w-20 h-1 bg-[#FF7A00] mx-auto rounded-full"></div>
-          </div>
-
-          <div className="max-w-4xl mx-auto relative group">
-            <motion.div 
-              key={tIndex}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-[#16181D] border border-white/5 rounded-[3rem] p-10 md:p-16 relative shadow-2xl"
-            >
-              <Quote className="text-[#FF7A00]/20 absolute top-10 left-10" size={80} />
-              <div className="relative z-10 text-center">
-                <p className="text-gray-300 text-xl md:text-2xl font-medium leading-relaxed italic mb-12 px-4">
-                  "{t.text}"
-                </p>
-                <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-10 border-t border-white/5">
-                  <div className="flex items-center gap-4">
-                    <img 
-                      src={t.img} 
-                      alt={t.name} 
-                      className="w-16 h-16 rounded-full object-cover border-4 border-[#FF7A00]/20"
-                    />
-                    <div className="text-left">
-                      <h4 className="text-[#FF7A00] font-black text-lg">{t.name}</h4>
-                      <p className="text-gray-500 text-sm font-bold uppercase tracking-wider">{t.role}</p>
-                    </div>
-                  </div>
-                  <div className="hidden md:block w-px h-10 bg-white/10"></div>
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={18} className="fill-[#FF7A00] text-[#FF7A00]" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Navigation Buttons */}
-            <div className="flex justify-between absolute top-1/2 -translate-y-1/2 -left-16 -right-16 pointer-events-none">
-              <button 
-                onClick={goToPrevious}
-                className="w-12 h-12 rounded-full bg-[#16181D] border border-white/10 flex items-center justify-center text-white hover:border-[#FF7A00] hover:text-[#FF7A00] transition-all pointer-events-auto hidden lg:flex"
-              >
-                <ChevronLeft size={24} />
-              </button>
-              <button 
-                onClick={goToNext}
-                className="w-12 h-12 rounded-full bg-[#16181D] border border-white/10 flex items-center justify-center text-white hover:border-[#FF7A00] hover:text-[#FF7A00] transition-all pointer-events-auto hidden lg:flex"
-              >
-                <ChevronRight size={24} />
-              </button>
-            </div>
-
-            {/* Mobile Nav */}
-            <div className="flex justify-center gap-4 mt-8 lg:hidden">
-              <button 
-                onClick={goToPrevious}
-                className="p-4 rounded-2xl bg-[#16181D] border border-white/10 text-white active:scale-95 transition-all"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <button 
-                onClick={goToNext}
-                className="p-4 rounded-2xl bg-[#16181D] border border-white/10 text-white active:scale-95 transition-all"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-
-            {/* Indicators */}
-            <div className="flex justify-center gap-3 mt-10">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setTIndex(i)}
-                  className={`h-2 transition-all duration-300 rounded-full ${
-                    i === tIndex ? "w-10 bg-[#FF7A00]" : "w-2 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
+ 
         {/* CTA Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

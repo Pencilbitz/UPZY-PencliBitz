@@ -415,7 +415,6 @@ export default function Index() {
         {/* REGISTER */}
         <div id="Register" className="space-y-6">
 
-
           <div className="rounded-3xl border border-white/10 bg-[#1A1A1A] p-8 shadow-xl transition-all hover:border-[#FF7A00]/30">
             <SectionLabel icon={FileText}>
               Submission Guidelines

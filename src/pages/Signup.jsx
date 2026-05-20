@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import logo from '../assets/upzy-logo.png';
 import { Link } from 'react-router-dom';
 
-
 import {
   User,
   Mail,

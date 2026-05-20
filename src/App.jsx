@@ -63,7 +63,6 @@ function AppContent() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/workshops" element={<Workshops />} />
 
-
                             {/* Workshops  Links */}
           <Route path="/upzypencilbitz-Dec-27" element={<Dec27Workshop />} />
           <Route path="/Python-Based-Genetic-Optimization-16to17-Apr" element={<PythonBasedGeneticOptimization16to17Apr />} />
@@ -71,7 +70,6 @@ function AppContent() {
           <Route path="/The-Power-Of-Innovation-And-IPR-28-Apr-2026" element={<ThePowerOfInnovationAndIPR28Apr2026 />} />
           <Route path="/Digital-Marketing-30-to-31-May-2026" element={<DigitalMarketing30to31May2026 />} />
           <Route path="/Data-Analytics-In-AI-4-May-2026" element={<DataAnalyticsInAI />} />
-
 
                             {/* Webinars  Links */}
 

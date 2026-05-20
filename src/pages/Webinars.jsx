@@ -28,9 +28,7 @@ import {
   
   
 } from "lucide-react";
-
-
-
+ 
 import heroImg from "../assets/webinar-hero.png";
 import wAi from "../assets/webinar-ai.png";
 import wData from "../assets/webinar-data.png";
