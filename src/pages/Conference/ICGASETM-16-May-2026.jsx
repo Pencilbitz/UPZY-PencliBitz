@@ -33,6 +33,7 @@ import MarannaT from "../../assets/Conference/ICGASETM 16 May 2026/Maranna T.jpe
 import KrishnaSudha from "../../assets/Conference/ICGASETM 16 May 2026/Krishna Sudha.jpeg"
 import CHAmanulla from "../../assets/Conference/ICGASETM 16 May 2026/CH Amanulla.jpeg"
 import ICGASETMCERTIFICATE from "../../assets/Conference/ICGASETM 16 May 2026/ICGASETM Conference Certificates.pdf"
+import ICGASETMProceedings from "../../assets/Conference/ICGASETM 16 May 2026/Full-ICGASETM.pdf"
 const topics = [
   "Artificial Intelligence and Data Science",
   "Emerging Technologies",
@@ -230,13 +231,13 @@ export default function Index() {
                   </div>
                 </div>
                 
-                <h3 className="text-lg sm:text-xl md:text-2xl font-black mb-1.5 sm:mb-2">Full Conference Proceeding</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-black mb-1.5 sm:mb-2">Proceeding</h3>
                 <p className="text-zinc-400 text-xs sm:text-sm mb-4 sm:mb-6 md:mb-8 max-w-xs">Get access to the complete collection of research papers and proceedings from ICGASETM – 2026.</p>
                 
-                <button className="flex items-center gap-2 bg-[#FF7A00] hover:bg-orange-600 text-white font-bold py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 md:px-7 rounded-xl sm:rounded-2xl transition-all transform hover:scale-[1.02] shadow-lg shadow-[#FF7A00]/20 text-xs sm:text-sm">
+                <a href={ICGASETMProceedings} className="flex items-center gap-2 bg-[#FF7A00] hover:bg-orange-600 text-white font-bold py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 md:px-7 rounded-xl sm:rounded-2xl transition-all transform hover:scale-[1.02] shadow-lg shadow-[#FF7A00]/20 text-xs sm:text-sm">
                   <Download size={16} className="sm:w-5 sm:h-5" />
-                  <span>Download Soon!</span>
-                </button>
+                  <span>Download </span>
+                </a>
               </div>
             </div>
           </div>

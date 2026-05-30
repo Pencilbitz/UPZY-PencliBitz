@@ -14,8 +14,12 @@ import {
   CheckCircle2,
   ScanLine,
   Sparkles,
+  Download,
 } from "lucide-react";
 import brochure from "../../assets/Conference/ICIRGI 30 May 2026.jpeg"
+import certIcon from "../../assets/Conference/ICGASETM 16 May 2026/certificate-icon-3d.png"
+import proceedingIcon from "../../assets/Conference/ICGASETM 16 May 2026/proceeding-icon-3d.png"
+import ICIRGICERTIFICATE from "../../assets/Conference/ICIRGI/ICIRGI-CERTIFICATE.pdf"
 import keynote1 from "../../assets/Conference/ICIRGI/1.jpg"
 import keynote2 from "../../assets/Conference/ICIRGI/2.jpg"
 import advisory1 from "../../assets/Conference/ICIRGI/3.jpg"
@@ -185,6 +189,58 @@ export default function Index() {
           </div>
         </div>
       </header>
+
+      {/* DOWNLOADS */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 pb-4 sm:pb-6">
+        <div className="rounded-2xl sm:rounded-3xl border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 md:p-6 lg:p-8 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-[#FF7A00]/5 rounded-full blur-[80px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+          
+          <SectionLabel icon={Download}>
+            Downloads
+          </SectionLabel>
+
+          <div className="mt-2 sm:mt-3 grid gap-4 sm:gap-5 md:gap-6 sm:grid-cols-2">
+            {/* Certificate Download */}
+            <div className="group relative rounded-xl sm:rounded-2xl lg:rounded-[2rem] border border-white/5 p-2.5 sm:p-3 md:p-4 lg:p-6 bg-white/5 transition-all hover:bg-white/10 hover:border-[#FF7A00]/30 overflow-hidden">
+              <div className="flex flex-col items-center text-center">
+                <div className="relative mb-2 sm:mb-3 md:mb-4 lg:mb-6">
+                  <div className="absolute -inset-4 rounded-full bg-[#FF7A00]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 items-center justify-center rounded-2xl transform transition-all group-hover:scale-110 group-hover:rotate-3">
+                    <img src={certIcon} alt="Certificate Icon" className="h-full w-full object-contain rounded-lg sm:rounded-xl drop-shadow-[0_15px_30px_rgba(255,122,0,0.4)]" />
+                  </div>
+                </div>
+                
+                <h3 className="text-lg sm:text-xl md:text-2xl font-black mb-1.5 sm:mb-2 text-white">Certificate</h3>
+                <p className="text-zinc-400 text-xs sm:text-sm mb-4 sm:mb-6 md:mb-8 max-w-xs">Download your official participation or presentation certificate from the conference.</p>
+                
+                <a href={ICIRGICERTIFICATE} className="flex items-center gap-2 bg-[#FF7A00] hover:bg-orange-600 text-white font-bold py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 md:px-7 rounded-xl sm:rounded-2xl transition-all transform hover:scale-[1.02] shadow-lg shadow-[#FF7A00]/20 text-xs sm:text-sm">
+                  <Download size={16} className="sm:w-5 sm:h-5" />
+                  <span>Download</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Proceeding Download */}
+            <div className="group relative rounded-xl sm:rounded-2xl lg:rounded-[2rem] border border-white/5 bg-white/5 p-2.5 sm:p-3 md:p-4 lg:p-6 transition-all hover:bg-white/10 hover:border-[#FF7A00]/30 overflow-hidden">
+              <div className="flex flex-col items-center text-center">
+                <div className="relative mb-3 sm:mb-4 md:mb-6 lg:mb-8">
+                  <div className="absolute -inset-4 rounded-full bg-[#FF7A00]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 items-center justify-center rounded-2xl transform transition-all group-hover:scale-110 group-hover:rotate-3">
+                    <img src={proceedingIcon} alt="Proceeding Icon" className="h-full w-full object-contain rounded-lg sm:rounded-xl drop-shadow-[0_15px_30px_rgba(255,122,0,0.4)]" />
+                  </div>
+                </div>
+                
+                <h3 className="text-lg sm:text-xl md:text-2xl font-black mb-1.5 sm:mb-2 text-white">Proceeding</h3>
+                <p className="text-zinc-400 text-xs sm:text-sm mb-4 sm:mb-6 md:mb-8 max-w-xs">Get access to the complete collection of research papers and proceedings from ICIRGI – 2026.</p>
+                
+                <button disabled className="flex items-center gap-2 bg-zinc-700 cursor-not-allowed text-zinc-400 font-bold py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 md:px-7 rounded-xl sm:rounded-2xl text-xs sm:text-sm">
+                  <span>Coming Soon</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CONTENT */}
       <section className="mx-auto grid max-w-7xl gap-6 px-6 py-16 md:grid-cols-2 lg:grid-cols-3">

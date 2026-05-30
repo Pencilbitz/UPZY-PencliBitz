@@ -11,7 +11,6 @@ import {
   ArrowRight,
   Play,
   Users,
-  Infinity as InfinityIcon,
   Award,
   Tag,
   Star,
@@ -28,14 +27,14 @@ import {
   MonitorPlay,
   CalendarClock,
   HomeIcon, Search,
+  Shuffle as ShuffleIcon,
+  Timer,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 const features = [
   { icon: Users, title: "Expert Instructors", desc: "Learn from industry professionals" },
-  { icon: InfinityIcon, title: "Lifetime Access", desc: "Learn anytime, anywhere" },
   { icon: Award, title: "Certificate", desc: "Earn certificates on completion" },
-  { icon: InfinityIcon, title: "Flexible Access", desc: "Access courses during your active subscription period." },
-  { icon: Award, title: "Certificate", desc: "Earn certificates upon completion." },
+  { icon: ShuffleIcon, title: "Flexible Access", desc: "Access courses during your active subscription period." },
   { icon: Tag, title: "Affordable", desc: "Quality education at best prices" },
 ];
 
@@ -46,7 +45,6 @@ const categories = [
   { icon: Megaphone, name: "Marketing", count: "60+ Courses" },
   { icon: Pencil, name: "Design", count: "70+ Courses" },
   { icon: Bot, name: "AI & ML", count: "70+ Courses" },
-  { icon: Flower2, name: "Lifestyle", count: "40+ Courses" },
 ];
 
 const stats = [
@@ -85,9 +83,7 @@ const feature = [
     desc: "Quality education at affordable prices",
   },
   {
-    icon: InfinityIcon,
-    title: "Lifetime Access",
-    desc: "Access courses forever",
+    icon: Timer,
     title: "Flexible Access",
     desc: "Access courses during your active subscription period.",
     title: "Limited Time Access",
@@ -202,15 +198,11 @@ const Home = () => {
             {/* BUTTONS */}
             <div className="flex flex-wrap gap-4 pt-2">
 
-              <button className="px-6 py-3 rounded-xl bg-[#FF7A00] text-white flex items-center gap-2 hover:bg-orange-700 transition">
+              <button  onClick={() => document.getElementById('courses').scrollIntoView({ behavior: 'smooth' })}  className="px-6 py-3 rounded-xl bg-[#FF7A00] text-white flex items-center gap-2 hover:bg-orange-700 transition">
                 Explore Courses
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <button className="px-6 py-3 rounded-xl border border-gray-300 flex items-center hover:text-[#FF7A00] text-[#a1a1aa] gap-2 hover:border-[#FF7A00] transition">
-                <Play className="w-4 h-4" />
-                How It Works
-              </button>
             </div>
 
             {/* USERS */}
@@ -297,7 +289,7 @@ const Home = () => {
         </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {categories.map((c, i) => {
               const Icon = c.icon;
               return (
@@ -329,7 +321,7 @@ const Home = () => {
       </section>
 
       {/*Section -3 */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
+      <section id="courses" className="max-w-7xl mx-auto px-4 py-20">
 
         {/* Header */}
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
@@ -532,48 +524,6 @@ const Home = () => {
             );
           })}
         </div>
-      </section>
-      {/*Section -8 */}
-      <section className="max-w-7xl mx-auto px-4 py-12">
-        <h2 className="text-3xl lg:text-4xl text-center font-bold mb-3">
-          What Our Learners Say
-        </h2>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative bg-[#16181D] border border-[#FF7A00]/30 rounded-[3rem] p-5 md:p-10 overflow-hidden text-center md:text-left"
-        >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF7A00]/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
-            <div className="flex flex-col md:flex-row items-center gap-8 flex-1">
-              <div className="w-24 h-24 bg-[#FF7A00]/10 rounded-[2rem] flex items-center justify-center shrink-0">
-                {/* Image */}
-                <img
-                  src={books}
-                  alt="Books"
-                  className="w-full h-full rounded-2xl object-cover hidden md:block"
-                />
-
-                {/* Text */}              </div>
-              <div>
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-3">Stay Updated with New Courses!</h3>
-                <p className="text-gray-400 font-medium"> Subscribe to our newsletter and never miss updates on new courses and offers.</p>
-              </div>
-            </div>
-            <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-[#FF7A00] w-full md:w-64 transition-all"
-              />
-              <button className="bg-[#FF7A00] hover:bg-[#FFA500] text-[#0B0B0F] px-8 py-4 rounded-2xl font-black text-sm whitespace-nowrap shadow-lg shadow-[#FF7A00]/20 transition-all transform hover:scale-105">
-                Get Started
-              </button>
-            </div>
-          </div>
-        </motion.div>
-
       </section>
 
     </div>

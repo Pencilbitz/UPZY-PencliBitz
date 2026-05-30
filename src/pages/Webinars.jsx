@@ -50,8 +50,8 @@ const upcoming = [
     speaker: "Dr. Rohan Mehta",
     role: "AI Researcher",
     avatar: sp1,
-    date: "16 May 2025",
-    time: "Friday, 7:00 PM IST",
+    date: "Up Coming",
+    time: "Soon",
     url: "/FutureofAI",
   },
 
@@ -62,8 +62,8 @@ const upcoming = [
     speaker: "Anjali Sharma",
     role: "Data Scientist",
     avatar: sp2,
-    date: "23 May 2025",
-    time: "Friday, 7:00 PM IST",
+    date: "Up Coming",
+    time: "Soon",
   },
 
   {
@@ -73,42 +73,10 @@ const upcoming = [
     speaker: "Vikram Nair",
     role: "Cybersecurity Expert",
     avatar: sp3,
-    date: "30 May 2025",
-    time: "Friday, 7:00 PM IST",
-  },
+    date: "Up Coming",
+    time: "Soon",
+    },
 
-  {
-    img: wMarket,
-    title: "Digital Marketing Trends in 2025",
-    desc: "Stay updated with the latest trends in digital marketing.",
-    speaker: "Pooja Iyer",
-    role: "Marketing Strategist",
-    avatar: sp4,
-    date: "06 Jun 2025",
-    time: "Friday, 7:00 PM IST",
-  },
-
-  {
-    img: wWeb,
-    title: "Building Scalable Web Applications",
-    desc: "Architecture patterns for modern scalable web apps.",
-    speaker: "Arjun Kapoor",
-    role: "Senior Engineer",
-    avatar: sp1,
-    date: "13 Jun 2025",
-    time: "Friday, 7:00 PM IST",
-  },
-
-  {
-    img: wCloud,
-    title: "Career Growth with Cloud Computing",
-    desc: "Roadmap to becoming a cloud-first engineer.",
-    speaker: "Neha Verma",
-    role: "Cloud Architect",
-    avatar: sp2,
-    date: "20 Jun 2025",
-    time: "Friday, 7:00 PM IST",
-  },
 ];
 
 const whyAttend = [
@@ -245,10 +213,6 @@ function Webinars() {
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 py-14 grid lg:grid-cols-2 gap-14 items-center">
         <div>
-          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-2 rounded-full text-orange-500 text-sm">
-            <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-            Live Learning Sessions
-          </div>
 
           <div className="inline-flex items-center gap-2 bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-4 py-2 rounded-full text-[#FF7A00] text-sm font-bold uppercase tracking-wider">
             <span className="w-2 h-2 bg-[#FF7A00] rounded-full animate-pulse"></span>
@@ -316,10 +280,10 @@ function Webinars() {
         <div className="flex justify-between items-center mb-10">
           <h2 className="text-4xl font-bold">Upcoming Webinars</h2>
 
-          <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
+          {/* <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
             View All Webinars
             <ArrowRight size={18} />
-          </button>
+          </button> */}
         </div>
 
         <div className="space-y-6">
@@ -371,7 +335,7 @@ function Webinars() {
                 </p>
 
                 <Link to={item.url} className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-md font-semibold">
-                  Register Now
+                  Register Soon
                 </Link>
               </div>
             </div>

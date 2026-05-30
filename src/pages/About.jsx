@@ -22,6 +22,8 @@ import {
   PlayCircle,
   Clock,
   ArrowRight,
+    TrendingUp as TrendingUpicon,
+    HeartHandshake as HeartHandshake,
 } from "lucide-react";
 
 const About = () => {
@@ -38,7 +40,7 @@ const About = () => {
       description: "We provide well-structured courses created by experts to ensure the best learning experience.",
     },
     {
-      icon: Rocket,
+      icon: TrendingUpicon,
       title: "Career Growth",
       description: "Our courses are designed to help you gain practical skills and advance in your career.",
     },
@@ -48,7 +50,7 @@ const About = () => {
       description: "Study at your own pace, anytime, anywhere with access to content during your subscription period.",
     },
     {
-      icon: Award,
+      icon: HeartHandshake,
       title: "Trusted Platform",
       description: "Join thousands of learners who trust UPZY PencilBitz for their learning journey.",
     },
@@ -80,7 +82,7 @@ const About = () => {
       desc: "Working together to achieve shared success and growth.",
     },
     {
-      icon: Rocket,
+      icon: TrendingUpicon,
       title: "Growth",
       desc: "Focused on continuous improvement and long-term success.",
     },
@@ -111,9 +113,6 @@ const About = () => {
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <button className="bg-[#FF7A00] hover:bg-[#FFA500] text-[#0B0B0F] px-8 py-4 rounded-2xl font-black text-sm shadow-lg shadow-[#FF7A00]/20 transition-all transform hover:scale-105 active:scale-95">
                 Explore Courses
-              </button>
-              <button className="bg-white/5 border border-white/10 hover:bg-white/10 text-white px-8 py-4 rounded-2xl font-bold text-sm transition-all transform hover:scale-105 active:scale-95">
-                Join Community
               </button>
             </div>
           </motion.div>
@@ -228,9 +227,6 @@ const About = () => {
                 We continuously innovate and collaborate with industry experts to bring you the most relevant and up-to-date courses. Our journey is driven by the success of our students and the impact they make in the world.
               </p>
             </div>
-            <button className="mt-10 px-8 py-4 bg-[#FF7A00] hover:bg-[#FFA500] text-[#0B0B0F] font-black rounded-2xl flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg shadow-[#FF7A00]/20">
-              Learn More About Us <ArrowRight size={18} />
-            </button>
           </motion.div>
         </div>
 
@@ -260,42 +256,6 @@ const About = () => {
           </div>
         </div>
  
-        {/* CTA Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative bg-[#16181D] border border-[#FF7A00]/30 rounded-[3rem] p-5 md:p-10 overflow-hidden text-center md:text-left"
-        >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF7A00]/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
-            <div className="flex flex-col md:flex-row items-center gap-8 flex-1">
-              <div className="w-24 h-24 bg-[#FF7A00]/10 rounded-[2rem] flex items-center justify-center shrink-0">
- {/* Image */}
-        <img
-          src={books}
-          alt="Books"
-          className="w-full h-full rounded-2xl object-cover hidden md:block"
-        />
-
-        {/* Text */}              </div>
-              <div>
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-3">Start Your Learning Journey Today!</h3>
-                <p className="text-gray-400 font-medium">Join thousands of learners and unlock your true potential with UPZY PencilBitz.</p>
-              </div>
-            </div>
-            <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-[#FF7A00] w-full md:w-64 transition-all"
-              />
-              <button className="bg-[#FF7A00] hover:bg-[#FFA500] text-[#0B0B0F] px-8 py-4 rounded-2xl font-black text-sm whitespace-nowrap shadow-lg shadow-[#FF7A00]/20 transition-all transform hover:scale-105">
-                Get Started
-              </button>
-            </div>
-          </div>
-        </motion.div>
       </div>
       
       {/* Custom Styles for Animation */}

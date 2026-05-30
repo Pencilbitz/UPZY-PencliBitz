@@ -30,8 +30,6 @@ import Sujatha from "../assets/Workshop/Testimonials/Sujatha-Mohan.jpeg";
 
 
 const Upcomingworkshops = [
-   
-
 
   {
     img: "https://img.freepik.com/premium-photo/person-using-laptop-with-word-digital-marketing-screen_257043-51794.jpg",
@@ -42,28 +40,6 @@ const Upcomingworkshops = [
     price: "₹99",
     original: "₹149",
     url: "/Digital-Marketing-30-to-31-May-2026"
-  },
-
-  {
-    img: "",
-    title: "Python Based Genetic Optimization",
-    desc: "Genetic Algorithms for Optimization Problems",
-    date: "16-17 Apr 2026",
-    duration: "2 Days Workshop",
-    price: "₹0",
-    original: "",
-    url: "",
-  },
-
-  {
-    img: "",
-    title: "Gen-AI & Assurence",
-    desc: "Build and train AI agents and assurence in projects.",
-    date: "27 - 28 Dec 2025",
-    duration: "2 Days Workshop",
-    price: "₹0",
-    original: "",
-    url: "",
   },
 ];
 
@@ -187,16 +163,7 @@ const testimonials = [
     college: "Sri Bhagawan Mahaveer Jain College (Bangalore)",
     text: " A special thank you to Revathi madam for her outstanding initiative and leadership. Her dedication ensured this task was executed seamlessly and completed ahead of schedule. We truly appreciate her hard work and commitment to excellence.",
     rating: 5,
-  },
-
-  // {
-  //   name: "Rohan Iyer",
-  //   role: "Product Designer",
-  //   Department:"Design",
-  //   college: "Indian Institute of Technology Bombay",
-  //   text: "UI/UX workshop completely changed how I design interfaces.",
-  //   rating: 5,
-  // },
+  }
 ];
 
 const faqs = [
@@ -256,7 +223,8 @@ function Hero() {
     
 
       <div className="grid lg:grid-cols-2 gap-14 items-center">
-       
+        {/* LEFT */}
+        <div>
           <div className="inline-flex items-center gap-2 bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-4 py-2 rounded-full text-[#FF7A00] text-sm font-bold uppercase tracking-wider">
             <Sparkles size={14} />
             Hands-on Learning
@@ -277,7 +245,7 @@ function Hero() {
             real-world projects and industry-level guidance.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-8">
+          <div className="mt-10 flex flex-wrap gap-3">
             {[
               {
                 icon: Wrench,
@@ -295,8 +263,8 @@ function Hero() {
               },
             ].map((item, index) => (
               <div key={index}>
-                <div className="w-14 h-14 rounded-xl bg-[#FF7A00]/10 border border-[#FF7A00]/30 flex items-center justify-center">
-                  <item.icon className="text-[#FF7A00]" />
+                <div className="w-14 h-14 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
+                  <item.icon className="text-orange-500" />
                 </div>
 
                 <p className="mt-3 text-sm text-gray-400 max-w-[100px]">
@@ -305,6 +273,7 @@ function Hero() {
               </div>
             ))}
           </div>
+        </div>
 
         {/* RIGHT */}
         <div className="relative">
@@ -329,10 +298,10 @@ function UpcomingWorkshops() {
       <div className="flex justify-between items-center mb-10">
         <h2 className="text-4xl font-bold">Upcoming Workshops</h2>
 
-        <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
+        {/* <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
           View All Workshops
           <ArrowRight size={18} />
-        </button>
+        </button> */}
       </div>
 
       <div className="space-y-6">
@@ -395,9 +364,9 @@ function UpcomingWorkshops() {
               {item.url ? (
                 <Link
                   to={item.url}
-                  className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-md font-semibold text-center text-white"
+                  className="bg-orange-600 hover:bg-orange-400 transition px-6 py-3 rounded-md font-semibold text-center text-white"
                 >
-                  View Details
+                  Register Now
                 </Link>
               ) : (
                 <span className="bg-gray-700 px-6 py-3 rounded-md font-semibold text-center text-gray-400 cursor-not-allowed">
@@ -427,10 +396,10 @@ function CompletedWorkshops() {
       <div className="flex justify-between items-center mb-10">
         <h2 className="text-4xl font-bold">Completed Workshops</h2>
 
-        <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
+        {/* <button className="flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition">
           View All Workshops
           <ArrowRight size={18} />
-        </button>
+        </button> */}
       </div>
 
       <div className="space-y-6">
@@ -559,7 +528,7 @@ function Testimonials() {
             className="bg-[#111] border text-sm text-justify border-orange-500/20 rounded-2xl p-6 relative"
           >
             <Quote className="absolute top-5 right-5 text-orange-500/30" />
-  <div className="flex items-center gap-3 mt-6">
+             <div className="flex items-center gap-3 mt-6">
               <div>
                 <img src={item.img} alt={item.name} className="w-20 h-20 rounded-lg object-cover" />
                 <h4 className="font-semibold">{item.name}</h4>
